@@ -48,3 +48,5 @@ for (file in raster_files) {
   cat("Salvato:", out_name, "\n")
 }
 
+
+#commento di prova 
