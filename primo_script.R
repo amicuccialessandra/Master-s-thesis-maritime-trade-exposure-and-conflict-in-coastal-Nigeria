@@ -164,6 +164,17 @@ ggplot() +
   ggtitle("Admin2 Costieri")
 
 
+admin2_in_coastal_admin1 <- st_join(nig, coastal_admin1, join = st_within, left = FALSE)
+
+# 'left = FALSE' tiene solo i record di nig che effettivamente cadono dentro coastal_admin1
+
+# 3. Visualizza
+ggplot() +
+  geom_sf(data = nig, fill = "gray90") +
+  geom_sf(data = admin2_in_coastal_admin1, fill = "lightblue") +
+  theme_minimal() +
+  ggtitle("Admin2 dentro Admin1 costieri")
+
 #conflict
 conflict <- read_excel("Cartel2.xlsx")
 rapacity_sub_events <- c(
@@ -192,21 +203,21 @@ non_rapacity_sub_events <- c(
 )
 
 
-conflict_rapacity <- conflict %>%
+conflict_non_rapacity <- conflict %>%
   filter(
-    sub_event_type %in% rapacity_sub_events |
+    sub_event_type %in% non_rapacity_sub_events |
       grepl("loot|steal|raid|resource|gold|oil|land|plunder|livestock|pasture|farm|grazing", 
             tolower(notes))
   )
 
 
-conflict_rapacity_clean <- conflict_rapacity[complete.cases(conflict_rapacity$longitude, conflict_rapacity$latitude), ]
+conflict_non_rapacity_clean <- conflict_non_rapacity[complete.cases(conflict_non_rapacity$longitude, conflict_non_rapacity$latitude), ]
 
 # Count the number of removed lines
-rows_removed <- nrow(conflict_rapacity) - nrow(conflict_rapacity_clean)
+rows_removed <- nrow(conflict_non_rapacity) - nrow(conflict_non_rapacity_clean)
 print(paste("Righe rimosse:", rows_removed))
 
-conflict_sf <- st_as_sf(conflict_rapacity_clean, coords = c("longitude", "latitude"), crs = st_crs(nig))
+conflict_sf <- st_as_sf(conflict_non_rapacity_clean, coords = c("longitude", "latitude"), crs = st_crs(nig))
 
 # Ensure both are in the same CRS
 grid_transformed <- st_transform(grid, "+init=EPSG:26393")
@@ -287,6 +298,19 @@ p_combined4
 
 
 
-#nightlights 
-install.packages("Rnightlights")
-library(Rnightlights)
+coastal_admin2 <- st_transform(admin2_in_coastal_admin1, crs = st_crs(conflict_sf))
+within_matrix <- st_within(conflict_sf, coastal_admin2, sparse = FALSE)
+# within_matrix è una matrice: righe = punti, colonne = poligoni costieri
+
+# Per ogni punto, verifica se è dentro almeno un poligono
+inside_any <- apply(within_matrix, 1, any)
+
+# Ora puoi filtrare i punti
+conflict_coastal <- conflict_sf[inside_any, ]
+
+
+ggplot() +
+  geom_sf(data = coastal_admin2, fill = "lightblue", color = "black") +  # Poligoni costieri
+  geom_sf(data = conflict_coastal, color = "red", size = 1, alpha = 0.7) +  # Punti conflitti
+  theme_minimal() +
+  ggtitle("Conflitti nella zona costiera")
