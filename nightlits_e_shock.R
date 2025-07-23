@@ -49,6 +49,41 @@ for (file in raster_files) {
   cat("Salvato:", out_name, "\n")
 }
 
+coastal_admin2 <- st_transform(coastal_admin2, crs = "EPSG:4326")
+
+# Convertilo in vect per terra
+coastal_vect <- vect(coastal_admin2)
+
+# Elenco dei raster nightlights
+raster_files <- list.files("nightlights/", pattern = "\\.tif$", full.names = TRUE)
+
+# Crea cartella output
+dir.create("nightlights_coastal", showWarnings = FALSE)
+
+for (file in raster_files) {
+  r <- rast(file)
+  
+  # Proietta coastal_vect al CRS del raster (se necessario)
+  coastal_vect_proj <- project(coastal_vect, crs(r))
+  
+  # Croppa e maschera usando solo l’area costiera
+  r_crop <- crop(r, coastal_vect_proj)
+  r_mask <- mask(r_crop, coastal_vect_proj)
+  
+  # Visualizza (opzionale)
+  plot(r_mask, main = paste("Nightlights coast -", basename(file)))
+  
+  # Estrai l'anno dal nome del file
+  year <- gsub("[^0-9]", "", basename(file))
+  
+  # Salva il raster mascherato solo sulla costa
+  out_name <- paste0("nightlights_coastal/nightlight_coastal_", year, ".tif")
+  writeRaster(r_mask, out_name, overwrite = TRUE)
+  
+  cat("Salvato:", out_name, "\n")
+}
+
+
 ContPortThroughput<- read_excel("US.ContPortThroughput_20250723_173714.xlsx")
 ContPortThroughput <- as.data.table(ContPortThroughput)
 ContPortThroughput <- ContPortThroughput %>%
