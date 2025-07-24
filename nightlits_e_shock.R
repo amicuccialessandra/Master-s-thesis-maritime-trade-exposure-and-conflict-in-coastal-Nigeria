@@ -83,6 +83,14 @@ for (file in raster_files) {
   cat("Salvato:", out_name, "\n")
 }
 
+nightlight_stats <- terra::extract(r_mask, vect(admin2_in_coastal_admin1), fun=mean, na.rm=TRUE)
+
+# Aggiungi al dataframe admin2_costieri
+admin2_in_coastal_admin1$nightlight_mean <- nightlight_stats[,2]
+#normalizzo
+admin2_in_coastal_admin1$nightlight_norm <- (admin2_in_coastal_admin1$nightlight_mean - min(admin2_in_coastal_admin1$nightlight_mean, na.rm=TRUE)) / 
+  (max(admin2_in_coastal_admin1$nightlight_mean, na.rm=TRUE) - min(admin2_in_coastal_admin1$nightlight_mean, na.rm=TRUE))
+
 
 ContPortThroughput<- read_excel("US.ContPortThroughput_20250723_173714.xlsx")
 ContPortThroughput <- as.data.table(ContPortThroughput)
