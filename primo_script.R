@@ -117,6 +117,7 @@ ggplot() +
   theme_minimal() +
   ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 
+
 nigeria_boundary <- st_boundary(st_union(nig))
 
 # Trova i poligoni admin2 che toccano questo confine esterno
@@ -174,6 +175,33 @@ ggplot() +
   geom_sf(data = admin2_in_coastal_admin1, fill = "lightblue") +
   theme_minimal() +
   ggtitle("Admin2 dentro Admin1 costieri")
+
+ggplot() +
+  geom_sf(data = admin2_in_coastal_admin1, fill = "gray90", color = "black") +  # Admin2 map
+  geom_sf(data = ports_data, color = "red", size = 2) +  # Ports as red dots
+  theme_minimal() +
+  ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
+
+#buffer porti 
+
+nig <- st_make_valid(nig)
+ports_proj <- st_transform(ports_data, 32631)
+ports_buffer <- st_buffer(ports_proj, dist = 50000)
+ports_buffer <- st_make_valid(ports_buffer)
+ports_buffer <- st_transform(ports_buffer, st_crs(nig))
+
+
+coastal_buffer_admin2 <- nig %>%
+  filter(st_intersects(nig, ports_buffer, sparse = FALSE)[,1])
+coastal_buffer_admin2 <- st_transform(coastal_buffer_admin2, st_crs(ports_proj))
+# distanza minima dai porti per tutte le admin2 costiere
+dist_ports <- st_distance(coastal_buffer_admin2, ports_proj)
+# dist_ports è una matrice: righe = amministrazioni, colonne = porti
+
+# converti in numeric e prendi min per riga
+coastal_buffer_admin2$dist_min_port <- apply(as.matrix(dist_ports), 1, min)
+
+
 
 #conflict
 conflict <- read_excel("Cartel2.xlsx")
@@ -314,3 +342,28 @@ ggplot() +
   geom_sf(data = conflict_coastal, color = "red", size = 1, alpha = 0.7) +  # Punti conflitti
   theme_minimal() +
   ggtitle("Conflitti nella zona costiera")
+pc_2009 <- ggplot()+
+  geom_sf(data = coastal_admin2, fill = NA)+
+  geom_sf(data = conflict_coastal%>%filter(year==2009), color = "red", size = 1, alpha = 0.7)+
+  labs(title = "Conflict in Nigeria - 2009") +  
+  theme_minimal()
+
+pc_2012 <- ggplot()+
+  geom_sf(data = coastal_admin2, fill = NA)+
+  geom_sf(data = conflict_coastal%>%filter(year==2012), color = "red", size = 1, alpha = 0.7)+
+  labs(title = "Conflict in Nigeria - 2012") +  
+  theme_minimal()
+pc_2015 <-ggplot()+
+  geom_sf(data = coastal_admin2, fill = NA)+
+  geom_sf(data = conflict_coastal%>%filter(year==2015), color = "red", size = 1, alpha = 0.7)+
+  labs(title = "Conflict in Nigeria - 2015") +  
+  theme_minimal()
+pc_2019 <- ggplot()+
+  geom_sf(data = coastal_admin2, fill = NA)+
+  geom_sf(data = conflict_coastal%>%filter(year==2019), color = "red", size = 1, alpha = 0.7)+
+  labs(title = "Conflict in Nigeria - 2019") +  
+  theme_minimal()
+
+p_combined <- pc_2009+ pc_2012 + pc_2015 + pc_2019 + 
+  plot_layout(ncol = 2, nrow = 2) 
+p_combined
