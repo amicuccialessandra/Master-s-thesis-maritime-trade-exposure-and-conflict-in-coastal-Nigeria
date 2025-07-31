@@ -25,6 +25,8 @@ library(fixest)
 
 
 
+
+
 #step 1: shapefile
 shp <- read_sf(paste0(getwd(), "/TM_WORLD_BORDERS-0.3.shp"))
 shp <- st_make_valid(shp)
@@ -36,28 +38,20 @@ shp <- shp %>%
 # Load names of Subsaharan countries and select them in shp
 load("afr_names.rda")
 
-afr_names
 sub_shp <- subset(shp, ISO3 %in% afr_names$iso3c)
 # Subset the sub_shp object to include only Nigeria (ISO3 code "NGA")
 shp <- shp %>% filter(NAME %in% "nigeria")
 
-st_crs(shp)
-
 #admin2 level 
 nig <- read_sf(paste0(getwd(), "/nga_polnda_adm2_1m_salb.shp"))
 
-st_crs(nig)
 # Plot the map of Nigeria
-ggplot() + geom_sf(data = shp)
-
 ggplot() + geom_sf(data = shp %>%
                      st_transform("+init=EPSG:26393"))
 shp <- shp %>%
   st_transform("+init=EPSG:26393")
 
 #plot at admin2 level
-ggplot() + geom_sf(data = nig)
-
 ggplot() + geom_sf(data = nig %>%
                      st_transform("+init=EPSG:26393"))
 nig <- nig %>%
@@ -78,14 +72,11 @@ area <- st_area(grid)
 area <- as.numeric(area); area
 to_rm <- which(area <= 7e+08); to_rm
 # Drop smallest cells
-grid
 grid <- grid[-to_rm]
-grid
 
 # In order to match the grid with other shapefiles,
 # we need the grid to be a shapefile
 grid <- st_as_sf(grid)
-grid
 # We can also assign an id to each cell
 grid <- grid %>% 
   mutate(FIP = 1:n())
@@ -96,9 +87,6 @@ shapefile_path <- "ports.shp"
 
 # Read shapefile
 ports_data <- st_read(shapefile_path)
-
-# Plot using base R
-plot(ports_data)
 
 # Or use ggplot2 for a nicer map
 ggplot(data = ports_data) +
@@ -182,6 +170,24 @@ ggplot() +
   theme_minimal() +
   ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 
+####AAAAAAAAAAAAAAA#####
+admin2_in_coastal_admin1 <- st_join(nig, coastal_admin1, join = st_within, left = FALSE)
+
+coastal_admin2_master <- admin2_in_coastal_admin1
+
+# Pulisci i nomi delle colonne in coastal_admin2_master (e quindi admin2_in_coastal_admin1)
+if ("ADM2_NAME.x" %in% names(coastal_admin2_master)) {
+  coastal_admin2_master <- coastal_admin2_master %>% dplyr::rename(ADM2_NAME = ADM2_NAME.x)
+}
+
+if ("ADM2_CODE.x" %in% names(coastal_admin2_master)) {
+  coastal_admin2_master <- coastal_admin2_master %>% dplyr::rename(ADM2_CODE = ADM2_CODE.x)
+}
+
+
+# Ora, assicurati che admin2_in_coastal_admin1 sia la versione pulita per i passaggi successivi
+admin2_in_coastal_admin1 <- coastal_admin2_master
+
 #buffer porti 
 convert_to_decimal <- function(deg, min, dec, hemi) {
   coord <- deg + min/60 + dec/3600
@@ -228,178 +234,4 @@ ggplot() +
   theme_minimal()
 
 
-#conflict
-conflict <- read_excel("Cartel2.xlsx")
-rapacity_sub_events <- c(
-  "Looting/property destruction", 
-  "Abduction/forced disappearance", 
-  "Armed clash", 
-  "Attack", 
-  "Shelling/artillery/missile attack", 
-  "Sexual violence"  # spesso associata a violenza predatoria
-)
 
-
-non_rapacity_sub_events <- c(
-  "Peaceful protest", 
-  "Violent demonstration", 
-  "Protest with intervention", 
-  "Agreement", 
-  "Change to group/activity", 
-  "Disrupted weapons use", 
-  "Arrests", 
-  "Headquarters or base established", 
-  "Non-violent transfer of territory", 
-  "Non-state actor overtakes territory", 
-  "Government regains territory", 
-  "Other"  # da valutare caso per caso
-)
-
-
-conflict_non_rapacity <- conflict %>%
-  filter(
-    sub_event_type %in% non_rapacity_sub_events |
-      grepl("loot|steal|raid|resource|gold|oil|land|plunder|livestock|pasture|farm|grazing", 
-            tolower(notes))
-  )
-
-
-conflict_non_rapacity_clean <- conflict_non_rapacity[complete.cases(conflict_non_rapacity$longitude, conflict_non_rapacity$latitude), ]
-
-# Count the number of removed lines
-rows_removed <- nrow(conflict_non_rapacity) - nrow(conflict_non_rapacity_clean)
-print(paste("Righe rimosse:", rows_removed))
-
-conflict_sf <- st_as_sf(conflict_non_rapacity_clean, coords = c("longitude", "latitude"), crs = st_crs(nig))
-
-# Ensure both are in the same CRS
-grid_transformed <- st_transform(grid, "+init=EPSG:26393")
-conflict_sf_transformed <- st_transform(conflict_sf, "+init=EPSG:26393")
-
-# Check the CRS to ensure they match
-print(st_crs(grid_transformed))
-print(st_crs(conflict_sf_transformed))
-
-# Check a few entries from conflict_sf_transformed
-head(conflict_sf_transformed)
-
-# Check the bounding box of both datasets to ensure overlap
-print(st_bbox(grid_transformed))
-print(st_bbox(conflict_sf_transformed))
-
-# Print the original CRS of conflict_sf
-print(st_crs(conflict_sf))
-
-conflict_sf_transformed <- st_transform(conflict_sf, crs = 26393)
-
-# Verify the bounding box after transformation
-print(st_bbox(conflict_sf_transformed))
-
-print(st_crs(conflict_sf))
-
-# If the original CRS is not identified correctly, set it to the known CRS (e.g., EPSG:4326)
-
-st_crs(conflict_sf) <- 4326  # Set this to the correct original CRS if known
-
-# Step 2: Re-transform conflict_sf to EPSG:26393
-conflict_sf_transformed <- st_transform(conflict_sf, crs = 26393)
-# Verify the bounding box after transformation
-print(st_bbox(conflict_sf_transformed))
-
-# Step 3: Perform spatial join and summarize
-conflict_sf1 <- st_join(grid_transformed, conflict_sf_transformed) %>%
-  group_by(FIP, admin2, year) %>%
-  summarise(n_conflicts = n(), .groups = 'drop')
-
-# Check the resulting data
-head(conflict_sf1)
-conflict_sf_transformed1 <- conflict_sf_transformed %>%
-  mutate(conflict_id = row_number())  # Create a unique identifier
-
-# Perform the spatial join and ensure conflict_id is retained
-
-conflict_sf3 <- st_join(grid_transformed, conflict_sf_transformed) %>% 
-  group_by(FIP, year, event_type,fatalities,event_id_cnty) %>% 
-  summarise(n_conflicts = n())
-
-#plotting conflict 
-pc_2009 <- ggplot()+
-  geom_sf(data = nig, fill = NA)+
-  geom_sf(data = conflict_sf%>%filter(year==2009))+
-  labs(title = "Conflict in Nigeria - 2009") +  
-  theme_minimal()
-
-pc_2012 <- ggplot()+
-  geom_sf(data = nig, fill = NA)+
-  geom_sf(data = conflict_sf%>%filter(year==2012))+
-  labs(title = "Conflict in Nigeria - 2012") +  
-  theme_minimal()
-pc_2015 <-ggplot()+
-  geom_sf(data = nig, fill = NA)+
-  geom_sf(data = conflict_sf%>%filter(year==2015))+
-  labs(title = "Conflict in Nigeria - 2015") +  
-  theme_minimal()
-pc_2019 <- ggplot()+
-  geom_sf(data = nig, fill = NA)+
-  geom_sf(data = conflict_sf%>%filter(year==2019))+
-  labs(title = "Conflict in Nigeria - 2019") +  
-  theme_minimal()
-
-p_combined4 <- pc_2009+ pc_2012 + pc_2015 + pc_2019 + 
-  plot_layout(ncol = 2, nrow = 2) 
-p_combined4
-
-
-
-coastal_admin2 <- st_transform(admin2_in_coastal_admin1, crs = st_crs(conflict_sf))
-within_matrix <- st_within(conflict_sf, coastal_admin2, sparse = FALSE)
-# within_matrix è una matrice: righe = punti, colonne = poligoni costieri
-
-# Per ogni punto, verifica se è dentro almeno un poligono
-inside_any <- apply(within_matrix, 1, any)
-
-# Ora puoi filtrare i punti
-conflict_coastal <- conflict_sf[inside_any, ]
-
-
-ggplot() +
-  geom_sf(data = coastal_admin2, fill = "lightblue", color = "black") +  # Poligoni costieri
-  geom_sf(data = conflict_coastal, color = "red", size = 1, alpha = 0.7) +  # Punti conflitti
-  theme_minimal() +
-  ggtitle("Conflitti nella zona costiera")
-pc_2009 <- ggplot()+
-  geom_sf(data = coastal_admin2, fill = NA)+
-  geom_sf(data = conflict_coastal%>%filter(year==2009), color = "red", size = 1, alpha = 0.7)+
-  labs(title = "Conflict in Nigeria - 2009") +  
-  theme_minimal()
-
-pc_2012 <- ggplot()+
-  geom_sf(data = coastal_admin2, fill = NA)+
-  geom_sf(data = conflict_coastal%>%filter(year==2012), color = "red", size = 1, alpha = 0.7)+
-  labs(title = "Conflict in Nigeria - 2012") +  
-  theme_minimal()
-pc_2015 <-ggplot()+
-  geom_sf(data = coastal_admin2, fill = NA)+
-  geom_sf(data = conflict_coastal%>%filter(year==2015), color = "red", size = 1, alpha = 0.7)+
-  labs(title = "Conflict in Nigeria - 2015") +  
-  theme_minimal()
-pc_2019 <- ggplot()+
-  geom_sf(data = coastal_admin2, fill = NA)+
-  geom_sf(data = conflict_coastal%>%filter(year==2019), color = "red", size = 1, alpha = 0.7)+
-  labs(title = "Conflict in Nigeria - 2019") +  
-  theme_minimal()
-
-p_combined <- pc_2009+ pc_2012 + pc_2015 + pc_2019 + 
-  plot_layout(ncol = 2, nrow = 2) 
-p_combined
-
-
-
-coastal_buffer_admin2$export_proxy <- 1 / (coastal_buffer_admin2$dist_min_port + 1)
-coastal_buffer_admin2 <- coastal_buffer_admin2 %>%
-  mutate(
-    dist_min_norm = (dist_min_port - min(dist_min_port, na.rm = TRUE)) / (max(dist_min_port, na.rm = TRUE) - min(dist_min_port, na.rm = TRUE)),
-    nightlight_norm = (nightlight_mean - min(nightlight_mean, na.rm = TRUE)) / (max(nightlight_mean, na.rm = TRUE) - min(nightlight_mean, na.rm = TRUE)),
-    export_proxy = ifelse(is.na(export_proxy), 0, export_proxy),  # se l’hai già calcolato
-    export_norm = (export_proxy - min(export_proxy, na.rm = TRUE)) / (max(export_proxy, na.rm = TRUE) - min(export_proxy, na.rm = TRUE))
-  )
