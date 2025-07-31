@@ -11,10 +11,6 @@ library(data.table)
 # Crea cartella per i dati
 dir.create("nightlights_data", showWarnings = FALSE)
 
-library(terra)
-library(sf)
-
-# 1. Carica shapefile Nigeria
 
 # 2. Proietta lo shapefile (se serve) per farlo combaciare con i raster
 nig <- st_transform(nig, crs = "EPSG:4326")
@@ -118,3 +114,4 @@ ContPortThroughput_long[, year := as.integer(gsub("_.*", "", names(ContPortThrou
 setorder(ContPortThroughput_long, year)
 
 ContPortThroughput_long[, shock := c(NA, diff(log(teu)))]
+
