@@ -55,3 +55,4 @@ LSCI_long[, year := year(date)]
 LSCI_long[, quarter := quarter(date)]
 LSCI_long[, LSCI_value := as.numeric(LSCI_value)]  # assicura che sia numerico
 LSCI_annual <- LSCI_long[, .(LSCI_annual = mean(LSCI_value, na.rm = TRUE)), by = year]
+
