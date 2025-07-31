@@ -183,24 +183,49 @@ ggplot() +
   ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 
 #buffer porti 
+convert_to_decimal <- function(deg, min, dec, hemi) {
+  coord <- deg + min/60 + dec/3600
+  # Usa ifelse per vettori
+  coord <- ifelse(hemi %in% c("S", "W"), -coord, coord)
+  return(coord)
+}
 
-nig <- st_make_valid(nig)
-ports_proj <- st_transform(ports_data, 32631)
-ports_buffer <- st_buffer(ports_proj, dist = 50000)
+ports_data <- ports_data %>%
+  mutate(
+    LAT_dec = convert_to_decimal(LAT_DEG, LAT_MIN, LAT_DD, LAT_HEMI),
+    LON_dec = convert_to_decimal(LONG_DEG, LONG_MIN, LNG_DD, LONG_HEMI)
+  )
+
+# Crea sf object
+ports_sf <- st_as_sf(ports_data, coords = c("LON_dec", "LAT_dec"), crs = 4326)
+
+# Trasforma in CRS metrico (qui EPSG 32631 è UTM zona 31N, cambia se necessario)
+ports_proj <- st_transform(ports_sf, 32631)
+
+# Ora puoi creare il buffer
+ports_buffer <- st_buffer(ports_proj, dist = 1000000)  # buffer di 1000km
+
+# Assicurati che il buffer sia valido
 ports_buffer <- st_make_valid(ports_buffer)
-ports_buffer <- st_transform(ports_buffer, st_crs(nig))
+
+# Se admin2_in_coastal_admin1 è in un CRS diverso, trasformalo
+admin2_proj <- st_transform(admin2_in_coastal_admin1, st_crs(ports_buffer))
 
 
-coastal_buffer_admin2 <- nig %>%
-  filter(st_intersects(nig, ports_buffer, sparse = FALSE)[,1])
-coastal_buffer_admin2 <- st_transform(coastal_buffer_admin2, st_crs(ports_proj))
-# distanza minima dai porti per tutte le admin2 costiere
+coastal_buffer_admin2 <- admin2_proj %>%
+  filter(st_intersects(admin2_proj, ports_buffer, sparse = FALSE)[,1])
+
+# Calcola la distanza minima da ogni admin2 ai porti
 dist_ports <- st_distance(coastal_buffer_admin2, ports_proj)
-# dist_ports è una matrice: righe = amministrazioni, colonne = porti
-
-# converti in numeric e prendi min per riga
 coastal_buffer_admin2$dist_min_port <- apply(as.matrix(dist_ports), 1, min)
 
+ggplot() +
+  geom_sf(data = coastal_buffer_admin2, aes(fill = dist_min_port), color = "black", size = 0.2) +
+  scale_fill_viridis_c(option = "plasma", name = "Distanza min. porto (m)") +
+  labs(title = "Distanza minima tra aree amministrative costiere e porti",
+       subtitle = "Buffer di 10000 km intorno ai porti",
+       caption = "Fonte dati: admin2 e porti") +
+  theme_minimal()
 
 
 #conflict
@@ -283,7 +308,7 @@ print(st_bbox(conflict_sf_transformed))
 
 # Step 3: Perform spatial join and summarize
 conflict_sf1 <- st_join(grid_transformed, conflict_sf_transformed) %>%
-  group_by(FIP, year) %>%
+  group_by(FIP, admin2, year) %>%
   summarise(n_conflicts = n(), .groups = 'drop')
 
 # Check the resulting data
@@ -367,3 +392,14 @@ pc_2019 <- ggplot()+
 p_combined <- pc_2009+ pc_2012 + pc_2015 + pc_2019 + 
   plot_layout(ncol = 2, nrow = 2) 
 p_combined
+
+
+
+coastal_buffer_admin2$export_proxy <- 1 / (coastal_buffer_admin2$dist_min_port + 1)
+coastal_buffer_admin2 <- coastal_buffer_admin2 %>%
+  mutate(
+    dist_min_norm = (dist_min_port - min(dist_min_port, na.rm = TRUE)) / (max(dist_min_port, na.rm = TRUE) - min(dist_min_port, na.rm = TRUE)),
+    nightlight_norm = (nightlight_mean - min(nightlight_mean, na.rm = TRUE)) / (max(nightlight_mean, na.rm = TRUE) - min(nightlight_mean, na.rm = TRUE)),
+    export_proxy = ifelse(is.na(export_proxy), 0, export_proxy),  # se l’hai già calcolato
+    export_norm = (export_proxy - min(export_proxy, na.rm = TRUE)) / (max(export_proxy, na.rm = TRUE) - min(export_proxy, na.rm = TRUE))
+  )
