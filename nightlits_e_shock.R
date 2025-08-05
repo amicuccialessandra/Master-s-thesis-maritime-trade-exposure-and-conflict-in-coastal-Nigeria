@@ -79,6 +79,7 @@ for (file in raster_files) {
   cat("Salvato:", out_name, "\n")
 }
 
+
 nightlight_stats <- terra::extract(r_mask, vect(admin2_in_coastal_admin1), fun=mean, na.rm=TRUE)
 
 # Aggiungi al dataframe admin2_costieri

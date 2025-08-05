@@ -158,8 +158,11 @@ pc_2019 <- ggplot()+
 p_combined <- pc_2009+ pc_2012 + pc_2015 + pc_2019 + 
   plot_layout(ncol = 2, nrow = 2) 
 p_combined
-
-coastal_admin2_master_proj <- st_transform(coastal_admin2_master, crs = 26393)
+ggsave("conflict_cost.pdf", # Save as PDF
+       plot = p_combined,
+       width = 5,                 # Width in inches
+       height = 8,                 # Height in inches
+       dpi = 300)                  # DPI is less critical for vector graphics, but good practice
 
 
 # Perform the spatial join to get conflicts within the master coastal ADM2s

@@ -64,8 +64,12 @@ ggplot() + geom_sf(data = nig) + geom_sf(data = grid, fill = NA)
 
 # We need to remove the part of squares not perfectly overlapping with shp
 grid <- grid %>% st_intersection(nig) # overlapping squares, missing values
-ggplot() + geom_sf(data = nig) + geom_sf(data = grid, fill = NA)
-
+nigeria_map <- ggplot() + geom_sf(data = nig) + geom_sf(data = grid, fill = NA)
+ggsave("nigeria_map.pdf", # Save as PDF
+       plot = nigeria_map,
+       width = 10,                 # Width in inches
+       height = 8,                 # Height in inches
+       dpi = 300)                  # DPI is less critical for vector graphics, but good practice
 # Compute the area of cells
 # Remember: we can make this calculation because we are using a Projected Coordinate System
 area <- st_area(grid)
@@ -158,18 +162,30 @@ admin2_in_coastal_admin1 <- st_join(nig, coastal_admin1, join = st_within, left 
 # 'left = FALSE' tiene solo i record di nig che effettivamente cadono dentro coastal_admin1
 
 # 3. Visualizza
-ggplot() +
+Admin2_cost <- ggplot() +
   geom_sf(data = nig, fill = "gray90") +
   geom_sf(data = admin2_in_coastal_admin1, fill = "lightblue") +
   theme_minimal() +
   ggtitle("Admin2 dentro Admin1 costieri")
 
-ggplot() +
-  geom_sf(data = admin2_in_coastal_admin1, fill = "gray90", color = "black") +  # Admin2 map
+ggsave("Admin2_cost.pdf", # Save as PDF
+       plot = Admin2_cost,
+       width = 10,                 # Width in inches
+       height = 8,                 # Height in inches
+       dpi = 300)                  # DPI is less critical for vector graphics, but good practice
+
+
+port <- ggplot() +
+  geom_sf(data = admin2_in_coastal_admin1, fill = "gray90", color = "grey") +  # Admin2 map
   geom_sf(data = ports_data, color = "red", size = 2) +  # Ports as red dots
   theme_minimal() +
   ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 
+ggsave("Nigerian Ports with Admin2 Boundaries and Grid.pdf", # Save as PDF
+       plot = port,
+       width = 10,                 # Width in inches
+       height = 8,                 # Height in inches
+       dpi = 300)                  # DPI is less critical for vector graphics, but good practice
 ####AAAAAAAAAAAAAAA#####
 admin2_in_coastal_admin1 <- st_join(nig, coastal_admin1, join = st_within, left = FALSE)
 
@@ -225,13 +241,17 @@ coastal_buffer_admin2 <- admin2_proj %>%
 dist_ports <- st_distance(coastal_buffer_admin2, ports_proj)
 coastal_buffer_admin2$dist_min_port <- apply(as.matrix(dist_ports), 1, min)
 
-ggplot() +
+dist_port_p <- ggplot() +
   geom_sf(data = coastal_buffer_admin2, aes(fill = dist_min_port), color = "black", size = 0.2) +
   scale_fill_viridis_c(option = "plasma", name = "Distanza min. porto (m)") +
   labs(title = "Distanza minima tra aree amministrative costiere e porti",
        subtitle = "Buffer di 10000 km intorno ai porti",
        caption = "Fonte dati: admin2 e porti") +
   theme_minimal()
-
+ggsave("distanza_porti_mappa.pdf", # Save as PDF
+       plot = dist_port_p,
+       width = 10,                 # Width in inches
+       height = 8,                 # Height in inches
+       dpi = 300)                  # DPI is less critical for vector graphics, but good practice
 
 
