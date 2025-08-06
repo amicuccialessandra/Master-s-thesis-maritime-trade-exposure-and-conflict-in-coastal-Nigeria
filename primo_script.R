@@ -52,10 +52,18 @@ shp <- shp %>%
   st_transform("+init=EPSG:26393")
 
 #plot at admin2 level
-ggplot() + geom_sf(data = nig %>%
-                     st_transform("+init=EPSG:26393"))
+nigeria <- ggplot() + geom_sf(data = nig %>%
+                     st_transform("+init=EPSG:26393")) +
+          labs(title = "Map of Nigeria")
+  
 nig <- nig %>%
   st_transform("+init=EPSG:26393")
+
+ggsave("nig.pdf", # Save as PDF
+       plot = nigeria,
+       width = 10,                 # Width in inches
+       height = 8,                 # Height in inches
+       dpi = 300)                  # DPI is less critical for vector graphics, but good practice
 
 #creating a grid
 grid <- st_make_grid(nig, cellsize = 100000) # takes shp and returns a grid
@@ -166,7 +174,7 @@ Admin2_cost <- ggplot() +
   geom_sf(data = nig, fill = "gray90") +
   geom_sf(data = admin2_in_coastal_admin1, fill = "lightblue") +
   theme_minimal() +
-  ggtitle("Admin2 dentro Admin1 costieri")
+  ggtitle("Coastal Admin2")
 
 ggsave("Admin2_cost.pdf", # Save as PDF
        plot = Admin2_cost,
@@ -243,10 +251,9 @@ coastal_buffer_admin2$dist_min_port <- apply(as.matrix(dist_ports), 1, min)
 
 dist_port_p <- ggplot() +
   geom_sf(data = coastal_buffer_admin2, aes(fill = dist_min_port), color = "black", size = 0.2) +
-  scale_fill_viridis_c(option = "plasma", name = "Distanza min. porto (m)") +
-  labs(title = "Distanza minima tra aree amministrative costiere e porti",
-       subtitle = "Buffer di 10000 km intorno ai porti",
-       caption = "Fonte dati: admin2 e porti") +
+  scale_fill_viridis_c(option = "plasma", name = "Distance (m)") +
+  labs(title = "Distance between coastal administrative areas and ports",
+       subtitle = "10,000 km buffer around ports") +
   theme_minimal()
 ggsave("distanza_porti_mappa.pdf", # Save as PDF
        plot = dist_port_p,
@@ -254,4 +261,4 @@ ggsave("distanza_porti_mappa.pdf", # Save as PDF
        height = 8,                 # Height in inches
        dpi = 300)                  # DPI is less critical for vector graphics, but good practice
 
-
+dist_port_p
