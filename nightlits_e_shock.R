@@ -67,7 +67,7 @@ for (file in raster_files) {
   r_mask <- mask(r_crop, coastal_vect_proj)
   
   # Visualizza (opzionale)
-  plot(r_mask, main = paste("Nightlights coast -", basename(file)))
+  plot(r_mask)
   
   # Estrai l'anno dal nome del file
   year <- gsub("[^0-9]", "", basename(file))
