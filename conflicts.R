@@ -89,6 +89,11 @@ conflict_sf3 <- st_join(grid_transformed, conflict_sf_transformed) %>%
   group_by(FIP, year, event_type,fatalities,event_id_cnty) %>% 
   summarise(n_conflicts = n())
 
+# 1. Assegna il CRS corretto originale, cioè lat/lon (WGS84)
+st_crs(conflict_sf) <- 4326
+
+# 2. Ora trasforma le coordinate nel CRS di 'nig' (EPSG:26393)
+conflict_sf <- st_transform(conflict_sf, st_crs(nig))
 #plotting conflict 
 pc_2009 <- ggplot()+
   geom_sf(data = nig, fill = NA)+
@@ -166,7 +171,10 @@ ggsave("conflict_cost.pdf", # Save as PDF
 
 
 # Perform the spatial join to get conflicts within the master coastal ADM2s
+coastal_admin2_master_proj <- st_transform(coastal_admin2_master, crs = 26393)
 
+conflict_sf_transformed <- st_transform(conflict_sf_transformed, 4326)
+conflict_sf_transformed <- st_transform(conflict_sf_transformed, 26393)
 # Using st_intersects for points within polygons, or st_within for stricter containment
 
 conflict_coastal <- st_join(conflict_sf_transformed, coastal_admin2_master_proj, join = st_intersects, left = FALSE)
