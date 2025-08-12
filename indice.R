@@ -135,3 +135,13 @@ summary(model)
 model1 <- feols(n_conflicts ~ exposure_shock, data = final_regression_data)
 
 summary(model1)
+
+saveRDS(nig, file = "data/nig.rds")
+saveRDS(coastal_admin2_master, file = "data/coastal_admin2_master.rds")
+saveRDS(grid, file = "data/grid.rds")
+saveRDS(ports_data, file = "data/ports_data.rds")
+saveRDS(nightlight_dt, file = "data/nightlight_dt.rds")
+saveRDS(conflicts_aggregated, file = "data/conflicts_aggregated.rds")
+saveRDS(LSCI_annual, file = "data/LSCI_annual.rds")
+saveRDS(ContPortThroughput_long, file = "data/ContPortThroughput_long.rds")
+saveRDS(final_regression_data, file = "data/final_regression_data.rds")
