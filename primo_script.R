@@ -1,8 +1,10 @@
 setwd("C:/Users/ale_a/OneDrive/Documenti/Tesi")
 
 remove(list = ls())
-
+library(data.table)
+library(patchwork)
 library(terra)
+library(readxl)
 library(exactextractr)
 library(sf)
 library(dplyr)
@@ -23,7 +25,17 @@ library(patchwork)
 library(sf)
 library(fixest)
 
+dir.create("data", showWarnings = FALSE)
 
+nig <- readRDS("data/nig.rds")
+coastal_admin2_master <- readRDS("data/coastal_admin2_master.rds")
+grid <- readRDS("data/grid.rds")
+ports_data <- readRDS("data/ports_data.rds")
+nightlight_dt <- readRDS("data/nightlight_dt.rds")
+conflicts_aggregated <- readRDS("data/conflicts_aggregated.rds")
+LSCI_annual <- readRDS("data/LSCI_annual.rds")
+ContPortThroughput_long <- readRDS("data/ContPortThroughput_long.rds")
+final_regression_data <- readRDS("data/final_regression_data.rds")
 
 
 
