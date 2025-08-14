@@ -491,16 +491,16 @@ for (file in raster_files) {
     r <- rast(file)
     
     # Proietta 'nig_vect' al CRS del raster
-    # nig_vect_proj <- project(nig_vect, crs(r))
+    nig_vect_proj <- project(nig_vect, crs(r))
     
     # Croppa e maschera usando l’intera Nigeria
-    # r_crop <- crop(r, nig_vect_proj)
-    # r_mask <- mask(r_crop, nig_vect_proj)
+    r_crop <- crop(r, nig_vect_proj)
+    r_mask <- mask(r_crop, nig_vect_proj)
     
     # Calcola la media dell'area mascherata.
     # Per questo esempio, assumiamo che 'r_mask' sia già calcolato.
     # Se hai i dati 'nig_vect', decommenta le righe sopra.
-    # mean_value <- global(r_mask, fun = "mean", na.rm = TRUE)
+    mean_value <- global(r_mask, fun = "mean", na.rm = TRUE)
     
     # Calcola la media dell'intero raster per dimostrazione
     mean_value <- global(r, fun = "mean", na.rm = TRUE)
