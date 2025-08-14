@@ -145,3 +145,126 @@ saveRDS(conflicts_aggregated, file = "data/conflicts_aggregated.rds")
 saveRDS(LSCI_annual, file = "data/LSCI_annual.rds")
 saveRDS(ContPortThroughput_long, file = "data/ContPortThroughput_long.rds")
 saveRDS(final_regression_data, file = "data/final_regression_data.rds")
+
+
+
+
+###INDICE AGGIORNATO 
+
+# Normalizza la distanza per sicurezza (opzionale, se vuoi comparabilità)
+final_df[, dist_min_norm := (dist_min_port - min(dist_min_port, na.rm = TRUE)) /
+           (max(dist_min_port, na.rm = TRUE) - min(dist_min_port, na.rm = TRUE))]
+
+# Unisci LSCI annuale
+setnames(LSCI_annual, "LSCI_annual", "lsci_value")
+panel_data <- merge(final_df, LSCI_annual, by = "year", all.x = TRUE)
+
+# Unisci shock
+panel_data <- merge(panel_data, ContPortThroughput_long[, .(year, shock)], 
+                    by = "year", all.x = TRUE)
+
+# Crea nuovo indice
+panel_data[, indice := lsci_value * shock * dist_min_norm]
+conflicts_aggregated <- conflict_coastal[, .(n_conflicts = .N), by = .(ADM2_NAME, year)]
+panel_data[, names(panel_data)[grepl("\\.y$", names(panel_data))] := NULL]
+
+# 2. Rinomina tutte le colonne .x togliendo il suffisso
+x_cols <- names(panel_data)[grepl("\\.x$", names(panel_data))]
+setnames(panel_data, old = x_cols, new = gsub("\\.x$", "", x_cols))
+
+# 3. Ora puoi unire con conflicts_aggregated
+final_regression_data <- merge(
+  panel_data,
+  conflicts_aggregated,
+  by = c("ADM2_NAME", "year"), # ora ADM2_NAME esiste
+  all.x = TRUE
+)
+
+
+# 4. Riempie i NA nei conflitti con zero
+final_regression_data[is.na(n_conflicts), n_conflicts := 0]
+model2 <- feols(
+  n_conflicts ~ indice,
+  data = final_regression_data
+)
+summary(model2)
+final_regression_data[is.na(n_conflicts), n_conflicts := 0]
+model3 <- feols(
+  n_conflicts ~ indice + nightlight_norm,
+  data = final_regression_data
+)
+summary(model3)
+model4 <- feols(
+  n_conflicts ~ indice + nightlight_norm | ADM2_NAME + year,
+  data = final_regression_data
+)
+summary(model4)
+
+model5 <- feols(
+  n_conflicts ~ indice | ADM2_NAME + year,
+  data = final_regression_data
+)
+summary(model5)
+
+coef_df <- data.frame(
+  model = c("model2", "model3", "model4", "model5"),
+  estimate = c(coef(model2)["indice"],
+               coef(model3)["indice"],
+               coef(model4)["indice"],
+               coef(model5)["indice"]),
+  se = c(summary(model2)$coef["indice","Std. Error"],
+         summary(model3)$coef["indice","Std. Error"],
+         summary(model4)$se["indice"],  # fixest o cluster errors
+         summary(model5)$se["indice"])
+)
+
+ggplot(coef_df, aes(x = model, y = estimate)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = estimate - 1.96*se,
+                    ymax = estimate + 1.96*se),
+                width = 0.2) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  labs(title = "Effetto dell'indice nei diversi modelli",
+       y = "Stima coefficiente",
+       x = "Modello")
+
+coef_df <- data.frame(
+  model = rep(c("model2", "model3", "model4", "model5"), each = 2),
+  variable = rep(c("indice", "nightlight_norm"), times = 4),
+  estimate = c(
+    coef(model2)["indice"], NA,
+    coef(model3)["indice"], coef(model3)["nightlight_norm"],
+    coef(model4)["indice"], coef(model4)["nightlight_norm"],
+    coef(model5)["indice"], NA
+  ),
+  se = c(
+    summary(model2)$coef["indice","Std. Error"], NA,
+    summary(model3)$coef["indice","Std. Error"], summary(model3)$coef["nightlight_norm","Std. Error"],
+    summary(model4)$se["indice"], summary(model4)$se["nightlight_norm"],
+    summary(model5)$se["indice"], NA
+  )
+)
+
+# Calcolo intervalli di confidenza
+coef_df <- coef_df %>%
+  mutate(
+    ymin = estimate - 1.96 * se,
+    ymax = estimate + 1.96 * se,
+    sign = ifelse(estimate >= 0, "Positivo", "Negativo"),
+    signif = ifelse(abs(estimate / se) > 1.96, "Significativo", "Non significativo")
+  )
+
+# Plot combinato
+ggplot(coef_df, aes(x = model, y = estimate, color = sign, shape = signif)) +
+  geom_point(size = 3, position = position_dodge(width = 0.5)) +
+  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.2, position = position_dodge(width = 0.5)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  labs(
+    title = "Effetti di indice e luminosità notturna nei modelli",
+    y = "Stima coefficiente",
+    x = "Modello",
+    color = "Segno",
+    shape = "Significatività"
+  )
