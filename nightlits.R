@@ -6,6 +6,7 @@ library(exactextractr)
 library(httr)
 library(rvest)
 library(xml2)
+library(data.table)
 
 # Crea cartella per i dati
 dir.create("nightlights_data", showWarnings = FALSE)
@@ -47,4 +48,33 @@ for (file in raster_files) {
   writeRaster(r_mask, out_name, overwrite = TRUE)
   cat("Salvato:", out_name, "\n")
 }
+
+
+#shock
+ContPortThroughput<- read_excel("US.ContPortThroughput_20250723_173714.xlsx")
+ContPortThroughput <- as.data.table(ContPortThroughput)
+ContPortThroughput <- ContPortThroughput %>%
+  filter(Economy_Label == "Nigeria")
+
+cols_teu <- grep("^20(0[0-9]|1[0-9])_TEU_Twenty_foot_Equivalent_Unit_Value$", names(ContPortThroughput), value = TRUE)
+cols_to_keep <- c("Economy_Label", cols_teu)
+ContPortThroughput <- ContPortThroughput[, ..cols_to_keep]
+ContPortThroughput[, (cols_teu) := lapply(.SD, function(x) as.numeric(as.character(x))), .SDcols = cols_teu]
+# Usa melt per passare da wide a long
+ContPortThroughput_long <- melt(
+  ContPortThroughput,
+  id.vars = "Economy_Label",
+  measure.vars = patterns("^20(0[0-9]|1[0-9])_TEU_Twenty_foot_Equivalent_Unit_Value$"),
+  variable.name = "year",
+  value.name = "teu"
+)
+
+# La colonna year sarà un fattore numerico, converti in anno reale
+ContPortThroughput_long[, year := as.integer(gsub("_.*", "", names(ContPortThroughput)[
+  grep("^20(0[0-9]|1[0-9])_TEU_Twenty_foot_Equivalent_Unit_Value$", names(ContPortThroughput))
+][year]))]
+
+setorder(ContPortThroughput_long, year)
+
+ContPortThroughput_long[, shock := c(NA, diff(log(teu)))]
 
