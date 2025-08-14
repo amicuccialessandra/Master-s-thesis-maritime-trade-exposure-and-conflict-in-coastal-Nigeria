@@ -171,6 +171,7 @@ ggsave("conflict_cost.pdf", # Save as PDF
 
 
 # Perform the spatial join to get conflicts within the master coastal ADM2s
+coastal_admin2_master_proj <- st_transform(coastal_admin2_master, crs = 4326)
 coastal_admin2_master_proj <- st_transform(coastal_admin2_master, crs = 26393)
 
 conflict_sf_transformed <- st_transform(conflict_sf_transformed, 4326)
