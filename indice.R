@@ -34,237 +34,136 @@ coastal_buffer_admin2 <- merge(nightlight_dt, coastal_buffer_admin2 , by = "ADM2
 coastal_buffer_admin2[, ADM2_NAME.y := NULL]
 final_df <- merge(coastal_buffer_admin2, LSCI_annual, by = "year", all.x = TRUE)
 
-final_df$export_proxy <- 1 / (final_df$dist_min_port + 1)
-final_df <- final_df %>% mutate %>%
-  
-  mutate(
-    
-    dist_min_norm = (dist_min_port - min(dist_min_port, na.rm = TRUE)) / (max(dist_min_port, na.rm = TRUE) - min(dist_min_port, na.rm = TRUE)),
-    
-    nightlight_norm = (nightlight_mean - min(nightlight_mean, na.rm = TRUE)) / (max(nightlight_mean, na.rm = TRUE) - min(nightlight_mean, na.rm = TRUE)),
-    
-    export_proxy = ifelse(is.na(export_proxy), 0, export_proxy), # se l’hai già calcolato
-    
-    export_norm = (export_proxy - min(export_proxy, na.rm = TRUE)) / (max(export_proxy, na.rm = TRUE) - min(export_proxy, na.rm = TRUE))
-    
-  )
-
-exposure_list <- list()
-setnames(LSCI_annual, "LSCI_annual", "lsci_value")
-
-for (t in LSCI_annual$year) {
-  # Estrai il valore annuale fuori da mutate()
-  lsci_t <- LSCI_annual[year == t, lsci_value]
-  
-  exposure_list[[as.character(t)]] <- final_df %>%
-    mutate(
-      year = t,
-      Exposure = lsci_t * (
-        (1/3 * dist_min_norm) +
-          (1/3 * nightlight_norm) +
-          (1/3 * export_norm)
-      )
-    )
-}
-
-exposure_df <- bind_rows(exposure_list)
-
-#checks 
-identical(exposure_df$ADM2_NAME.x, exposure_df$ADM2_NAME.y)
-identical(exposure_df$CNTRY_NAME.x, exposure_df$CNTRY_NAME.y)
-identical(exposure_df$CNTRY_CODE.x, exposure_df$CNTRY_CODE.y)
-identical(exposure_df$ADM1_NAME.x, exposure_df$ADM1_NAME.y)
-identical(exposure_df$ADM1_CODE.x, exposure_df$ADM1_CODE.y)
-identical(exposure_df$HRname.x, exposure_df$HRname.y)
-identical(exposure_df$HRpcode.x, exposure_df$HRpcode.y)
-identical(exposure_df$HRparent.x, exposure_df$HRparent.y)
-identical(exposure_df$Shape_Leng.x, exposure_df$Shape_Leng.y)
-identical(exposure_df$Shape_Area.x, exposure_df$Shape_Area.y)
-identical(exposure_df$ADM2_New.x, exposure_df$ADM2_New.y)
-
-
-
-
-# Tieni solo le colonne .x e tutte le variabili nuove
-setDT(exposure_df)
-
-# 1. Elimina tutte le colonne .y
-exposure_df[, names(exposure_df)[grepl("\\.y$", names(exposure_df))] := NULL]
-
-# 2. Rinomina tutte le colonne che finiscono con .x (rimuove il suffisso)
-x_cols <- names(exposure_df)[grepl("\\.x$", names(exposure_df))]
-setnames(exposure_df, old = x_cols, new = gsub("\\.x$", "", x_cols))
-
-
-
-panel_data <- merge(exposure_df, ContPortThroughput_long[, .(year, shock)], 
-                    by = "year", all.x = TRUE)
-# 1. Elimina tutte le colonne .y
-panel_data[, names(panel_data)[grepl("\\.y$", names(panel_data))] := NULL]
-
-# 2. Rinomina tutte le colonne che finiscono con .x (rimuove il suffisso)
-x_cols <- names(panel_data)[grepl("\\.x$", names(panel_data))]
-setnames(panel_data, old = x_cols, new = gsub("\\.x$", "", x_cols))
-panel_data[, exposure_shock := Exposure * shock]
-
-
-# Ensure conflict_coastal is a data.table (if not already)
-setDT(conflict_coastal)
-
-
-# Aggregate conflict_coastal to get n_conflicts per ADM2 and year
-# Make sure 'ADM2_NAME' exists and is correctly named in conflict_coastal
-# This assumes 'ADM2_NAME' comes from the spatial join with coastal_admin2_master
-conflicts_aggregated <- conflict_coastal[, .(n_conflicts = .N), by = .(ADM2_NAME, year)]
-
-final_regression_data <- merge(
-  panel_data,
-  conflicts_aggregated,
-  by = c("ADM2_NAME", "year"), # Keys to merge on
-  all.x = TRUE               # Keep all rows from panel_data, fill n_conflicts with NA if no match
-)
-
-# Replace NA conflicts with 0, as no conflicts is a meaningful zero count
-final_regression_data[is.na(n_conflicts), n_conflicts := 0]
-
-
-model <- feols(n_conflicts ~ exposure_shock | ADM2_NAME + year, data = final_regression_data)
-summary(model)
-
-
-model1 <- feols(n_conflicts ~ exposure_shock, data = final_regression_data)
-
-summary(model1)
-
-saveRDS(nig, file = "data/nig.rds")
-saveRDS(coastal_admin2_master, file = "data/coastal_admin2_master.rds")
-saveRDS(grid, file = "data/grid.rds")
-saveRDS(ports_data, file = "data/ports_data.rds")
-saveRDS(nightlight_dt, file = "data/nightlight_dt.rds")
-saveRDS(conflicts_aggregated, file = "data/conflicts_aggregated.rds")
-saveRDS(LSCI_annual, file = "data/LSCI_annual.rds")
-saveRDS(ContPortThroughput_long, file = "data/ContPortThroughput_long.rds")
-saveRDS(final_regression_data, file = "data/final_regression_data.rds")
-
 
 
 
 ###INDICE AGGIORNATO 
 
 # Normalizza la distanza per sicurezza (opzionale, se vuoi comparabilità)
-final_df[, dist_min_norm := (dist_min_port - min(dist_min_port, na.rm = TRUE)) /
-           (max(dist_min_port, na.rm = TRUE) - min(dist_min_port, na.rm = TRUE))]
+final_df$export_proxy <- 1 / (final_df$dist_min_port + 1)
 
-# Unisci LSCI annuale
-setnames(LSCI_annual, "LSCI_annual", "lsci_value")
-panel_data <- merge(final_df, LSCI_annual, by = "year", all.x = TRUE)
+final_df <- final_df %>%
+  mutate(
+    dist_min_norm = (dist_min_port - min(dist_min_port, na.rm = TRUE)) /
+      (max(dist_min_port, na.rm = TRUE) - min(dist_min_port, na.rm = TRUE)),
+    export_proxy  = ifelse(is.na(export_proxy), 0, export_proxy)
+  )
 
-# Unisci shock
-panel_data <- merge(panel_data, ContPortThroughput_long[, .(year, shock)], 
-                    by = "year", all.x = TRUE)
+# -----------------------
+# Costruisci pannello: replica ogni ADM2 per tutti gli anni
+# -----------------------
+panel_list <- list()
+for (t in LSCI_annual$year) {
+  
+  # Prendi i valori dell'anno t
+  lsci_t  <- LSCI_annual[year == t, lsci_value][1]
+  shock_t <- ContPortThroughput_long[year == t, shock][1]
+  
+  if(is.na(shock_t)) {
+    warning(paste("Shock mancante per anno", t, "- imposto 0"))
+    shock_t <- 0
+  }
+  
+  tmp <- final_df %>%
+    mutate(
+      year     = t,
+      shock    = shock_t,
+      Exposure = lsci_t * shock_t * dist_min_norm,
+      indice2  = lsci_t * shock_t * export_proxy
+    )
+  panel_list[[as.character(t)]] <- tmp
+}
 
-# Crea nuovo indice
-panel_data[, indice := lsci_value * shock * dist_min_norm]
-conflicts_aggregated <- conflict_coastal[, .(n_conflicts = .N), by = .(ADM2_NAME, year)]
+panel_data <- bind_rows(panel_list)
+
+# Pulisci nomi colonne
+setDT(panel_data)
 panel_data[, names(panel_data)[grepl("\\.y$", names(panel_data))] := NULL]
-
-# 2. Rinomina tutte le colonne .x togliendo il suffisso
 x_cols <- names(panel_data)[grepl("\\.x$", names(panel_data))]
 setnames(panel_data, old = x_cols, new = gsub("\\.x$", "", x_cols))
 
-# 3. Ora puoi unire con conflicts_aggregated
+# -----------------------
+# Unisci i conflitti
+# -----------------------
+conflicts_aggregated <- conflict_coastal[, .(n_conflicts = .N), by = .(ADM2_NAME, year)]
+
 final_regression_data <- merge(
   panel_data,
   conflicts_aggregated,
-  by = c("ADM2_NAME", "year"), # ora ADM2_NAME esiste
+  by = c("ADM2_NAME", "year"),
   all.x = TRUE
 )
 
-
-# 4. Riempie i NA nei conflitti con zero
+# Sostituisci NA con 0
 final_regression_data[is.na(n_conflicts), n_conflicts := 0]
-model2 <- feols(
-  n_conflicts ~ indice,
+
+# -----------------------
+# Regressioni
+# -----------------------
+model_exp <- feols(n_conflicts ~ Exposure | ADM2_NAME + year, data = final_regression_data)
+summary(model_exp)
+
+model_ind2 <- feols(n_conflicts ~ indice2 | ADM2_NAME + year, data = final_regression_data)
+summary(model_ind2)
+
+
+
+model6<- feols(
+  n_conflicts ~ indice2 | ADM2_NAME + year, 
   data = final_regression_data
 )
-summary(model2)
+summary(model6)
+final_regression_data <- final_regression_data %>% mutate(indice2 = 1/dist_min_norm * shock * lsci_value) 
+
+model7<- feols(
+  I(n_conflicts>0) ~ indice2 | ADM2_NAME + year, 
+  data = final_regression_data
+)
+summary(model7)
+
+model8<- feols(
+  I(n_conflicts>0) ~ indice2 + nightlight_norm | ADM2_NAME + year, 
+  data = final_regression_data
+)
+summary(model8)
+
+
+# Step 1: Crea uno scheletro del pannello
+years <- unique(LSCI_annual$year)
+adm2s <- unique(coastal_admin2_master$ADM2_NAME)
+panel_skeleton <- expand.grid(ADM2_NAME = adm2s, year = years)
+print(paste("Scheletro creato. Numero di righe:", nrow(panel_skeleton)))
+final_regression_data <- merge(panel_skeleton, LSCI_annual, by = "year", all.x = TRUE)
+print(paste("Dopo unione con LSCI_annual. Numero di righe:", nrow(final_regression_data)))
+final_regression_data <- merge(final_regression_data, ContPortThroughput_long[, c("year", "shock")], by = "year", all.x = TRUE)
+print(paste("Dopo unione con ContPortThroughput_long. Numero di righe:", nrow(final_regression_data)))
+final_regression_data <- merge(final_regression_data, nightlight_annual, by = c("ADM2_NAME", "year"), all.x = TRUE)
+print(paste("Dopo unione con nightlight_annual. Numero di righe:", nrow(final_regression_data)))
+final_regression_data <- merge(final_regression_data, conflicts_aggregated, by = c("ADM2_NAME", "year"), all.x = TRUE)
+print(paste("Dopo unione con conflicts_aggregated. Numero di righe:", nrow(final_regression_data)))
+final_regression_data <- merge(final_regression_data, st_drop_geometry(coastal_admin2_master[, c("ADM2_NAME", "dist_min_port", "dist_min_norm")]), by = "ADM2_NAME", all.x = TRUE)
+print(paste("Dopo unione con i dati geografici. Numero di righe:", nrow(final_regression_data)))
+setDT(final_regression_data)
+
+# Step 2: Calcola il tuo nuovo indice e pulisci i dati
+# Aggiungi un valore piccolo a dist_min_norm per evitare la divisione per zero
+epsilon <- 0.000001
 final_regression_data[is.na(n_conflicts), n_conflicts := 0]
-model3 <- feols(
-  n_conflicts ~ indice + nightlight_norm,
-  data = final_regression_data
-)
-summary(model3)
-model4 <- feols(
-  n_conflicts ~ indice + nightlight_norm | ADM2_NAME + year,
-  data = final_regression_data
-)
-summary(model4)
-
-model5 <- feols(
-  n_conflicts ~ indice | ADM2_NAME + year,
-  data = final_regression_data
-)
-summary(model5)
-
-coef_df <- data.frame(
-  model = c("model2", "model3", "model4", "model5"),
-  estimate = c(coef(model2)["indice"],
-               coef(model3)["indice"],
-               coef(model4)["indice"],
-               coef(model5)["indice"]),
-  se = c(summary(model2)$coef["indice","Std. Error"],
-         summary(model3)$coef["indice","Std. Error"],
-         summary(model4)$se["indice"],  # fixest o cluster errors
-         summary(model5)$se["indice"])
-)
-
-ggplot(coef_df, aes(x = model, y = estimate)) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = estimate - 1.96*se,
-                    ymax = estimate + 1.96*se),
-                width = 0.2) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  theme_minimal() +
-  labs(title = "Effetto dell'indice nei diversi modelli",
-       y = "Stima coefficiente",
-       x = "Modello")
-
-coef_df <- data.frame(
-  model = rep(c("model2", "model3", "model4", "model5"), each = 2),
-  variable = rep(c("indice", "nightlight_norm"), times = 4),
-  estimate = c(
-    coef(model2)["indice"], NA,
-    coef(model3)["indice"], coef(model3)["nightlight_norm"],
-    coef(model4)["indice"], coef(model4)["nightlight_norm"],
-    coef(model5)["indice"], NA
-  ),
-  se = c(
-    summary(model2)$coef["indice","Std. Error"], NA,
-    summary(model3)$coef["indice","Std. Error"], summary(model3)$coef["nightlight_norm","Std. Error"],
-    summary(model4)$se["indice"], summary(model4)$se["nightlight_norm"],
-    summary(model5)$se["indice"], NA
-  )
-)
-
-# Calcolo intervalli di confidenza
-coef_df <- coef_df %>%
+final_regression_data <- final_regression_data %>%
   mutate(
-    ymin = estimate - 1.96 * se,
-    ymax = estimate + 1.96 * se,
-    sign = ifelse(estimate >= 0, "Positivo", "Negativo"),
-    signif = ifelse(abs(estimate / se) > 1.96, "Significativo", "Non significativo")
+    indice2 = (1 / (dist_min_norm + epsilon)) * shock * lsci_value
   )
 
-# Plot combinato
-ggplot(coef_df, aes(x = model, y = estimate, color = sign, shape = signif)) +
-  geom_point(size = 3, position = position_dodge(width = 0.5)) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.2, position = position_dodge(width = 0.5)) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  theme_minimal() +
-  labs(
-    title = "Effetti di indice e luminosità notturna nei modelli",
-    y = "Stima coefficiente",
-    x = "Modello",
-    color = "Segno",
-    shape = "Significatività"
+# Step 3: Verifica le osservazioni valide per la regressione e aggiusta il modello
+# Manteniamo tutte le variabili. feols gestirà l'eliminazione dei NA.
+model6 <- feols(n_conflicts ~ indice2 | ADM2_NAME + year, data = final_regression_data)
+summary(model6)
+
+model9 <- feols(n_conflicts ~ indice2 + nightlight_norm | ADM2_NAME + year, data = final_regression_data)
+summary(model9) 
+final_regression_data <- final_regression_data %>%
+  mutate(
+    indice = dist_min_norm * shock * lsci_value
   )
+model7 <- feols(n_conflicts  ~ indice + nightlight_norm| ADM2_NAME + year, data = final_regression_data)
+summary(model7)
