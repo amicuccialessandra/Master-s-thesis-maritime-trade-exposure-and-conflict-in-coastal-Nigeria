@@ -304,3 +304,126 @@ ggplot(coef_df, aes(x = term, y = estimate, color = Model)) +
        title = "Confronto coefficienti tra modelli",
        subtitle = "Barre: intervalli di errore standard") +
   theme_minimal(base_size = 14)
+
+
+
+#eterogeneità 
+# Step 1: definisci dummy pre/post 2015
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(post2015 = ifelse(year > 2015, 1, 0),
+         pre2015  = 1 - post2015)
+
+# Step 2: dummy high/low nightlights basata sul log già presente
+final_regression_data_main <- final_regression_data_main %>%
+  group_by(year) %>%
+  mutate(q3_log_nl = quantile(nightlight_mean, 0.75, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(
+    high_nl = ifelse(nightlight_mean > q3_log_nl, 1, 0),
+    low_nl  = 1 - high_nl
+  )
+
+# Step 3: crea le interazioni con high/low e pre/post 2015
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(
+    indice_high_pre  = indice2_main * high_nl * pre2015,
+    indice_high_post = indice2_main * high_nl * post2015,
+    indice_low_pre   = indice2_main * low_nl  * pre2015,
+    indice_low_post  = indice2_main * low_nl  * post2015
+  )
+
+# Step 4: regressione con tutte le interazioni
+model_hetero <- feols(
+  n_conflicts ~ indice_high_pre + indice_high_post + 
+    indice_low_pre + indice_low_post + nightlight_mean |
+    ADM2_NAME + year,
+  data = final_regression_data_main
+)
+
+summary(model_hetero)
+
+
+model_hetero2 <- feols(
+  n_conflicts ~ indice_high_pre + indice_high_post + 
+    indice2_lowNL_main + nightlight_mean |
+    ADM2_NAME + year,
+  data = final_regression_data_main
+)
+
+summary(model_hetero2)
+
+model_hetero3 <- feols(
+  n_conflicts ~ indice2_highNL_main + 
+    indice_low_pre + indice_low_post + nightlight_mean |
+    ADM2_NAME + year,
+  data = final_regression_data_main
+)
+
+summary(model_hetero3)
+
+
+#porti 
+library(dplyr)
+library(ggplot2)
+library(sf)
+
+# Supponiamo di avere ADM2 costieri in coastal_admin2_master_main
+admin2_costieri <- coastal_admin2_master_main
+
+# Calcolo il centroide di ogni ADM2
+admin2_costieri <- admin2_costieri %>%
+  mutate(centroid = st_centroid(geometry),
+         lat = st_coordinates(centroid)[,2])  # prendo la latitudine
+
+lat_terzili <- quantile(admin2_costieri$lat, probs = c(1/2), na.rm = TRUE)  # mediana come cut-off
+
+admin2_costieri <- admin2_costieri %>%
+  mutate(macro_region = case_when(
+    lat <= lat_terzili[1] ~ "Sud",
+    lat > lat_terzili[1]  ~ "Nord"
+  ))
+
+# Controllo
+table(admin2_costieri$macro_region)
+
+# Plottiamo le ADM2 costiere Nord/Sud colorate
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = macro_region), color = "black", size = 0.2) +
+  scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  labs(title = "Macro-regioni ADM2 costiere (Nord e Sud)",
+       fill = "Macro-regione") +
+  theme_minimal()
+
+# 1. Uniamo la macro-regione Nord/Sud ai dati per la regressione
+final_regression_data_main <- final_regression_data_main %>%
+  left_join(
+    st_drop_geometry(admin2_costieri[, c("ADM2_NAME", "macro_region")]),
+    by = "ADM2_NAME"
+  )
+
+# Controllo
+table(final_regression_data_main$macro_region)
+
+# 2. Creiamo interazioni per eterogeneità Nord/Sud
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(
+    indice2_nord = ifelse(macro_region == "Nord", indice2_main, 0),
+    indice2_sud  = ifelse(macro_region == "Sud", indice2_main, 0)
+  )
+
+# 3. Esempio di regressione con eterogeneità Nord/Sud
+model_hetero <- feols(
+  n_conflicts ~ indice2_nord + indice2_sud + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main
+)
+summary(model_hetero)
+
+# 4. Interazione esplicita (opzionale)
+model_hetero_interaction <- feols(
+  n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main
+)
+summary(model_hetero_interaction)
+
+
+
