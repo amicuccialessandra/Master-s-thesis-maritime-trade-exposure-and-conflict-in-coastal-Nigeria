@@ -10,6 +10,32 @@ ports_main_sf <- ports_sf %>%
   filter(MAIN_PORT_ %in% main_ports)
 ports_main_proj <- st_transform(ports_main_sf, 32631)
 
+col_names <- colnames(ports_main_proj)
+col_names <- col_names[col_names != "geometry"]
+
+# Crea un data frame vuoto con tutte le colonne (tranne geometry)
+nuovo_porto <- as.data.frame(matrix(NA, nrow = 1, ncol = length(col_names)))
+colnames(nuovo_porto) <- col_names
+
+# Inserisci i dati che conosci
+nuovo_porto$MAIN_PORT_ <- "ONNE"
+nuovo_porto$LAT_DD <- 4.7444
+nuovo_porto$LNG_DD <- 7.0361
+
+# Converti in sf con la colonna geometry
+nuovo_porto_sf <- st_as_sf(nuovo_porto, coords = c("LNG_DD","LAT_DD"), crs = 4326)
+
+# Trasforma CRS come ports_main_proj
+nuovo_porto_proj <- st_transform(nuovo_porto_sf, st_crs(ports_main_proj))
+
+# Ora uniamo: selezioniamo solo le stesse colonne di ports_main_proj + geometry
+ports_main_proj <- rbind(
+  ports_main_proj[, colnames(nuovo_porto_proj)],
+  nuovo_porto_proj
+)
+
+# Controllo finale
+ports_main_proj
 # Buffer intorno ai porti principali
 ports_buffer_main <- st_buffer(ports_main_proj, dist = 1000000)  
 ports_buffer_main <- st_make_valid(ports_buffer_main)
@@ -55,9 +81,13 @@ ggsave("distanza_porti_main_mappa.pdf",
        width = 10, height = 8, dpi = 300)
 
 dist_port_main_plot
+port2 <- ggplot() +
+  geom_sf(data = coastal_buffer_admin2_main, fill = "gray90", color = "grey") +  # Admin2 map
+  geom_sf(data = ports_main_proj, color = "red", size = 2) +  # Ports as red dots
+  theme_minimal() +
+  ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 
-
-
+port2
 coastal_buffer_admin2_main <- merge(
   nightlight_dt, 
   coastal_buffer_admin2_main,   # <-- la versione filtrata sui porti principali
@@ -411,7 +441,7 @@ final_regression_data_main <- final_regression_data_main %>%
     indice2_sud  = ifelse(macro_region == "Sud", indice2_main, 0)
   )
 
-# 3. Esempio di regressione con eterogeneità Nord/Sud
+# 3. Esempio di regressione con eterogeneità Nord/Sud --> SIGNIFICATIVO 
 model_hetero <- feols(
   n_conflicts ~ indice2_nord + indice2_sud + log_nightlight | ADM2_NAME + year,
   data = final_regression_data_main
@@ -425,5 +455,46 @@ model_hetero_interaction <- feols(
 )
 summary(model_hetero_interaction)
 
+model_nordsud <- feols(
+  n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main
+)
+model_nordsud
 
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(
+    dist_group = case_when(
+      dist_min_port_main <= quantile(dist_min_port_main, 0.33, na.rm = TRUE) ~ "Vicino porto",
+      dist_min_port_main <= quantile(dist_min_port_main, 0.66, na.rm = TRUE) ~ "Medio",
+      TRUE ~ "Lontano"
+    )
+  )
+
+table(final_regression_data_main$dist_group)
+
+model_distance <- feols(
+  n_conflicts ~ indice2_main * dist_group + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main
+)
+
+summary(model_distance)
+
+
+cutoff <- median(final_regression_data_main$dist_min_port_main, na.rm = TRUE)
+
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(
+    dist_group2 = ifelse(dist_min_port_main <= cutoff, "Vicino", "Lontano")
+  )
+
+# Controllo distribuzione
+table(final_regression_data_main$dist_group2)
+
+# 2. Stima del modello: Vicino vs Lontano
+model_dist2 <- feols(
+  n_conflicts ~ indice2_main * dist_group2 + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main
+)
+
+summary(model_dist2)
 
