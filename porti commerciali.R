@@ -498,3 +498,168 @@ model_dist2 <- feols(
 
 summary(model_dist2)
 
+library(broom)
+
+# A) assegna a ogni ADM2 il porto principale più vicino
+adm2_cent <- coastal_admin2_master_main |>
+  st_transform(st_crs(ports_main_proj)) |>
+  mutate(centroid = st_centroid(geometry)) |>
+  dplyr::select(ADM2_NAME, geometry = centroid)
+
+nearest_id <- st_nearest_feature(adm2_cent, ports_main_proj)
+adm2_nn <- adm2_cent |>
+  mutate(nearest_port = ports_main_proj$MAIN_PORT_[nearest_id]) |>
+  st_drop_geometry()
+
+# B) raggruppa porti in Ovest/Est (modifica qui se vuoi una tripartizione)
+west_ports <- c("LAGOS","TIN CAN ISLAND","WARRI")
+east_ports <- c("PORT HARCOURT","ONNE","CALABAR")
+
+adm2_nn <- adm2_nn |>
+  mutate(port_group = case_when(
+    nearest_port %in% west_ports ~ "Ovest",
+    nearest_port %in% east_ports ~ "Est",
+    TRUE ~ "Altro"
+  ))
+
+# C) unisci a final_regression_data_main
+dfp <- final_regression_data_main |>
+  left_join(adm2_nn[,c("ADM2_NAME","nearest_port","port_group")], by="ADM2_NAME") |>
+  mutate(port_group = ifelse(is.na(port_group),"Altro",port_group))
+
+# D) regressione: interazione con gruppo porto
+m_port <- feols(
+  n_conflicts ~ indice2_main * i(port_group) + log_nightlight | ADM2_NAME + year,
+  data = dfp
+)
+summary(m_port)
+
+# E) coef-plot compatto
+coef_df <- broom::tidy(m_port)
+ggplot(coef_df %>% filter(grepl("indice2_main", term)),
+       aes(x=term, y=estimate))+
+  geom_point()+
+  geom_errorbar(aes(ymin=estimate-1.96*std.error, ymax=estimate+1.96*std.error), width=.1)+
+  coord_flip()+
+  labs(title="Indice × gruppo porto (Ovest/Est)", x="", y="Coeff. (±95% CI)")+
+  theme_minimal()
+
+library(splines)
+
+dfd <- final_regression_data_main |>
+  mutate(dist_km = dist_min_port_main/1000)
+
+# A) Splines sulla distanza: effetto di indice che varia con la distanza
+m_spline <- feols(
+  n_conflicts ~ log_nightlight + indice2_main:bs(dist_km, df=3) | ADM2_NAME + year,
+  data = dfd
+)
+summary(m_spline)
+
+# B) Terzili (più leggibile in figura)
+q <- quantile(dfd$dist_min_port_main, probs = c(.333,.666), na.rm=TRUE)
+dfd <- dfd |>
+  mutate(dist_terc = cut(dist_min_port_main,
+                         breaks=c(-Inf, q[1], q[2], Inf),
+                         labels=c("Vicino","Medio","Lontano")))
+m_terc <- feols(
+  n_conflicts ~ indice2_main * i(dist_terc) + log_nightlight | ADM2_NAME + year,
+  data=dfd
+)
+summary(m_terc)
+
+# Coef-plot terzili
+coef_df2 <- broom::tidy(m_terc)
+ggplot(coef_df2 %>% filter(grepl("indice2_main", term)),
+       aes(x=term, y=estimate))+
+  geom_point()+
+  geom_errorbar(aes(ymin=estimate-1.96*std.error, ymax=estimate+1.96*std.error), width=.1)+
+  coord_flip()+ theme_minimal()+
+  labs(title="Indice × Terzili distanza dal porto", x="", y="Coeff. (±95% CI)")
+
+
+dfs <- final_regression_data_main |>
+  mutate(
+    expo_spatial = 1/(dist_min_port_main + 1),
+    rel = pmax(pmin(year - 2015, 5), -5)
+    # cap da -3 a +3
+  )
+
+m_es <- feols(
+  n_conflicts ~ log_nightlight + expo_spatial:i(rel, ref=-1) | ADM2_NAME + year,
+  data=dfs
+)
+summary(m_es)
+
+# Estrai serie dinamica
+es_df <- broom::tidy(m_es) %>% filter(grepl("expo_spatial:i\\(rel", term))
+es_df$k <- as.integer(sub(".*rel, ref = -1\\)\\)([-0-9]+).*", "\\1", es_df$term))
+
+ggplot(es_df, aes(x=k, y=estimate))+
+  geom_hline(yintercept=0, linetype="dashed")+
+  geom_point()+
+  geom_errorbar(aes(ymin=estimate-1.96*std.error, ymax=estimate+1.96*std.error), width=.1)+
+  theme_minimal()+
+  labs(title="Event study: esposizione spaziale × (t−2015)",
+       x="Anni da 2015 (baseline = -1)", y="Coeff. (±95% CI)")
+
+
+dll <- final_regression_data_main |>
+  arrange(ADM2_NAME, year) |>
+  group_by(ADM2_NAME) |>
+  mutate(ind_l2 = dplyr::lag(indice2_main,2),
+         ind_l1 = dplyr::lag(indice2_main,1),
+         ind_f1 = dplyr::lead(indice2_main,1)) |>
+  ungroup()
+
+m_ll <- feols(
+  n_conflicts ~ ind_l2 + ind_l1 + indice2_main + ind_f1 + log_nightlight |
+    ADM2_NAME + year,
+   data=dll
+)
+summary(m_ll)
+
+
+LAT_CUTOFF <- 8.5
+
+adm2_lat <- coastal_admin2_master_main |>
+  st_transform(4326) |>
+  mutate(lat = st_coordinates(st_centroid(geometry))[,2]) |>
+  st_drop_geometry() |>
+  transmute(ADM2_NAME, macro_ns = ifelse(lat >= LAT_CUTOFF, "Nord", "Sud"))
+
+df_ns <- final_regression_data_main |>
+  left_join(adm2_lat, by="ADM2_NAME")
+
+m_ns <- feols(
+  n_conflicts ~ indice2_main * i(macro_ns) + log_nightlight | ADM2_NAME + year,
+  data=df_ns
+)
+summary(m_ns)
+
+# Plot
+coef_ns <- broom::tidy(m_ns) %>% filter(grepl("indice2_main", term))
+ggplot(coef_ns, aes(x=term, y=estimate))+
+  geom_point()+
+  geom_errorbar(aes(ymin=estimate-1.96*std.error, ymax=estimate+1.96*std.error), width=.1)+
+  coord_flip()+ theme_minimal()+
+  labs(title=paste0("Indice × Nord/Sud (cut @ ", LAT_CUTOFF, "°N)"),
+       x="", y="Coeff. (±95% CI)")
+
+final_regression_data_main <- final_regression_data_main%>%
+  mutate(period = ifelse(year <= 2015, "Pre", "Post"))
+# 0) esposizione spaziale fissa e periodi
+dfs <- final_regression_data_main |>
+  dplyr::mutate(
+    expo_spatial = 1/(dist_min_port_main + 1),
+    period = ifelse(year <= 2015, "Pre", "Post")
+  )
+
+m_prepost_idx <- feols(
+  n_conflicts ~ indice2_main * i(period, ref = "Pre") + log_nightlight |
+    ADM2_NAME + year,
+  data = final_regression_data_main,
+  cluster = ~ ADM2_NAME
+)
+summary(m_prepost_idx)
+wald(m_prepost_idx, "indice2_main:periodPost = 0")
