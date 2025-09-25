@@ -663,3 +663,175 @@ m_prepost_idx <- feols(
 )
 summary(m_prepost_idx)
 wald(m_prepost_idx, "indice2_main:periodPost = 0")
+
+dll <- final_regression_data_main |>
+  arrange(ADM2_NAME, year) |>
+  group_by(ADM2_NAME) |>
+  mutate(ind_l1 = dplyr::lag(indice2_main,1),
+         ind_l2 = dplyr::lag(indice2_main,2),
+         ind_f1 = dplyr::lead(indice2_main,1)) |>
+  ungroup()
+
+m_ll <- feols(n_conflicts ~ ind_l2 + ind_l1 + indice2_main + ind_f1 + log_nightlight |
+                ADM2_NAME + year,
+              data = dll, cluster = ~ ADM2_NAME)
+m_ll
+
+##in base a trade industries 
+library(sf); library(dplyr)
+
+# === INPUT attesi ===
+# ports_main_proj: sf con una colonna identificativa del porto, es. MAIN_PORT_
+# coastal_admin2_master_main: sf ADM2 costieri (con ADM2_NAME, ADM1_NAME, geometry)
+# final_regression_data_main: pannello ADM2×anno (con ADM2_NAME, year, indice2_main, log_nightlight, ecc.)
+
+# A) Mappa dei profili settoriali dei porti  (modifica i nomi per allinearli ai tuoi)
+chem_first <- c("LAGOS", "TIN CAN ISLAND", "WARRI")          # Vegetables > Chemicals
+veg_first <- c("PORT HARCOURT", "ONNE", "CALABAR")         # Chemicals > Vegetables
+
+port_meta <- tibble::tibble(
+  MAIN_PORT_ = c(veg_first, chem_first),
+  port_sector = c(rep("Vegetables-first", length(veg_first)),
+                  rep("Chemicals-first", length(chem_first)))
+)
+
+# B) Associa la meta ai porti e trova per ogni ADM2 il porto principale più vicino
+ports_tagged <- ports_main_proj %>%
+  left_join(port_meta, by = "MAIN_PORT_")
+
+adm2_cent <- coastal_admin2_master_main %>%
+  st_transform(st_crs(ports_tagged)) %>%
+  mutate(centroid = st_centroid(geometry)) %>%
+  dplyr::select(ADM2_NAME, geometry = centroid)
+
+nearest_id <- st_nearest_feature(adm2_cent, ports_tagged)
+
+adm2_port <- adm2_cent %>%
+  mutate(
+    nearest_port = ports_tagged$MAIN_PORT_[nearest_id],
+    port_sector  = ports_tagged$port_sector[nearest_id]
+  ) %>%
+  st_drop_geometry()
+
+# C) Porta `port_sector` dentro al tuo pannello
+df_sector <- final_regression_data_main %>%
+  left_join(adm2_port[, c("ADM2_NAME","nearest_port","port_sector")], by = "ADM2_NAME") %>%
+  mutate(
+    port_sector = ifelse(is.na(port_sector), "Unknown", port_sector)
+  )
+
+m_sector <- feols(
+  n_conflicts ~ indice2_main * i(port_sector, ref = "Vegetables-first") + log_nightlight |
+    ADM2_NAME + year,
+  data = df_sector,
+  cluster = ~ ADM2_NAME   # resta coerente con ADM2 come vuoi tu
+)
+summary(m_sector)
+
+##import/exp
+# Esempio: aggiorna i nomi con i tuoi
+import_ports <- c("ONNE", "CALABAR")
+export_ports <- c("LAGOS", "TIN CAN ISLAND", "PORT HARCOURT", "WARRI")
+
+port_flow <- tibble::tibble(
+  MAIN_PORT_ = c(import_ports, export_ports),
+  flow_group = c(rep("Import-oriented", length(import_ports)),
+                 rep("Export-oriented", length(export_ports)))
+)
+
+ports_tagged2 <- ports_main_proj %>% left_join(port_flow, by = "MAIN_PORT_")
+
+nearest_id2 <- st_nearest_feature(adm2_cent, ports_tagged2)
+adm2_flow <- adm2_cent %>%
+  mutate(flow_group = ports_tagged2$flow_group[nearest_id2]) %>%
+  st_drop_geometry()
+
+df_flow <- final_regression_data_main %>%
+  left_join(adm2_flow[, c("ADM2_NAME","flow_group")], by = "ADM2_NAME")
+
+m_flow <- feols(
+  n_conflicts ~ indice2_main * i(flow_group, ref = "Export-oriented") + log_nightlight |
+    ADM2_NAME + year,
+  data = df_flow, cluster = ~ ADM2_NAME
+)
+summary(m_flow)
+
+port_flow_map <- tibble::tibble(
+  MAIN_PORT_ = c(import_ports, export_ports),
+  flow_group = c(rep("Import", length(import_ports)),
+                 rep("Export", length(export_ports)))
+)
+
+# 2) Tagga i porti e trova per ogni ADM2 il porto principale più vicino
+ports_tagged <- ports_main_proj %>%
+  left_join(port_flow_map, by = "MAIN_PORT_")
+
+adm2_cent <- coastal_admin2_master_main %>%
+  st_transform(st_crs(ports_tagged)) %>%
+  mutate(centroid = st_centroid(geometry)) %>%
+  dplyr::select(ADM2_NAME, geometry = centroid)
+
+nearest_id <- st_nearest_feature(adm2_cent, ports_tagged)
+
+adm2_flow <- adm2_cent %>%
+  mutate(
+    nearest_port = ports_tagged$MAIN_PORT_[nearest_id],
+    flow_group   = ports_tagged$flow_group[nearest_id]
+  ) %>%
+  st_drop_geometry()
+
+# 3) Porta flow_group nel pannello e imposta baseline = "Export"
+df_flow <- final_regression_data_main %>%
+  left_join(adm2_flow[, c("ADM2_NAME","nearest_port","flow_group")], by = "ADM2_NAME") %>%
+  mutate(
+    flow_group = ifelse(is.na(flow_group), "Export", flow_group),  # fallback prudente
+    flow_group = factor(flow_group, levels = c("Export","Import")) # baseline: Export
+  )
+
+
+
+# 5) Stime
+
+## 5a) Interazione semplice: effetto dell'indice che cambia tra Export vs Import
+m_flow_int <- feols(
+  n_conflicts ~ indice2_main * i(flow_group, ref = "Export") + log_nightlight |
+    ADM2_NAME + year,
+  data = df_flow,
+  cluster = ~ ADM2_NAME   # oppure ~ ADM1_NAME se preferisci
+)
+summary(m_flow_int)
+
+m_flow_int_dist <- feols(
+  n_conflicts ~ indice2_main * i(flow_group, ref = "Export") +
+    log_nightlight + log(1 + dist_min_port_main) |
+    ADM2_NAME + year,
+  data = df_flow,
+  cluster = ~ ADM2_NAME
+)
+summary(m_flow_int_dist)
+
+## 5c) (Facoltativo) Stime separate per gruppo (controllo robustezza)
+m_export <- feols(
+  n_conflicts ~ indice2_main + log_nightlight | ADM2_NAME + year,
+  data = subset(df_flow, flow_group == "Export"),
+  cluster = ~ ADM2_NAME
+)
+m_import <- feols(
+  n_conflicts ~ indice2_main + log_nightlight | ADM2_NAME + year,
+  data = subset(df_flow, flow_group == "Import"),
+  cluster = ~ ADM2_NAME
+)
+summary(m_export); summary(m_import)
+
+
+##tribes 
+tribes <- read_sf("tribalmap.shp"); tribes
+st_crs(tribes)
+st_crs(nig)
+tribes_wgs84 <- sf::st_transform(tribes, sf::st_crs(nig))
+nt <- st_intersection(tribes_wgs84, nig)
+ggplot() +
+  geom_sf(data = nig) +
+  geom_sf(data = nt, color = "red")
+
+
