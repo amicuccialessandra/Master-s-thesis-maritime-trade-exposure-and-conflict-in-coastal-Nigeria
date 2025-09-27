@@ -269,8 +269,8 @@ final_regression_data_main <- final_regression_data_main %>%
 # ---------------------------
 final_regression_data_main <- final_regression_data_main %>%
   mutate(
-    indice2_highNL = indice2 * high_nl,
-    indice2_lowNL  = indice2 * (1 - high_nl)
+    indice2_highNL = indice2_main * high_nl,
+    indice2_lowNL  = indice2_main * (1 - high_nl)
   )
 
 # ---------------------------
@@ -297,6 +297,25 @@ model_base <- feols(
   data = final_regression_data_main
 )
 summary(model_base)
+
+# Creazione della tabella comparativa in LaTeX
+etable(
+  list(
+    "Interazione (High NL)" = model_interaction_main,
+    "Interazioni separate" = model_interaction2,
+    "Base" = model_base
+  ),
+  tex = TRUE,           # Output in LaTeX
+  fitstat = ~ r2 + aic, # Puoi scegliere quali statistiche mostrare
+  se = "hetero",        # Standard errors (ad es. robusti)
+  dict = c(
+    indice2_main = "Indice",
+    high_nl = "High NL",
+    log_nightlight = "Log Nightlight",
+    indice2_highNL_main = "Indice × High NL",
+    indice2_lowNL_main = "Indice × Low NL"
+  )
+)
 
 
 
@@ -828,21 +847,76 @@ summary(m_export); summary(m_import)
 tribes <- read_sf("tribalmap.shp"); tribes
 st_crs(tribes)
 st_crs(nig)
-tribes_wgs84 <- sf::st_transform(tribes, sf::st_crs(nig))
-nt <- st_intersection(tribes_wgs84, nig)
-ggplot() +
-  geom_sf(data = nig) +
-  geom_sf(data = nt, color = "red")
+tribes_wgs84 <- sf::st_transform(tribes, sf::st_crs(admin2_in_coastal_admin1))
+nt <- st_intersection(
+  st_make_valid(tribes_wgs84),
+  st_make_valid(admin2_in_coastal_admin1)
+)
 
-agri_land <- read_excel("FAOSTAT_data_en_4-16-2024- Agricultural land used 2.xlsx")
-#constant value but aggregated 
-#1 when land is used for agriculture and 0 otherwise 
-agri_land$Item <- ifelse(agri_land$Item == "Agricultural land", 1, 0)
+# 2) Calcolo delle aree per pesare le quote tribali nell’unità admin2
+nt <- nt %>%
+  mutate(
+    area_int = as.numeric(st_area(geometry))
+  )
 
-# Example code continuation
-library(dplyr)
+# 3) Scegli gli identificativi/nomi corretti delle colonne tribali e admin2
+#    qui ipotizzo:
+#      - 'tribe_id' (o 'tribe_name') per la tribù
+#      - 'admin2_id' per l’unità subnazionale (proveniente da admin2_in_coastal_admin1)
+#    Adatta i nomi se diversi!
+stopifnot(all(c("ADM2_NAME") %in% names(nt)))
+tribe_var <- "TRIBE_CODE"
 
-agri <- agri_land %>%
-  filter(Item == 1, Element == "Area") %>%   # tieni solo "Agricultural land"
-  dplyr::select(year = Year, agri_land_thousand_ha = Value) %>%
-  arrange(year)
+# 4) Quote tribali per admin2
+tribal_shares <- nt %>%
+  st_drop_geometry() %>%
+  group_by(ADM2_NAME, !!sym(tribe_var)) %>%
+  summarise(area = sum(area_int, na.rm = TRUE), .groups = "drop") %>%
+  group_by(ADM2_NAME) %>%
+  mutate(
+    area_tot = sum(area, na.rm = TRUE),
+    share    = ifelse(area_tot > 0, area / area_tot, NA_real_)
+  ) %>%
+  ungroup()
+
+# 5) Indici sintetici per admin2
+tribal_index_admin2 <- tribal_shares %>%
+  group_by(ADM2_NAME) %>%
+  summarise(
+    # quota della tribù dominante
+    tribal_share_dom = max(share, na.rm = TRUE),
+    # fractionalization = 1 - sum(s_i^2)
+    tribal_frac      = 1 - sum(share^2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+final_regression_data_main <- final_regression_data_main %>%
+  left_join(tribal_index_admin2, by = c("ADM2_NAME" = "ADM2_NAME")) %>%
+  mutate(indice2_x_tribe = indice2_main * tribal_share_dom)
+
+# modello con tribù come eterogeneità
+m_noYearFE_wgiIndex_tribe <- feols(
+  n_conflicts ~ indice2_main * tribal_share_dom | ADM2_NAME + year,
+  data = final_regression_data_main,
+)
+
+summary(m_noYearFE_wgiIndex_tribe)
+
+
+etable(m_noYearFE_wgiIndex_tribe,
+       tex = TRUE,
+       se = "cluster")
+
+m_frac <- feols(
+  n_conflicts ~ indice2_main * tribal_frac +
+    log_nightlight + oil_rents_pct_gdp + gas_rents_pct_gdp +
+    net_migration + governance_index
+  | ADM2_NAME + year,
+  data = final_regression_data_main,
+  cluster = ~ ADM2_NAME
+)
+
+summary(m_frac)
+etable(m_frac,
+       tex = TRUE,
+       se = "cluster")
