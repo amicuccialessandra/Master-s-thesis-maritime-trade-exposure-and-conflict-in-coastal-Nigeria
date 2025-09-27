@@ -834,4 +834,15 @@ ggplot() +
   geom_sf(data = nig) +
   geom_sf(data = nt, color = "red")
 
+agri_land <- read_excel("FAOSTAT_data_en_4-16-2024- Agricultural land used 2.xlsx")
+#constant value but aggregated 
+#1 when land is used for agriculture and 0 otherwise 
+agri_land$Item <- ifelse(agri_land$Item == "Agricultural land", 1, 0)
 
+# Example code continuation
+library(dplyr)
+
+agri <- agri_land %>%
+  filter(Item == 1, Element == "Area") %>%   # tieni solo "Agricultural land"
+  dplyr::select(year = Year, agri_land_thousand_ha = Value) %>%
+  arrange(year)
