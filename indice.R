@@ -49,10 +49,28 @@ final_df <- final_df %>%
     export_proxy  = ifelse(is.na(export_proxy), 0, export_proxy)
   )
 
+final_df <- final_df %>%
+  mutate(
+    nightlight_norm = {
+      mn <- min(nightlight_mean, na.rm = TRUE)
+      mx <- max(nightlight_mean, na.rm = TRUE)
+      den <- ifelse(is.finite(mx - mn) & (mx - mn) != 0, mx - mn, 1)
+      (nightlight_mean - mn) / den
+    },
+    export_proxy = ifelse(is.na(export_proxy), 0, export_proxy),
+    export_norm = {
+      mn <- min(export_proxy, na.rm = TRUE)
+      mx <- max(export_proxy, na.rm = TRUE)
+      den <- ifelse(is.finite(mx - mn) & (mx - mn) != 0, mx - mn, 1)
+      (export_proxy - mn) / den
+    }
+  )
+
 # -----------------------
 # Costruisci pannello: replica ogni ADM2 per tutti gli anni
 # -----------------------
 panel_list <- list()
+
 for (t in LSCI_annual$year) {
   
   # Prendi i valori dell'anno t
@@ -85,6 +103,7 @@ setnames(panel_data, old = x_cols, new = gsub("\\.x$", "", x_cols))
 # -----------------------
 # Unisci i conflitti
 # -----------------------
+setDT(conflict_coastal)
 conflicts_aggregated <- conflict_coastal[, .(n_conflicts = .N), by = .(ADM2_NAME, year)]
 
 final_regression_data <- merge(
@@ -113,7 +132,6 @@ model6<- feols(
   data = final_regression_data
 )
 summary(model6)
-final_regression_data <- final_regression_data %>% mutate(indice2 = 1/dist_min_norm * shock * lsci_value) 
 
 model7<- feols(
   I(n_conflicts>0) ~ indice2 | ADM2_NAME + year, 
