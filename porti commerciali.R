@@ -136,7 +136,7 @@ panel_skeleton_main <- expand.grid(ADM2_NAME = adm2s, year = years)
 
 final_regression_data_main <- merge(panel_skeleton_main, LSCI_annual, by = "year", all.x = TRUE)
 final_regression_data_main <- merge(final_regression_data_main, ContPortThroughput_long[, c("year", "shock")], by = "year", all.x = TRUE)
-final_regression_data_main <- merge(final_regression_data_main, nightlight_annual, by = c("ADM2_NAME", "year"), all.x = TRUE)
+final_regression_data_main <- merge(final_regression_data_main, nightlight_dt, by = c("ADM2_NAME", "year"), all.x = TRUE)
 final_regression_data_main <- merge(final_regression_data_main, conflicts_aggregated, by = c("ADM2_NAME", "year"), all.x = TRUE)
 final_regression_data_main <- merge(final_regression_data_main, st_drop_geometry(coastal_admin2_master_main[, c("ADM2_NAME", "dist_min_port_main", "dist_min_norm_main")]), by = "ADM2_NAME", all.x = TRUE)
 setDT(final_regression_data_main)
@@ -286,7 +286,7 @@ summary(model_interaction_main)
 
 # Modello con interazioni separate
 model_interaction2 <- feols(
-  n_conflicts ~ indice2_highNL_main + indice2_lowNL_main + log_nightlight | ADM2_NAME + year,
+  n_conflicts ~ indice2_highNL + indice2_lowNL + log_nightlight | ADM2_NAME + year,
   data = final_regression_data_main
 )
 summary(model_interaction2)
@@ -394,7 +394,7 @@ summary(model_hetero)
 
 model_hetero2 <- feols(
   n_conflicts ~ indice_high_pre + indice_high_post + 
-    indice2_lowNL_main + nightlight_mean |
+    indice2_lowNL + nightlight_mean |
     ADM2_NAME + year,
   data = final_regression_data_main
 )
@@ -402,7 +402,7 @@ model_hetero2 <- feols(
 summary(model_hetero2)
 
 model_hetero3 <- feols(
-  n_conflicts ~ indice2_highNL_main + 
+  n_conflicts ~ indice2_highNL + 
     indice_low_pre + indice_low_post + nightlight_mean |
     ADM2_NAME + year,
   data = final_regression_data_main
@@ -468,6 +468,7 @@ model_hetero <- feols(
 summary(model_hetero)
 
 # 4. Interazione esplicita (opzionale)
+
 model_hetero_interaction <- feols(
   n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
   data = final_regression_data_main
@@ -908,15 +909,10 @@ etable(m_noYearFE_wgiIndex_tribe,
        se = "cluster")
 
 m_frac <- feols(
-  n_conflicts ~ indice2_main * tribal_frac +
-    log_nightlight + oil_rents_pct_gdp + gas_rents_pct_gdp +
-    net_migration + governance_index
+  n_conflicts ~ indice2_main * tribal_frac 
   | ADM2_NAME + year,
   data = final_regression_data_main,
   cluster = ~ ADM2_NAME
 )
 
 summary(m_frac)
-etable(m_frac,
-       tex = TRUE,
-       se = "cluster")
