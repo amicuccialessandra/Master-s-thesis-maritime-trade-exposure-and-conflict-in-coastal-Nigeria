@@ -10,32 +10,7 @@ ports_main_sf <- ports_sf %>%
   filter(MAIN_PORT_ %in% main_ports)
 ports_main_proj <- st_transform(ports_main_sf, 32631)
 
-col_names <- colnames(ports_main_proj)
-col_names <- col_names[col_names != "geometry"]
 
-# Crea un data frame vuoto con tutte le colonne (tranne geometry)
-nuovo_porto <- as.data.frame(matrix(NA, nrow = 1, ncol = length(col_names)))
-colnames(nuovo_porto) <- col_names
-
-# Inserisci i dati che conosci
-nuovo_porto$MAIN_PORT_ <- "ONNE"
-nuovo_porto$LAT_DD <- 4.7444
-nuovo_porto$LNG_DD <- 7.0361
-
-# Converti in sf con la colonna geometry
-nuovo_porto_sf <- st_as_sf(nuovo_porto, coords = c("LNG_DD","LAT_DD"), crs = 4326)
-
-# Trasforma CRS come ports_main_proj
-nuovo_porto_proj <- st_transform(nuovo_porto_sf, st_crs(ports_main_proj))
-
-# Ora uniamo: selezioniamo solo le stesse colonne di ports_main_proj + geometry
-ports_main_proj <- rbind(
-  ports_main_proj[, colnames(nuovo_porto_proj)],
-  nuovo_porto_proj
-)
-
-# Controllo finale
-ports_main_proj
 # Buffer intorno ai porti principali
 ports_buffer_main <- st_buffer(ports_main_proj, dist = 1000000)  
 ports_buffer_main <- st_make_valid(ports_buffer_main)
@@ -150,53 +125,53 @@ final_regression_data_main <- final_regression_data_main %>%
     indice_main  = dist_min_norm_main * shock * lsci_value
   )
 
-# Regressioni
-model6_main <- feols(n_conflicts ~ indice2_main | ADM2_NAME + year, data = final_regression_data_main)
-summary(model6_main)
-
-model9_main <- feols(n_conflicts ~ indice2_main + nightlight_norm | ADM2_NAME + year, data = final_regression_data_main)
-summary(model9_main)
-
-model7_main <- feols(n_conflicts ~ indice_main + nightlight_norm | ADM2_NAME + year, data = final_regression_data_main)
-summary(model7_main)
-
-
-final_regression_data_main <- final_regression_data_main %>%
-  group_by(year) %>%
-  mutate(med_nl = median(nightlight_norm, na.rm = TRUE)) %>%
-  ungroup() %>%
-  mutate(high_nl = ifelse(nightlight_norm > med_nl, 1, 0))
-
-final_regression_data_main <- final_regression_data_main %>%
-  mutate(
-    indice2_highNL_main = indice2_main * high_nl
-  )
-model_interaction_main <- feols(
-  n_conflicts ~ indice2_main * high_nl + nightlight_norm | ADM2_NAME + year, 
-  data = final_regression_data_main
-)
-summary(model_interaction_main)
-
-final_regression_data_main <- final_regression_data_main %>%
-  group_by(year) %>%
-  mutate(q3_nl = quantile(nightlight_norm, probs = 0.75, na.rm = TRUE)) %>%
-  ungroup() %>%
-  mutate(high_nl = ifelse(nightlight_norm > q3_nl, 1, 0)) %>%
-  mutate(
-    indice2_highNL_main = indice2_main * high_nl,
-    indice2_lowNL_main  = indice2_main * (1 - high_nl)
-  )
-model_interaction1_main <- feols(
-  n_conflicts ~ indice2_main * high_nl + nightlight_norm | ADM2_NAME + year,
-  data = final_regression_data_main
-)
-summary(model_interaction1_main)
-
-model_interaction2_main <- feols(
-  n_conflicts ~ indice2_highNL_main + indice2_lowNL_main | ADM2_NAME + year,
-  data = final_regression_data_main
-)
-summary(model_interaction2_main)
+# # Regressioni
+# model6_main <- feols(n_conflicts ~ indice2_main | ADM2_NAME + year, data = final_regression_data_main)
+# summary(model6_main)
+# 
+# model9_main <- feols(n_conflicts ~ indice2_main + nightlight_norm | ADM2_NAME + year, data = final_regression_data_main)
+# summary(model9_main)
+# 
+# model7_main <- feols(n_conflicts ~ indice_main + nightlight_norm | ADM2_NAME + year, data = final_regression_data_main)
+# summary(model7_main)
+# 
+# 
+# final_regression_data_main <- final_regression_data_main %>%
+#   group_by(year) %>%
+#   mutate(med_nl = median(nightlight_norm, na.rm = TRUE)) %>%
+#   ungroup() %>%
+#   mutate(high_nl = ifelse(nightlight_norm > med_nl, 1, 0))
+# 
+# final_regression_data_main <- final_regression_data_main %>%
+#   mutate(
+#     indice2_highNL_main = indice2_main * high_nl
+#   )
+# model_interaction_main <- feols(
+#   n_conflicts ~ indice2_main * high_nl + nightlight_norm | ADM2_NAME + year, 
+#   data = final_regression_data_main
+# )
+# summary(model_interaction_main)
+# 
+# final_regression_data_main <- final_regression_data_main %>%
+#   group_by(year) %>%
+#   mutate(q3_nl = quantile(nightlight_norm, probs = 0.75, na.rm = TRUE)) %>%
+#   ungroup() %>%
+#   mutate(high_nl = ifelse(nightlight_norm > q3_nl, 1, 0)) %>%
+#   mutate(
+#     indice2_highNL_main = indice2_main * high_nl,
+#     indice2_lowNL_main  = indice2_main * (1 - high_nl)
+#   )
+# model_interaction1_main <- feols(
+#   n_conflicts ~ indice2_main * high_nl + nightlight_norm | ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# summary(model_interaction1_main)
+# 
+# model_interaction2_main <- feols(
+#   n_conflicts ~ indice2_highNL_main + indice2_lowNL_main | ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# summary(model_interaction2_main)
 
 
 # ---------------------------
@@ -241,6 +216,13 @@ model_interaction2 <- feols(
 )
 summary(model_interaction2)
 
+final_regression_data <- final_regression_data %>%
+  mutate(indice2_total = indice2_highNL + indice2_lowNL)
+model_sum <- feols(
+  n_conflicts ~ indice2_total + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data
+)
+summary(model_sum)
 # Modello base con solo indice2 e log nightlights
 model_base <- feols(
   n_conflicts ~ indice2 + log_nightlight | ADM2_NAME + year,
@@ -297,7 +279,13 @@ model_base <- feols(
   data = final_regression_data_main
 )
 summary(model_base)
-
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(indice2_total = indice2_highNL + indice2_lowNL)
+model_sum_m <- feols(
+  n_conflicts ~ indice2_total + log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main
+)
+summary(model_sum)
 # Creazione della tabella comparativa in LaTeX
 etable(
   list(
@@ -358,57 +346,57 @@ ggplot(coef_df, aes(x = term, y = estimate, color = Model)) +
 
 #eterogeneità 
 # Step 1: definisci dummy pre/post 2015
-final_regression_data_main <- final_regression_data_main %>%
-  mutate(post2015 = ifelse(year > 2015, 1, 0),
-         pre2015  = 1 - post2015)
-
-# Step 2: dummy high/low nightlights basata sul log già presente
-final_regression_data_main <- final_regression_data_main %>%
-  group_by(year) %>%
-  mutate(q3_log_nl = quantile(nightlight_mean, 0.75, na.rm = TRUE)) %>%
-  ungroup() %>%
-  mutate(
-    high_nl = ifelse(nightlight_mean > q3_log_nl, 1, 0),
-    low_nl  = 1 - high_nl
-  )
-
-# Step 3: crea le interazioni con high/low e pre/post 2015
-final_regression_data_main <- final_regression_data_main %>%
-  mutate(
-    indice_high_pre  = indice2_main * high_nl * pre2015,
-    indice_high_post = indice2_main * high_nl * post2015,
-    indice_low_pre   = indice2_main * low_nl  * pre2015,
-    indice_low_post  = indice2_main * low_nl  * post2015
-  )
-
-# Step 4: regressione con tutte le interazioni
-model_hetero <- feols(
-  n_conflicts ~ indice_high_pre + indice_high_post + 
-    indice_low_pre + indice_low_post + nightlight_mean |
-    ADM2_NAME + year,
-  data = final_regression_data_main
-)
-
-summary(model_hetero)
-
-
-model_hetero2 <- feols(
-  n_conflicts ~ indice_high_pre + indice_high_post + 
-    indice2_lowNL + nightlight_mean |
-    ADM2_NAME + year,
-  data = final_regression_data_main
-)
-
-summary(model_hetero2)
-
-model_hetero3 <- feols(
-  n_conflicts ~ indice2_highNL + 
-    indice_low_pre + indice_low_post + nightlight_mean |
-    ADM2_NAME + year,
-  data = final_regression_data_main
-)
-
-summary(model_hetero3)
+# final_regression_data_main <- final_regression_data_main %>%
+#   mutate(post2015 = ifelse(year > 2015, 1, 0),
+#          pre2015  = 1 - post2015)
+# 
+# # Step 2: dummy high/low nightlights basata sul log già presente
+# final_regression_data_main <- final_regression_data_main %>%
+#   group_by(year) %>%
+#   mutate(q3_log_nl = quantile(nightlight_mean, 0.75, na.rm = TRUE)) %>%
+#   ungroup() %>%
+#   mutate(
+#     high_nl = ifelse(nightlight_mean > q3_log_nl, 1, 0),
+#     low_nl  = 1 - high_nl
+#   )
+# 
+# # Step 3: crea le interazioni con high/low e pre/post 2015
+# final_regression_data_main <- final_regression_data_main %>%
+#   mutate(
+#     indice_high_pre  = indice2_main * high_nl * pre2015,
+#     indice_high_post = indice2_main * high_nl * post2015,
+#     indice_low_pre   = indice2_main * low_nl  * pre2015,
+#     indice_low_post  = indice2_main * low_nl  * post2015
+#   )
+# 
+# # Step 4: regressione con tutte le interazioni
+# model_hetero <- feols(
+#   n_conflicts ~ indice_high_pre + indice_high_post + 
+#     indice_low_pre + indice_low_post + nightlight_mean |
+#     ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# 
+# summary(model_hetero)
+# 
+# 
+# model_hetero2 <- feols(
+#   n_conflicts ~ indice_high_pre + indice_high_post + 
+#     indice2_lowNL + nightlight_mean |
+#     ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# 
+# summary(model_hetero2)
+# 
+# model_hetero3 <- feols(
+#   n_conflicts ~ indice2_highNL + 
+#     indice_low_pre + indice_low_post + nightlight_mean |
+#     ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# 
+# summary(model_hetero3)
 
 
 #porti 
@@ -467,19 +455,223 @@ model_hetero <- feols(
 )
 summary(model_hetero)
 
+final_regression_data_main %>%
+  group_by(macro_region) %>%
+  summarise(
+    mean_nl  = mean(nightlight_mean, na.rm = TRUE),
+    median_nl = median(nightlight_mean, na.rm = TRUE),
+    sd_nl    = sd(nightlight_mean, na.rm = TRUE),
+    n        = n()
+  )
+ggplot(final_regression_data_main, aes(x = macro_region, y = nightlight_mean, fill = macro_region)) +
+  geom_boxplot(alpha = 0.7) +
+  scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  labs(title = "Distribuzione dei nightlights per macro-regione",
+       x = "Macro-regione", y = "Nightlight mean") +
+  theme_minimal()
+ggplot(final_regression_data_main, aes(x = nightlight_mean, fill = macro_region, color = macro_region)) +
+  geom_density(alpha = 0.3) +
+  scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  scale_color_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  labs(
+    title = "Densità dei nightlights: Nord vs Sud",
+    x = "Nightlight mean",
+    y = "Densità"
+  ) +
+  theme_minimal()
+
+ggplot(final_regression_data_main,
+       aes(x = log1p(nightlight_mean), fill = macro_region, color = macro_region)) +
+  geom_density(alpha = 0.3) +
+  scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  scale_color_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  labs(
+    title = "Distribuzione (log) dei nightlights: Nord vs Sud",
+    x = "log(1 + Nightlight mean)",
+    y = "Densità"
+  ) +
+  theme_minimal()
+
+ggplot(final_regression_data_main,
+       aes(x = macro_region, y = log1p(nightlight_mean), fill = macro_region)) +
+  geom_boxplot(alpha = 0.7, outlier.shape = 16, outlier.size = 1.5) +
+  scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
+  labs(
+    title = "Distribuzione (log) dei nightlights per macro-regione",
+    x = "Macro-regione",
+    y = "log(1 + Nightlight mean)"
+  ) +
+  theme_minimal()
+# Prendi i valori medi per ADM2 (su tutti gli anni, o un anno specifico)
+nl_mean <- nightlight_dt %>%
+  group_by(ADM2_NAME) %>%
+  summarise(nightlight_mean = mean(nightlight_mean, na.rm = TRUE))
+
+# Fai il join con lo shapefile
+admin2_costieri <- admin2_costieri %>%
+  left_join(nl_mean, by = "ADM2_NAME")
+
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nightlight_mean), color = "black", size = 0.2) +
+  scale_fill_viridis_c(option = "magma", name = "Nightlights (mean)") +
+  labs(title = "Distribuzione dei nightlights negli ADM2 costieri") +
+  theme_minimal()
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nightlight_mean), color = "grey60", size = 0.2) +
+  geom_sf(data = admin2_costieri, aes(color = macro_region), fill = NA, size = 0.6) +
+  scale_fill_viridis_c(option = "magma", name = "Nightlights (mean)") +
+  scale_color_manual(values = c("Nord" = "red", "Sud" = "blue"), name = "Macro-regione") +
+  labs(title = "Nightlights e divisione Nord/Sud (ADM2 costieri)") +
+  theme_minimal()
+admin2_costieri <- admin2_costieri %>%
+  mutate(nl_log = log1p(nightlight_mean))  # log(1+x)
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nl_log), color = "grey20", size = 0.15) +
+  scale_fill_viridis_c(option = "magma", name = "log(1 + NL)") +
+  labs(title = "Nightlights (scala log) negli ADM2 costieri") +
+  theme_minimal()
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nightlight_mean), color = "grey20", size = 0.15) +
+  scale_fill_viridis_c(option = "magma", name = "Nightlights (mean)") +
+  facet_wrap(~ macro_region) +
+  labs(title = "Nightlights per macro-regione (Nord vs Sud)") +
+  theme_minimal()
 # 4. Interazione esplicita (opzionale)
 
-model_hetero_interaction <- feols(
-  n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
-  data = final_regression_data_main
-)
-summary(model_hetero_interaction)
+# model_hetero_interaction <- feols(
+#   n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# summary(model_hetero_interaction)
+# 
+# model_nordsud <- feols(
+#   n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
+#   data = final_regression_data_main
+# )
+# model_nordsud
+admin2_costieri <- admin2_costieri %>%
+  mutate(centroid = st_centroid(geometry),
+         lon = st_coordinates(centroid)[,1])  # prendo la longitudine
+lon_mediana <- median(admin2_costieri$lon, na.rm = TRUE)
 
-model_nordsud <- feols(
-  n_conflicts ~ indice2_main * macro_region + log_nightlight | ADM2_NAME + year,
+admin2_costieri <- admin2_costieri %>%
+  mutate(macro_region_EW = case_when(
+    lon <= lon_mediana ~ "Ovest",
+    lon >  lon_mediana ~ "Est"
+  ))
+table(admin2_costieri$macro_region_EW)
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = macro_region_EW), color = "black", size = 0.2) +
+  scale_fill_manual(values = c("Ovest" = "darkgreen", "Est" = "orange")) +
+  labs(title = "Macro-regioni ADM2 costiere (Est/Ovest)",
+       fill = "Macro-regione") +
+  theme_minimal()
+final_regression_data_main <- final_regression_data_main %>%
+  left_join(
+    st_drop_geometry(admin2_costieri[, c("ADM2_NAME", "macro_region_EW")]),
+    by = "ADM2_NAME"
+  )
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(
+    indice2_est  = ifelse(macro_region_EW == "Est", indice2_main, 0),
+    indice2_ovest = ifelse(macro_region_EW == "Ovest", indice2_main, 0)
+  )
+
+model_estovest <- feols(
+  n_conflicts ~ indice2_est + indice2_ovest + log_nightlight | ADM2_NAME + year,
   data = final_regression_data_main
 )
-model_nordsud
+summary(model_estovest)
+final_regression_data_main %>%
+  group_by(macro_region_EW) %>%
+  summarise(
+    mean_nl   = mean(nightlight_mean, na.rm = TRUE),
+    median_nl = median(nightlight_mean, na.rm = TRUE),
+    sd_nl     = sd(nightlight_mean, na.rm = TRUE),
+    n         = n()
+  )
+t.test(nightlight_mean ~ macro_region_EW, data = final_regression_data_main)
+
+# Alternativa robusta a distribuzioni skewed
+wilcox.test(nightlight_mean ~ macro_region_EW, data = final_regression_data_main)
+ggplot(final_regression_data_main,
+       aes(x = macro_region_EW, y = nightlight_mean, fill = macro_region_EW)) +
+  geom_boxplot(alpha = 0.7, outlier.shape = 16, outlier.size = 1.5) +
+  scale_fill_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
+  labs(title = "Distribuzione dei nightlights per macro-regione Est/Ovest",
+       x = "Macro-regione", y = "Nightlight mean") +
+  theme_minimal()
+ggplot(final_regression_data_main,
+       aes(x = nightlight_mean, fill = macro_region_EW, color = macro_region_EW)) +
+  geom_density(alpha = 0.3) +
+  scale_fill_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
+  scale_color_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
+  labs(title = "Densità dei nightlights: Est vs Ovest",
+       x = "Nightlight mean", y = "Densità") +
+  theme_minimal()
+# Boxplot log(1+NL)
+ggplot(final_regression_data_main,
+       aes(x = macro_region_EW, y = log1p(nightlight_mean), fill = macro_region_EW)) +
+  geom_boxplot(alpha = 0.7, outlier.shape = 16, outlier.size = 1.2) +
+  scale_fill_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
+  labs(title = "Nightlights (log) per macro-regione Est/Ovest",
+       x = "Macro-regione", y = "log(1 + Nightlight mean)") +
+  theme_minimal()
+
+# Density log(1+NL)
+ggplot(final_regression_data_main,
+       aes(x = log1p(nightlight_mean), fill = macro_region_EW, color = macro_region_EW)) +
+  geom_density(alpha = 0.3) +
+  scale_fill_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
+  scale_color_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
+  labs(title = "Densità (log) dei nightlights: Est vs Ovest",
+       x = "log(1 + Nightlight mean)", y = "Densità") +
+  theme_minimal()
+
+# opzionale se manca nightlight_mean nello shapefile
+admin2_costieri <- admin2_costieri %>%
+  left_join(final_regression_data_main %>%
+              group_by(ADM2_NAME) %>% summarise(nightlight_mean = mean(nightlight_mean, na.rm=TRUE)),
+            by = "ADM2_NAME")
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nightlight_mean), color = "grey30", size = 0.2) +
+  geom_sf(aes(color = macro_region_EW), fill = NA, size = 0.5) +
+  scale_fill_viridis_c(option = "magma", name = "Nightlights (mean)") +
+  scale_color_manual(values = c("Est" = "orange", "Ovest" = "darkgreen"), name = "Macro-regione") +
+  labs(title = "Nightlights e divisione Est/Ovest (ADM2 costieri)") +
+  theme_minimal()
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nightlight_mean), color = "grey30", size = 0.2) +
+  scale_fill_viridis_c(option = "magma", name = "Nightlights (mean)") +
+  facet_wrap(~ macro_region_EW) +
+  labs(title = "Nightlights per macro-regione (Est vs Ovest)") +
+  theme_minimal()
+
+admin2_costieri$nl_log <- log1p(admin2_costieri$nightlight_mean)
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nl_log), color = "grey30", size = 0.2) +
+  scale_fill_viridis_c(option = "magma", name = "log(1 + NL)") +
+  facet_wrap(~ macro_region_EW) +
+  labs(title = "Nightlights (scala log) per macro-regione Est/Ovest") +
+  theme_minimal()
+admin2_costieri$nl_log <- log1p(admin2_costieri$nightlight_mean)
+
+ggplot(admin2_costieri) +
+  geom_sf(aes(fill = nl_log), color = "grey30", size = 0.2) +
+  scale_fill_viridis_c(option = "magma", name = "log(1 + NL)") +
+  facet_wrap(~ macro_region_EW) +
+  labs(title = "Nightlights (scala log) per macro-regione Est/Ovest") +
+  theme_minimal()
+
+
+
+
 
 final_regression_data_main <- final_regression_data_main %>%
   mutate(
@@ -842,7 +1034,12 @@ m_import <- feols(
   cluster = ~ ADM2_NAME
 )
 summary(m_export); summary(m_import)
+adm2_groups <- coastal_admin2_master_main %>%
+  left_join(adm2_port[,c("ADM2_NAME","port_sector")], by="ADM2_NAME") %>%
+  left_join(adm2_flow[,c("ADM2_NAME","flow_group")], by="ADM2_NAME")
 
+plot(adm2_groups["flow_group"])        # Export vs Import
+plot(adm2_groups["port_sector"])       # Veg-first vs Chem-first
 
 ##tribes 
 tribes <- read_sf("tribalmap.shp"); tribes
@@ -916,3 +1113,31 @@ m_frac <- feols(
 )
 
 summary(m_frac)
+
+m_tribe_lowNL <- feols(
+  n_conflicts ~ indice2_lowNL * tribal_share_dom +
+    indice2_highNL * tribal_share_dom +
+    log_nightlight | ADM2_NAME + year,
+  data = final_regression_data_main, cluster = ~ ADM2_NAME
+)
+summary(m_tribe_lowNL)
+df <- final_regression_data_main %>%
+  mutate(
+    indice2_lowNL_tribe = indice2_lowNL * tribal_share_dom,
+    indice2_lowNL_frac = indice2_lowNL * tribal_frac 
+  )
+
+m_lowHighTribe <- feols(
+  n_conflicts ~ indice2_lowNL + indice2_highNL + indice2_lowNL_tribe + log_nightlight |
+    ADM2_NAME + year,
+  data = df, cluster = ~ ADM2_NAME
+)
+summary(m_lowHighTribe)
+
+
+m_lowHighTribe2 <- feols(
+  n_conflicts ~ indice2_lowNL + indice2_highNL + indice2_lowNL_frac + log_nightlight |
+    ADM2_NAME + year,
+  data = df, cluster = ~ ADM2_NAME
+)
+summary(m_lowHighTribe2)
