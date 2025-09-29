@@ -128,8 +128,64 @@ ggplot() +
   geom_sf(data = ports_data, color = "red", size = 2) +  # Ports as red dots
   theme_minimal() +
   ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
+cols_no_geom <- setdiff(names(ports_data), "geometry")
+nuovo_porto <- as.data.frame(matrix(NA, nrow = 1, ncol = length(cols_no_geom)))
+names(nuovo_porto) <- cols_no_geom
 
+# 3) Inserisci i campi che conosci (adatta il nome del campo al tuo shapefile)
+# Suppongo esista MAIN_PORT_ come nel tuo esempio precedente
+nuovo_porto$MAIN_PORT_ <- "ONNE"
 
+# 4) Crea la geometria in WGS84 (lon, lat), poi trasforma al CRS di ports_data
+nuovo_porto$LNG_DD <- 7.0361
+nuovo_porto$LAT_DD <- 4.7444
+
+nuovo_porto_sf <- st_as_sf(
+  nuovo_porto,
+  coords = c("LNG_DD", "LAT_DD"),
+  crs = 4326,
+  remove = FALSE
+)
+
+# Se nel data frame non avevi le colonne LNG_DD/LAT_DD, setta i valori così:
+st_geometry(nuovo_porto_sf) <- st_sfc(st_point(c(7.0361, 4.7444)), crs = 4326)
+
+nuovo_porto_sf <- st_transform(nuovo_porto_sf, st_crs(ports_data))
+
+# 5) (Opzionale) rimuovi eventuali record già chiamati ONNE per evitare duplicati
+if ("MAIN_PORT_" %in% names(ports_data)) {
+  ports_data <- ports_data %>% filter(is.na(MAIN_PORT_) | MAIN_PORT_ != "ONNE")
+}
+
+# 6) Allinea le colonne e fai il bind
+# (crea eventuali colonne mancanti in uno dei due oggetti)
+add_missing_cols <- function(x, cols) {
+  missing <- setdiff(cols, names(x))
+  if (length(missing) > 0) {
+    for (m in missing) x[[m]] <- NA
+  }
+  x[, cols]
+}
+common_cols <- union(names(ports_data), names(nuovo_porto_sf))
+ports_data_aligned     <- add_missing_cols(ports_data, common_cols)
+nuovo_porto_sf_aligned <- add_missing_cols(nuovo_porto_sf, common_cols)
+
+ports_data <- rbind(ports_data_aligned, nuovo_porto_sf_aligned)
+
+# 7) Controllo rapido + mappa
+print(ports_data %>% filter(if ("MAIN_PORT_" %in% names(.)) MAIN_PORT_ == "ONNE" else FALSE))
+
+library(ggplot2)
+ggplot(ports_data) +
+  geom_sf() +
+  theme_minimal() +
+  ggtitle("Nigeria Ports Map (con ONNE)")
+ggplot() +
+  geom_sf(data = nig, fill = "gray90", color = "black") +  # Admin2 map
+  geom_sf(data = grid, fill = NA, color = "black", linewidth = 0.2) +  # Grid overlay
+  geom_sf(data = ports_data, color = "red", size = 2) +  # Ports as red dots
+  theme_minimal() +
+  ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 nigeria_boundary <- st_boundary(st_union(nig))
 
 # Trova i poligoni admin2 che toccano questo confine esterno
@@ -178,7 +234,7 @@ ggplot() +
 
 
 admin2_in_coastal_admin1 <- st_join(nig, coastal_admin1, join = st_within, left = FALSE)
-
+st_write(coastal_admin1, "zone_modificato.shp")
 # 'left = FALSE' tiene solo i record di nig che effettivamente cadono dentro coastal_admin1
 
 # 3. Visualizza
