@@ -39,7 +39,7 @@ m_water <- feols(
 summary(m_water)
 
 m_water2 <- feols(
-  n_conflicts ~ indice2_highNL_main + indice2_lowNL_main + log_nightlight + water_avail | year,
+  n_conflicts ~ indice2_highNL + indice2_lowNL + log_nightlight + water_avail | year,
   data = final_regression_data_main
 )
 
@@ -115,3 +115,129 @@ m_water_terc <- feols(
 
 summary(m_water_terc)
  
+# Standardizza per confrontabilità
+final_regression_data_main <- final_regression_data_main %>%
+  mutate(water_z = as.numeric(scale(water_avail)))
+
+
+
+food_gdp <- read_excel("GDP_WB.xlsx")
+gdp_nigeria <- food_gdp %>%
+  filter(
+    `Country Name` == "Nigeria",
+    `Indicator Name` == "GDP (current US$)" # Assicurati che il nome dell'indicatore sia esattamente questo
+  )
+
+data <- read_excel("wb_appendice.xlsx")
+
+# Filtra per la Nigeria e trasforma i dati in formato 'long'
+data_long <- data %>%
+  filter(`Country Name` == "Nigeria") %>%
+  # Seleziona le colonne di interesse
+  dplyr::select(`Series Name`, `2009 [YR2009]`:`2019 [YR2019]`) %>%
+  # Trasforma i dati da wide a long
+  pivot_longer(
+    cols = `2009 [YR2009]`:`2019 [YR2019]`,
+    names_to = "year_raw",
+    values_to = "value"
+  ) %>%
+  # Estrai l'anno e converti in numerico, rimuovendo il testo tra parentesi quadre
+  mutate(
+    year = as.numeric(gsub(" \\[YR.*", "", year_raw)),
+    value = as.numeric(value)
+  ) %>%
+  # Rimuovi la colonna non più necessaria 'year_raw'
+  dplyr::select(-year_raw)
+
+data_wide <- data_long %>%
+  pivot_wider(
+    names_from = `Series Name`,
+    values_from = value
+  )
+
+oil_rents_per_year <- data_long %>%
+  filter(`Series Name` == "Oil rents (% of GDP)") %>%
+  rename(oil_rents_pct_gdp = value)
+
+# Seleziona solo le rendite di gas naturale
+gas_rents_per_year <- data_long %>%
+  filter(`Series Name` == "Natural gas rents (% of GDP)") %>%
+  rename(gas_rents_pct_gdp = value)
+
+migration <- read_excel("migration(1).xlsx")
+#from 1974 to 2019 net migration
+#for the school missing values more costant from 1999 
+#aggregated
+migration <- migration %>%
+  rename(
+    year = Time,  # Rename Time column to year
+    Agriculture_forestry_and_fishing = "Agriculture, forestry, and fishing, value added (% of GDP) [NV.AGR.TOTL.ZS]",
+    net_migration = "Net migration [SM.POP.NETM]"# Rename long column name
+  )
+migration_1 <- migration %>%  dplyr::select(year, net_migration)
+wgi_data_modified <- read_excel("wgi_data_modified.xlsx")
+wgi_data_modified$year <- as.numeric(wgi_data_modified$year)
+# Hai già: oil_rents_per_year, gas_rents_per_year, data_wide (GDP ecc.), migration_1, wgi_data_modified
+
+# (a) Costruisci un dataframe "year-level" con tutto
+year_controls <- list(
+  oil_rents_per_year %>% dplyr::select(year, oil_rents_pct_gdp),
+  gas_rents_per_year %>% dplyr::select(year, gas_rents_pct_gdp),
+  migration_1 %>% dplyr::select(year, net_migration),
+  wgi_data_modified %>% dplyr::select(
+    year,
+    ControlofCorruption, RuleofLaw, RegulatoryQuality,
+    GovernmentEffectiveness, PoliticalStabilityNoViolence, VoiceandAccountability
+  )
+) %>% Reduce(function(x,y) dplyr::left_join(x,y, by="year"), .) %>%
+  dplyr::distinct(year, .keep_all = TRUE)   # evita duplicati per anno
+
+# b) Rendi numeriche le WGI (se non lo fossero)
+wgi_cols <- c(
+  "ControlofCorruption","RuleofLaw","RegulatoryQuality",
+  "GovernmentEffectiveness","PoliticalStabilityNoViolence","VoiceandAccountability"
+)
+year_controls <- year_controls %>%
+  mutate(
+    across(all_of(wgi_cols), ~ suppressWarnings(as.numeric(.x)))
+  )
+
+# c) Indice sintetico di governance (media degli z-score)
+year_controls <- year_controls %>%
+  mutate(
+    across(all_of(wgi_cols), ~ as.numeric(scale(.x)), .names = "z_{col}")
+  ) %>%
+  rowwise() %>%
+  mutate(
+    governance_index = mean(c_across(starts_with("z_")), na.rm = TRUE)
+  ) %>%
+  ungroup()
+
+# ---- 2) Unisci al pannello ----
+final_regression_data_main <- final_regression_data_main %>%
+  left_join(year_controls, by = "year")
+
+# ---- 3) Regressione senza FE di anno (con FE ADM2) + controlli macro annuali ----
+#    (Versione con le sei componenti WGI esplicite)
+m_noYearFE <- feols(
+  n_conflicts ~ indice2_main + log_nightlight +
+    oil_rents_pct_gdp + gas_rents_pct_gdp + net_migration +
+    ControlofCorruption + RuleofLaw + RegulatoryQuality +
+    GovernmentEffectiveness + PoliticalStabilityNoViolence + VoiceandAccountability
+  | ADM2_NAME,
+  data = final_regression_data_main,
+  cluster = ~ ADM2_NAME
+)
+
+summary(m_noYearFE)
+
+m_noYearFE_wgiIndex <- feols(
+  n_conflicts ~ indice2_main + log_nightlight +
+    oil_rents_pct_gdp + gas_rents_pct_gdp + net_migration +
+    governance_index
+  | ADM2_NAME,
+  data = final_regression_data_main,
+  cluster = ~ ADM2_NAME
+)
+
+summary(m_noYearFE_wgiIndex)
