@@ -18,13 +18,6 @@ for (file in raster_files) {
 
 nightlight_dt <- rbindlist(nightlight_list)
 
-# 3. Distanza porti (assumendo costante nel tempo)
-#dist_ports_dt <- data.table(
-#  ADM2_CODE = coastal_buffer_admin2$ADM2_CODE.x,
-#  ADM2_NAME = admin2_in_coastal_admin1$ADM2_NAME.x,
-#  dist_min_port = coastal_buffer_admin2$dist_min_port
-#)
-
 
 
 # 5. Ora devi unire questi dati per creare il dataframe finale
@@ -70,6 +63,7 @@ final_df <- final_df %>%
 # Costruisci pannello: replica ogni ADM2 per tutti gli anni
 # -----------------------
 panel_list <- list()
+setnames(LSCI_annual, "LSCI_annual", "lsci_value")
 
 for (t in LSCI_annual$year) {
   
@@ -155,11 +149,29 @@ final_regression_data <- merge(panel_skeleton, LSCI_annual, by = "year", all.x =
 print(paste("Dopo unione con LSCI_annual. Numero di righe:", nrow(final_regression_data)))
 final_regression_data <- merge(final_regression_data, ContPortThroughput_long[, c("year", "shock")], by = "year", all.x = TRUE)
 print(paste("Dopo unione con ContPortThroughput_long. Numero di righe:", nrow(final_regression_data)))
-final_regression_data <- merge(final_regression_data, nightlight_annual, by = c("ADM2_NAME", "year"), all.x = TRUE)
+final_regression_data <- merge(final_regression_data, nightlight_dt, by = c("ADM2_NAME", "year"), all.x = TRUE)
 print(paste("Dopo unione con nightlight_annual. Numero di righe:", nrow(final_regression_data)))
 final_regression_data <- merge(final_regression_data, conflicts_aggregated, by = c("ADM2_NAME", "year"), all.x = TRUE)
 print(paste("Dopo unione con conflicts_aggregated. Numero di righe:", nrow(final_regression_data)))
-final_regression_data <- merge(final_regression_data, st_drop_geometry(coastal_admin2_master[, c("ADM2_NAME", "dist_min_port", "dist_min_norm")]), by = "ADM2_NAME", all.x = TRUE)
+setDT(final_df)
+norm_vals <- final_df |> 
+  dplyr::select(ADM2_NAME.x, dist_min_norm, dist_min_port) |> 
+  dplyr::distinct()
+norm_vals[, names(norm_vals)[grepl("\\.y$", names(norm_vals))] := NULL]
+x_cols <- names(norm_vals)[grepl("\\.x$", names(norm_vals))]
+setnames(norm_vals, old = x_cols, new = gsub("\\.x$", "", x_cols))
+# aggiungo la colonna a coastal_buffer_admin2
+coastal_buffer_admin2 <- coastal_buffer_admin2 |> 
+  left_join(norm_vals, by = "ADM2_NAME")
+setDT(coastal_buffer_admin2)
+coastal_buffer_admin2[, names(coastal_buffer_admin2)[grepl("\\.y$", names(coastal_buffer_admin2))] := NULL]
+x_cols <- names(coastal_buffer_admin2)[grepl("\\.x$", names(coastal_buffer_admin2))]
+setnames(coastal_buffer_admin2, old = x_cols, new = gsub("\\.x$", "", x_cols))
+dist_one <- as.data.table(st_drop_geometry(coastal_buffer_admin2))[
+  , .(dist_min_port = min(as.numeric(dist_min_port), na.rm = TRUE),
+      dist_min_norm = first(dist_min_norm)), by = ADM2_NAME]
+
+final_regression_data <- dist_one[final_regression_data, on = "ADM2_NAME"]
 print(paste("Dopo unione con i dati geografici. Numero di righe:", nrow(final_regression_data)))
 setDT(final_regression_data)
 
@@ -179,6 +191,12 @@ summary(model6)
 
 model9 <- feols(n_conflicts ~ indice2 + nightlight_norm | ADM2_NAME + year, data = final_regression_data)
 summary(model9) 
+final_regression_data[, nightlight_norm := {
+  mn <- min(nightlight_mean, na.rm = TRUE)
+  mx <- max(nightlight_mean, na.rm = TRUE)
+  den <- ifelse(mx > mn, mx - mn, 1)
+  (nightlight_mean - mn) / den
+}]
 final_regression_data <- final_regression_data %>%
   mutate(
     indice = dist_min_norm * shock * lsci_value
