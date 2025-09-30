@@ -175,6 +175,8 @@ final_regression_data <- dist_one[final_regression_data, on = "ADM2_NAME"]
 print(paste("Dopo unione con i dati geografici. Numero di righe:", nrow(final_regression_data)))
 setDT(final_regression_data)
 
+
+
 # Step 2: Calcola il tuo nuovo indice e pulisci i dati
 # Aggiungi un valore piccolo a dist_min_norm per evitare la divisione per zero
 epsilon <- 0.000001
