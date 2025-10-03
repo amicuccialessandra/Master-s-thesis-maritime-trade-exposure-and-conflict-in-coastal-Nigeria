@@ -1,10 +1,124 @@
 \chapter{Data}
-In our empirical analysis, we combined different data sources to derive a panel of subnational geographical units for the period from 2009 to 2019. Data on conflict event are drawn from the "Armed Conflict and Location Event" (ACLED) which cover conflict event from 1999 to 2024. The dataset provides the exact location of events, the type of event, and other characteristics related to the conflict. \cite{raleigh2010introducing}
+In our empirical analysis, we combined different data sources to derive a panel of subnational geographical units for the period from 2009 to 2019. \\
+\textit{Conflict}. Data on conflict event are drawn from the "Armed Conflict and Location Event" \textcite{acled2025} which cover conflict event from 1999 to 2024. The dataset provides the exact location of events, the type of event, and other characteristics related to the conflict. \parencite{raleigh2010introducing}\\
 In constructing the dataset, we focused on consumption-related conflict events rather than rapacity-based events. Both theoretical and empirical considerations guide this choice. Trade openness influences a country's income, usually in a positive way. However, globalisation has not always reduced inequalities in emerging countries, causing unequal distribution. 
 As stated by \textcite{dube2013commodity}, an increase in income can reduce conflict, but on the other hand, higher income means there is more to fight over these resources. The existence of two opposing influences, opportunity cost and rapacity, suggests that some shocks may mitigate conflict, whereas other shocks exacerbate it, depending on the relative strength of the two effects.
-The study of \textcite{amodio2024trade} shows that exposure to exports increasess simultaneously economic activity and political violence. Meanwhile, \textcite{mcguirk2020economic} have shown that, in the event of positive price shocks, producers' revenues increase but consumers' real incomes decrease, thus enhancing the probability of protests or demonstrations. Consumption-related mechanisms are more directly influenced by exogenous trade shocks, while conflicts over resources follow different dynamics, often linked to the strategies of armed groups. From an empirical point of view, limiting oneself to consumption-related events also mitigates concerns about endogeneity: resource predation can in itself influence local trade flows, risking to reflect both cause and effect simultaneously.
-
+The study of \textcite{amodio2024trade} shows that exposure to exports increasess simultaneously economic activity and political violence and \textcite{mcguirk2020economic} have shown that, in the event of positive price shocks, producers' revenues increase but consumers' real incomes decrease, thus enhancing the probability of protests or demonstrations. Consumption-related mechanisms are more directly influenced by exogenous trade shocks, while conflicts over resources follow different dynamics, often linked to the strategies of armed groups. From an empirical point of view, limiting oneself to consumption-related events also mitigates concerns about endogeneity: resource predation can in itself influence local trade flows, risking to reflect both cause and effect simultaneously.\\
 The final variable therefore measures the annual number of consumption-related conflict events for ADM2, filtered to retain only: (i) subcategories of events not related to predation, such as protests (peaceful or violent), demonstrations, arrests, agreements or territorial changes not directly linked to resource predation. (ii) Events reported in narrative notes as disputes over consumer goods or livelihoods (keywords such as land, livestock, pasture, farm, grazing, oil, gold, looting).
-Events clearly associated with predatory motives (e.g., looting, armed clashes over resource extraction, kidnappings for ransom) are excluded.
-
+Events clearly associated with predatory motives (e.g., looting, armed clashes over resource extraction, kidnappings for ransom) are excluded.\\
 After filtering, we limited the dataset to events occurring in coastal regions, then projected them into a consistent spatial reference system and overlaid them on Nigeria's second-level administrative units (ADM2). For each ADM2-year, the count of non-predatory conflict events is available, which serves as the outcome variable in my regression analysis.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{conf_coast.pdf}
+	\caption{Descrizione dell’immagine.}
+	\label{fig:miafigura}
+\end{figure}
+
+
+\autoref{fig:miafigura} displays the spatial distribution of consumption-related conflict events across Nigerian coast in the years 2009, 2012, 2015 and 2019. The maps show a marked increase in conflicts between 2009 and 2019. In 2009, events were concentrated in a few clusters, while in 2019 they spread across most coastal regions, gradually extending westwards and inland. Already in 2015, there was a much more significant increase compared to 2012, greater than the gap between 2012 and 2009, suggesting an exponential growth dynamic.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{total_conflict.pdf}
+	\caption{Descrizione dell’immagine.}
+	\label{fig:total_conflict}
+\end{figure}
+
+\autoref{fig:total_conflict} shows the trend in the total number of conflict events per year (sum at ADM2 level). Focusing on the period 2009-2019, we can see that in the early years the number of incidents remained relatively low, but there has been a sharp increase since 2012, with progressive growth leading to a peak between 2018 and 2019. This trend confirms what has already been highlighted by the maps, namely a pattern of intensification and spread of conflicts over the decade. \\
+
+\textit{Index} The index was constructed based on the intuition that a trade exposure shock can significantly influence the dynamics of conflicts. In particular, I consider how the impact of trade shocks varies geographically depending on the distance from seaports: as highlighted by \textcite{berman2015external}, regions closer to ports are in fact more exposed to external shocks. Following this intuition, I constructed an index that combines the measure of national connectivity with a local proxy for geographical accessibility to ports. 
+
+\begin{equation}
+	index = Shock \times LSCI \times 1/(distminnorm + \varepsilon)
+\end{equation}
+
+Here, the shock is represented by Container Port Throughput, a dataset compiled by UNCTAD that estimates the total number of containers handled, by country, expressed in twenty-foot equivalent units; LSCI stands for Liner Shipping Connectivity, which measures a country's integration into global liner shipping networks, also from UNCTAD; finally, there is the subnational variable, which is the inverse of the normalized minimum distance to the nearest commercial port and $\varepsilon$ is a very small positive constant introduced to avoid division by zero.\\ 
+The main idea is that being close to commercial ports makes it easier to get to international markets. In other words, areas near ports are more exposed to international trade, while areas far away are relatively isolated. This insight is consistent with empirical evidence that regions closest to ports or major transport corridors are most affected by global shocks, whether positive or negative, that are transmitted through trade \parencite{berman2015external,mcguirk2020economic}.\\
+
+The national component of the index is represented by the Liner Shipping Connectivity Index (LSCI), developed by \textcite{unctad_lsci} and frequently used in maritime trade literature as shown in  \textcites{mishra2021robust}{fugazza2017liner}. The LSCI measures a country's structural capacity to integrate into global trade, based on variables such as the number of liner services, active operators, ships employed, ship size and total capacity in Twenty Foot Equivalent Units (TEU). It is internationally recognised as an indicator of trade accessibility and competitiveness, particularly relevant in developing countries where maritime transport is the main route for international trade. Empirical studies confirm that greater maritime connectivity reduces trade costs and promotes growth: for example, \textcite{fugazza2017liner} estimate that the absence of direct connections can reduce the value of bilateral exports by up to 55\%, while the Review of Maritime Transport \textcite{united2011review} shows that improvements in the LSCI ranking are systematically associated with higher trade volumes and greater market access.\\
+
+Foreign trade shock is measured using Container Port Throughput (CPT), a dataset compiled by \textcite{unctad2025} that reports the annual number of containers handled in each country's ports, expressed in TEU. CPT is widely used as an indicator of the intensity of maritime trade flows, as over 80-90\% of international trade volume is transported by sea \parencite{ayesu2024estimating}. Unlike the LSCI, which captures the potential capacity of a national maritime transport network, the CPT reflects actual containerised traffic and thus provides a more direct measure of exposure to global supply and demand shocks. Empirical studies confirm that changes in CPT have tangible macroeconomic effects. For example, \textcite{ayesu2024estimating} demonstrate that increased containerised traffic significantly boosts employment in African economies with maritime ports, highlighting its role as an engine of economic development. At the same time, the OECD/ITF report by \textcite{ducruet2014time} points out that throughput also reveals structural vulnerabilities: in ports where efficiency is low, high levels of throughput can amplify the impact of external shocks due to congestion and longer periods of stay. From a policy perspective, UNCTAD \textcite{united2011review} recognises CPT as a key indicator of port development performance in emerging economies, highlighting its value as a standard measure of exposure to international trade.
+In this analysis, I consider the CPT as an exogenous source of variation in maritime trade flows which, interacting with measures of national connectivity (LSCI) and local port accessibility (distance from port), captures the heterogeneous transmission of global trade shocks to subnational regions.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{LSCI_shock.pdf}
+	\caption{Descrizione dell’immagine.}
+	\label{fig:LSCI}
+\end{figure}
+
+
+\autoref{fig:LSCI} presents the trend of the LSCI and CPT in Nigeria over the period 2009–2019. The two indicators show a similar evolution: sustained growth until 2014–2015, followed by a contraction phase and a partial recovery in recent years. Their co-movement confirms that LSCI and CPT capture complementary dimensions of the same trade dynamic: the former reflects the structural capacity for integration into global trade, the latter the actual measure of the volume of containers handled. For this reason, both are included in the construction of the trade shock index used in the empirical analysis.\\
+
+The role of distance from ports is crucial to understanding the heterogeneity of trade shocks. According to \textcite{berman2015external}, regions located closer to major seaports are more directly integrated into international trade networks and therefore more strongly affected by external income shocks. Their findings show that positive shocks reduce the likelihood of conflict within these open regions, while the effect largely disappears in remote inland areas. This pattern suggests that the opportunity cost channel is at play: better access to trade increases local incomes and raises the cost of using violence, thereby mitigating conflict. 
+Based on this insight, we incorporated distance from ports into the construction of my index. The logic is that Nigerian districts closer to seaports are more exposed to changes in global trade flows and should therefore exhibit a stronger response to consumption-related conflicts in the event of external shocks than districts located further inland. 
+For each coastal ADM2, the distance from the nearest port was calculated, converted into kilometres and then normalised through a min–max transformation. To ensure comparability across units and to give greater weight to areas close to ports, the normalised distance was inverted so that higher values indicate stronger exposure to trade.
+\autoref{ports} shows the position of the six main ports overlapped for the ADM2 subnational regions. Starting from those ports the normalised minimum distance between each coastal administrative unit and the nearest commercial port was calculated.
+\autoref{dist_p} report the spatial distribution within a 1,000 km buffer. We can see that the coastal areas immediately adjacent to the ports, in dark purple, are naturally much more accessible, while the distance increases rapidly as one moves inland, highlighted by the lighter shades. This geographical heterogeneity forms the basis for the variable, which assigns greater exposure to areas closer to ports and progressively reduces that of more remote regions. 
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{ports.pdf}
+		\caption{Porti principali in Nigeria.}
+		\label{ports}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{distanza_porti_main_mappa.pdf}
+		\caption{Distanza minima dai porti principali.}
+		\label{dist_p}
+	\end{subfigure}
+	
+	\caption{Mappe comparative: localizzazione dei porti (a) e distanza minima da essi (b).}
+	\label{fig:ports_comparison}
+\end{figure}
+
+
+While the LSCI measures Nigeria's overall capacity to connect to global maritime trade, the minimum distance from ports captures territorial inequalities in effective access to these connections. By integrating these two dimensions with the external shock represented by CPT, the index reflects both the macro structure of the port system and local differences in exposure. In this way, not only are general changes in the country's position within maritime networks captured, but also how such shocks are absorbed differently depending on geographical proximity to ports. The combination of these elements allows us to move from a uniform national perspective to a more detailed one, highlighting the territorial heterogeneity of the effects of maritime trade and their relevance to the dynamics of conflicts.\\
+
+\textit{Nighlights}
+Night-time lighting (NTL) data are widely used in the literature as an indicator of economic activity, especially in contexts where conventional economic statistics are scarce or unreliable. The underlying idea is that artificial night-time lighting is strongly correlated with income levels, infrastructure and access to energy, thus serving as a reliable indicator of local development \parencite{amodio2024trade,  chen2011using}(. In the case of Nigeria, night-time lights have been used to assess access to electricity and regional inequalities, confirming their strong association with patterns of socio-economic development.
+To construct this variable, we relied on the Harmonised Global Night-time Light Dataset (1992-2018) developed by \textcite{li2020harmonization}, which combines the DMSP-OLS series with the latest VIIRS observations into a consistent time series. The harmonisation procedure corrects for satellite drift, blooming, and sensor inconsistencies, thus ensuring temporal comparability. The dataset is available in yearly composites and can be aggregated spatially at multiple scales, making it particularly suitable for integration with ADM2-level units.For each coastal ADM2 and for each year, we calculated the logarithm of night-time light intensity to reduce asymmetry and facilitate interpretation in regressions. In addition, we defined a dummy variable equal to one for ADMs with values above the 75th percentile of the log-NTL distribution within the year. This distinction allows us to test whether trade shocks have differential effects between more and less economically developed regions.
+
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{night 2009.pdf}
+		\label{night}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{night 2012.pdf}
+		\label{night12}
+	\end{subfigure}
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{night 2015.pdf}
+		\label{night15}
+	\end{subfigure}
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{night 2019.pdf}
+		\label{night19}
+	\end{subfigure}
+	\caption{nightlight}
+	\label{nightlight}
+\end{figure} 
+
+\autoref{nightlight} shows the spatial distribution of night-time light intensity in Nigeria's coastal ADM2s. Light concentration is clearly clustered around Lagos, Port Harcourt, and other industrial centres, while rural areas show very limited brightness, consistent with the literature on energy poverty in Nigeria.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{mean.pdf}
+	\caption{Descrizione dell’immagine.}
+	\label{ntl_trend}
+\end{figure}
+Moving on to temporal dynamics, \autoref{ntl_trend} tracks the average intensity of night-time lights over the period 2000–2018. The trend reveals an overall increase in luminosity, reflecting the gradual urbanisation of Nigeria, but also a significant decline around 2013 and 2016.  These fluctuations are consistent with the technical issues documented in the harmonised dataset. In particular, \textcite{li2020harmonization} notes that the decline observed in the period 2015–2016 is also present in independent VIIRS composites and attributes it to sensor fluctuations and the transition from DMSP to VIIRS rather than an actual economic contraction. Similarly, \textcite{islam2024measuring} highlights the challenges posed by blooming, overglow, and inter-sensor calibration in the Nigerian context, emphasising that apparent discontinuities in time series may reflect data artifacts rather than real changes in development. It is important to note that such noise has been highlighted in previous studies as a limitation of remote sensing for socio-economic monitoring, but the harmonisation procedure mitigates much of the distortion. \\
+In summary, night-time lights provide a credible proxy for local economic activity. The expectation is that areas with lower night-time light intensity (i.e. poorer and less developed regions) should be more sensitive to foreign trade shocks, as consumption disruptions are more likely where households face tighter constraints on basic goods and services.

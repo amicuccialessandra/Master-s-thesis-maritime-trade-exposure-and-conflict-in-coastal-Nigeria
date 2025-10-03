@@ -2,14 +2,14 @@
 \documentclass[a4paper, oneside]{sapthesis}
 % ---- DRAFT SWITCH ----
 \newif\ifdraft
-\drafttrue      % <-- DURANTE LA STESURA (veloce)
+\draftfalse      % <-- DURANTE LA STESURA (veloce)
 % \draftfalse   % <-- PER LA VERSIONE FINALE (lenta ma completa)
 % --------------
-\usepackage{microtype}
-\usepackage[english]{babel}
+\usepackage{microtype}     
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}
 \usepackage{imakeidx}
-\usepackage{subfigure}
 \usepackage{graphicx}
 \graphicspath{{immagini/}} 
 \DeclareGraphicsExtensions{.png,.pdf,.jpg}
@@ -19,9 +19,18 @@
 \usepackage[table]{xcolor}
 \usepackage{hyperref}
 \usepackage{blindtext}
-\usepackage[style=apa]{biblatex} 
-\addbibresource{bibiografia.bib} 
-\DeclareLanguageMapping{british}{british-apa} % 
+\usepackage[style=apa, backend=biber, sortcites=true, sorting=nyt]{biblatex} 
+
+\usepackage{placeins}
+\usepackage{caption} 
+\usepackage{subcaption}
+\usepackage{float}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.8}
+\addbibresource{bibliografia.bib}
+% Se usi english:
+\DeclareLanguageMapping{english}{english-apa}
 \DeclareFieldFormat[article]{volume}{\apanum{#1}} % Format volume number
 % Graphicx + modalità draft immagini
 
@@ -74,15 +83,14 @@
 %\addtolength{\topmargin}{-10.59052pt}
 
 \makeindex
-\includeonly{Cap_2,Cap_3,Cap_4}
+\includeonly{Cap_1,Cap_2,Cap_3,Cap_4,Cap_5,appendix}
 \newcommand{\Fig}[1]{[{\footnotesize \texttt{Fig.#1}}]}
 \newcommand{\citfig}[1]{\ap{\scriptsize\textrm{(\textit{F#1})}}}
 
 \begin{document}
 \frontmatter
 \maketitle
-\dedication{Dedicato a \\
-SCRIVI QUI LA DEDICA }
+\dedication{Dedicato a SCRIVI QUI LA DEDICA }
 
 \input{abstract}
 %\tableofcontents
@@ -93,9 +101,12 @@ SCRIVI QUI LA DEDICA }
 %\addcontentsline{toc}{chapter}{Acronomi}
 
 \mainmatter
+\include{Cap_1}
 \include{Cap_2}
 \include{Cap_3}
 \include{Cap_4}
+\include{Cap_5}
+
 \backmatter
 \cleardoublepage
 \newpage
@@ -111,7 +122,8 @@ SCRIVI QUI LA DEDICA }
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
 \printbibliography
-
+\appendix
+\include{appendix}
 \newpage
 \phantomsection
 \addcontentsline{toc}{section}{Figure}
