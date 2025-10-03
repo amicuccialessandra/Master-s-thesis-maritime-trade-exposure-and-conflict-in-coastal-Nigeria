@@ -3091,16 +3091,21 @@
     <bcf:citekey order="29" intorder="1">ducruet2014time</bcf:citekey>
     <bcf:citekey order="30" intorder="1">united2011review</bcf:citekey>
     <bcf:citekey order="31" intorder="1">united2011review</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">berman2015external</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">anderson2003gravity</bcf:citekey>
     <bcf:citekey order="33" intorder="1">berman2015external</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">amodio2024trade</bcf:citekey>
-    <bcf:citekey order="34" intorder="2">chen2011using</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">li2020harmonization</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">berman2015external</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">amodio2024trade</bcf:citekey>
+    <bcf:citekey order="35" intorder="2">chen2011using</bcf:citekey>
+    <bcf:citekey order="35" intorder="3">henderson2012measuring</bcf:citekey>
     <bcf:citekey order="36" intorder="1">li2020harmonization</bcf:citekey>
     <bcf:citekey order="37" intorder="1">li2020harmonization</bcf:citekey>
     <bcf:citekey order="38" intorder="1">li2020harmonization</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">islam2024measuring</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">li2020harmonization</bcf:citekey>
     <bcf:citekey order="40" intorder="1">islam2024measuring</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">islam2024measuring</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">autor2013china</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">berman2015external</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">goldsmith2020bartik</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

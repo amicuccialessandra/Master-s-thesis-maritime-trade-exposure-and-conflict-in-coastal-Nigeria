@@ -1,5 +1,20 @@
-\chapter{Descrizione delle attività}
-\section{Impianto metodologico}
-\subsection{Criteri di inclusione}
-\subsection{Criteri di esclusione}
-\subsection{Analisi dei dati}
+\chapter{Methodoloy}
+We expect the economic impact of trade shocks to vary across different ADM2 units, with areas most exposed to international trade experiencing fewer consumption-related conflict events.  Based on this insight, the index presented in the chapter on data was constructed, combining two national components that vary over time with a fixed spatial component. This approach is consistent with consolidated practices in the literature that combine aggregate shocks with sub-national heterogeneity \parencite{autor2013china}.\\
+In our case, the CPT was delayed by one year to mitigate possible simultaneity issues, while the LSCI represents the degree of integration of the Nigerian port system into global maritime networks. Spatial heterogeneity is introduced through the minimum distance from ports, which serves as a proxy for accessibility to international markets. Following the intuition of \parencite{berman2015external}, regions located closer to seaports are more directly integrated into international trade networks and therefore more strongly affected by external shocks. In our context, this motivates the use of minimum distance from ports as a measure of local exposure, assuming that trade shocks are transmitted more intensely to areas with better access to maritime infrastructure.
+In this sense, the empirical design is consistent with the validity conditions discussed by \parencite{goldsmith2020bartik}\\
+The empirical model also includes both spatial (ADM2) and temporal (year) fixed effects. In this way, given the same national shock, only differences in proximity to ports generate variation between units, allowing the heterogeneous effect of trade shocks on conflict to be isolated.
+
+\section{Empirical Strategy}
+The empirical strategy consists of three steps.
+\textit{First}, we estimate the basic model in two specifications: an aggregate version, in which the exposure index is considered in its overall form \eqref{eq1}, and a “split” version, which distinguishes administrative units based on the intensity of economic development measured by night-time lights \eqref{eq2}. This allows us to analyse both the average effect of the trade shock and the differences between more and less developed areas.\\
+\begin{equation}
+	Conflict_{it} = \beta Index_{it} + \gamma log(Nightlights_{it}) + \mu_i + \lambda_t + \varepsilon_{it}
+	\label{eq1}
+\end{equation}
+\begin{equation}
+	Conflict_{it} = \beta_1 Index_{it}^{HigNL}+ \beta_2 Index_{it}^{LowNL}+ \gamma log(Nightlights_{it}) + \mu_i + \lambda_t + \varepsilon_{it}
+	\label{eq2}
+\end{equation}
+\textit{Second}, we perform a falsification test to verify that the results do not simply reflect a spurious correlation between conflict and geographical proximity to port infrastructure. To this end, we reconstruct the index to include all ports in Nigeria, not just commercial ones. The idea is that if the effect were linked exclusively to physical proximity to a port, it should also emerge with this broader measure. Conversely, if the association is really driven by trade shocks, the results should only appear when considering ports that are actually relevant to international trade.\\
+\textit{Third}, we analyse the heterogeneity of the effects across different territorial and socio-economic dimensions. In particular, we distinguish between eastern and western regions, between north and south, and assess interactions with local development (night lights) and ethnic fragmentation. These specifications allow us to investigate the differentiated transmission of trade shocks depending on the structural conditions of the territories.\\
+In all specifications, the model includes spatial (ADM2) and temporal (year) fixed effects, and standard errors are clustered at the ADM2 level.

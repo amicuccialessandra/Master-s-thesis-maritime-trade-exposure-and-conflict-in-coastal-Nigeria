@@ -96,6 +96,95 @@
       \field{pages}{275\bibrangedash 322}
       \range{pages}{48}
     \endentry
+    \entry{anderson2003gravity}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=698a0bb775e87a0470cd7b92a0a5cd24}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={James\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e3c0b200e02cd8b0fa7bad64abd3587a}{%
+           family={Wincoop},
+           familyi={W\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{fullhash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{bibnamehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{authorbibnamehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{authornamehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{authorfullhash}{b66054bfc8f30f7edccc640a40e95837}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{Gravity with gravitas: A solution to the border puzzle}
+      \field{volume}{93}
+      \field{year}{2003}
+      \field{pages}{170\bibrangedash 192}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1257/000282803321455214
+      \endverb
+    \endentry
+    \entry{autor2013china}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=68f91bcaddbb4b488aea7cb0c43b670d}{%
+           family={Autor},
+           familyi={A\bibinitperiod},
+           given={David\bibnamedelima H},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8ed98663662c03115a1f8a6926baf48c}{%
+           family={Dorn},
+           familyi={D\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=24446967244bf7b38251395f8613c654}{%
+           family={Hanson},
+           familyi={H\bibinitperiod},
+           given={Gordon\bibnamedelima H},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{1f155a39c5c8e280b00e6bed0bf4143f}
+      \strng{fullhash}{720d30422eeddf188b369dde409da5ec}
+      \strng{bibnamehash}{720d30422eeddf188b369dde409da5ec}
+      \strng{authorbibnamehash}{720d30422eeddf188b369dde409da5ec}
+      \strng{authornamehash}{1f155a39c5c8e280b00e6bed0bf4143f}
+      \strng{authorfullhash}{720d30422eeddf188b369dde409da5ec}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American economic review}
+      \field{number}{6}
+      \field{title}{The China syndrome: Local labor market effects of import competition in the United States}
+      \field{volume}{103}
+      \field{year}{2013}
+      \field{pages}{2121\bibrangedash 2168}
+      \range{pages}{48}
+    \endentry
     \entry{ayesu2024estimating}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=69cf76ac89237e5214e0b6f8dcb317ee}{%
@@ -327,6 +416,96 @@
       \field{year}{2017}
       \field{pages}{1}
       \range{pages}{1}
+    \endentry
+    \entry{goldsmith2020bartik}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f3ca973d5895ae6e5e148903f7218eca}{%
+           family={Goldsmith-Pinkham},
+           familyi={G\bibinithyphendelim P\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95a4c478dc1f368c14f4a266def33da7}{%
+           family={Sorkin},
+           familyi={S\bibinitperiod},
+           given={Isaac},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d82e901e935249954400a31db4bed9d5}{%
+           family={Swift},
+           familyi={S\bibinitperiod},
+           given={Henry},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203}%
+      }
+      \strng{namehash}{e001c936d4a9015262ad3e3f8b188480}
+      \strng{fullhash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \strng{bibnamehash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \strng{authorbibnamehash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \strng{authornamehash}{e001c936d4a9015262ad3e3f8b188480}
+      \strng{authorfullhash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{8}
+      \field{title}{Bartik instruments: What, when, why, and how}
+      \field{volume}{110}
+      \field{year}{2020}
+      \field{pages}{2586\bibrangedash 2624}
+      \range{pages}{39}
+    \endentry
+    \entry{henderson2012measuring}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1236e5f38bcb88483d0fa7419f61e73d}{%
+           family={Henderson},
+           familyi={H\bibinitperiod},
+           given={J\bibnamedelima Vernon},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=acda91dac77106c338b7df7f51eebb52}{%
+           family={Storeygard},
+           familyi={S\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f50e81634a8bede26e13b8343c2ab466}{%
+           family={Weil},
+           familyi={W\bibinitperiod},
+           given={David\bibnamedelima N},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{ec513ef5a2340db2f263fe2c82b41cfd}
+      \strng{fullhash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \strng{bibnamehash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \strng{authorbibnamehash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \strng{authornamehash}{ec513ef5a2340db2f263fe2c82b41cfd}
+      \strng{authorfullhash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American economic review}
+      \field{number}{2}
+      \field{title}{Measuring economic growth from outer space}
+      \field{volume}{102}
+      \field{year}{2012}
+      \field{pages}{994\bibrangedash 1028}
+      \range{pages}{35}
     \endentry
     \entry{islam2024measuring}{article}{}
       \name{author}{1}{}{%
@@ -728,6 +907,95 @@
       \field{pages}{275\bibrangedash 322}
       \range{pages}{48}
     \endentry
+    \entry{anderson2003gravity}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=698a0bb775e87a0470cd7b92a0a5cd24}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={James\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e3c0b200e02cd8b0fa7bad64abd3587a}{%
+           family={Wincoop},
+           familyi={W\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{fullhash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{bibnamehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{authorbibnamehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{authornamehash}{b66054bfc8f30f7edccc640a40e95837}
+      \strng{authorfullhash}{b66054bfc8f30f7edccc640a40e95837}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{Gravity with gravitas: A solution to the border puzzle}
+      \field{volume}{93}
+      \field{year}{2003}
+      \field{pages}{170\bibrangedash 192}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1257/000282803321455214
+      \endverb
+    \endentry
+    \entry{autor2013china}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=68f91bcaddbb4b488aea7cb0c43b670d}{%
+           family={Autor},
+           familyi={A\bibinitperiod},
+           given={David\bibnamedelima H},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8ed98663662c03115a1f8a6926baf48c}{%
+           family={Dorn},
+           familyi={D\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=24446967244bf7b38251395f8613c654}{%
+           family={Hanson},
+           familyi={H\bibinitperiod},
+           given={Gordon\bibnamedelima H},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{1f155a39c5c8e280b00e6bed0bf4143f}
+      \strng{fullhash}{720d30422eeddf188b369dde409da5ec}
+      \strng{bibnamehash}{720d30422eeddf188b369dde409da5ec}
+      \strng{authorbibnamehash}{720d30422eeddf188b369dde409da5ec}
+      \strng{authornamehash}{1f155a39c5c8e280b00e6bed0bf4143f}
+      \strng{authorfullhash}{720d30422eeddf188b369dde409da5ec}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American economic review}
+      \field{number}{6}
+      \field{title}{The China syndrome: Local labor market effects of import competition in the United States}
+      \field{volume}{103}
+      \field{year}{2013}
+      \field{pages}{2121\bibrangedash 2168}
+      \range{pages}{48}
+    \endentry
     \entry{ayesu2024estimating}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=69cf76ac89237e5214e0b6f8dcb317ee}{%
@@ -959,6 +1227,96 @@
       \field{year}{2017}
       \field{pages}{1}
       \range{pages}{1}
+    \endentry
+    \entry{goldsmith2020bartik}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f3ca973d5895ae6e5e148903f7218eca}{%
+           family={Goldsmith-Pinkham},
+           familyi={G\bibinithyphendelim P\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95a4c478dc1f368c14f4a266def33da7}{%
+           family={Sorkin},
+           familyi={S\bibinitperiod},
+           given={Isaac},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d82e901e935249954400a31db4bed9d5}{%
+           family={Swift},
+           familyi={S\bibinitperiod},
+           given={Henry},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203}%
+      }
+      \strng{namehash}{e001c936d4a9015262ad3e3f8b188480}
+      \strng{fullhash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \strng{bibnamehash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \strng{authorbibnamehash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \strng{authornamehash}{e001c936d4a9015262ad3e3f8b188480}
+      \strng{authorfullhash}{3ce4feea136f7f4ee132c83fd6e48abb}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{8}
+      \field{title}{Bartik instruments: What, when, why, and how}
+      \field{volume}{110}
+      \field{year}{2020}
+      \field{pages}{2586\bibrangedash 2624}
+      \range{pages}{39}
+    \endentry
+    \entry{henderson2012measuring}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1236e5f38bcb88483d0fa7419f61e73d}{%
+           family={Henderson},
+           familyi={H\bibinitperiod},
+           given={J\bibnamedelima Vernon},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=acda91dac77106c338b7df7f51eebb52}{%
+           family={Storeygard},
+           familyi={S\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f50e81634a8bede26e13b8343c2ab466}{%
+           family={Weil},
+           familyi={W\bibinitperiod},
+           given={David\bibnamedelima N},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{ec513ef5a2340db2f263fe2c82b41cfd}
+      \strng{fullhash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \strng{bibnamehash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \strng{authorbibnamehash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \strng{authornamehash}{ec513ef5a2340db2f263fe2c82b41cfd}
+      \strng{authorfullhash}{66942d6b752bc4b60f8d288c0d1ac5cd}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American economic review}
+      \field{number}{2}
+      \field{title}{Measuring economic growth from outer space}
+      \field{volume}{102}
+      \field{year}{2012}
+      \field{pages}{994\bibrangedash 1028}
+      \range{pages}{35}
     \endentry
     \entry{islam2024measuring}{article}{}
       \name{author}{1}{}{%

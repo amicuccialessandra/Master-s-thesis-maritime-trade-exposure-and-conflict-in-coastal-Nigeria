@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  3 OCT 2025 12:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  3 OCT 2025 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1585,7 +1585,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<sapienzalogo.pdf, id=62, 288.07625pt x 89.33376pt>
+<sapienzalogo.pdf, id=50, 288.07625pt x 89.33376pt>
 File: sapienzalogo.pdf Graphic file (type pdf)
 <use sapienzalogo.pdf>
 Package pdftex.def Info: sapienzalogo.pdf  used on input line 93.
@@ -1676,12 +1676,12 @@ Chapter 2.
 
 
 ]
-<immagini/conf_coast.pdf, id=112, 364.36125pt x 270.00874pt>
+<immagini/conf_coast.pdf, id=100, 364.36125pt x 270.00874pt>
 File: immagini/conf_coast.pdf Graphic file (type pdf)
 <use immagini/conf_coast.pdf>
 Package pdftex.def Info: immagini/conf_coast.pdf  used on input line 13.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/total_conflict.pdf, id=114, 364.36125pt x 270.00874pt>
+<immagini/total_conflict.pdf, id=102, 364.36125pt x 270.00874pt>
 File: immagini/total_conflict.pdf Graphic file (type pdf)
 <use immagini/total_conflict.pdf>
 Package pdftex.def Info: immagini/total_conflict.pdf  used on input line 23.
@@ -1693,95 +1693,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
 [3 <./immagini/conf_coast.pdf> <./immagini/total_conflict.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 32.
+(Font)              <10.95> on input line 33.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 32.
+(Font)              <8> on input line 33.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 32.
+(Font)              <6> on input line 33.
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--38
+Underfull \hbox (badness 10000) in paragraph at lines 37--39
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
 [4{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
 c}{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
 :/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<immagini/LSCI_shock.pdf, id=165, 364.36125pt x 270.00874pt>
+<immagini/LSCI_shock.pdf, id=152, 364.36125pt x 270.00874pt>
 File: immagini/LSCI_shock.pdf Graphic file (type pdf)
 <use immagini/LSCI_shock.pdf>
-Package pdftex.def Info: immagini/LSCI_shock.pdf  used on input line 46.
+Package pdftex.def Info: immagini/LSCI_shock.pdf  used on input line 47.
 (pdftex.def)             Requested size: 237.60242pt x 176.07214pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
 [5 <./immagini/LSCI_shock.pdf>]
-<immagini/ports.pdf, id=183, 364.36125pt x 270.00874pt>
+<immagini/ports.pdf, id=172, 364.36125pt x 270.00874pt>
 File: immagini/ports.pdf Graphic file (type pdf)
 <use immagini/ports.pdf>
-Package pdftex.def Info: immagini/ports.pdf  used on input line 64.
+Package pdftex.def Info: immagini/ports.pdf  used on input line 65.
 (pdftex.def)             Requested size: 190.07831pt x 140.85442pt.
-<immagini/distanza_porti_main_mappa.pdf, id=184, 722.7pt x 578.16pt>
+<immagini/distanza_porti_main_mappa.pdf, id=173, 722.7pt x 578.16pt>
 File: immagini/distanza_porti_main_mappa.pdf Graphic file (type pdf)
 <use immagini/distanza_porti_main_mappa.pdf>
 Package pdftex.def Info: immagini/distanza_porti_main_mappa.pdf  used on input 
-line 71.
+line 72.
 (pdftex.def)             Requested size: 190.07831pt x 152.0648pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
-[6 <./immagini/ports.pdf> <./immagini/distanza_porti_main_mappa.pdf>]
-<immagini/night 2009.pdf, id=206, 578.16pt x 361.35pt>
+[6]
+<immagini/night 2009.pdf, id=184, 578.16pt x 361.35pt>
 File: immagini/night 2009.pdf Graphic file (type pdf)
 <use immagini/night 2009.pdf>
-Package pdftex.def Info: immagini/night 2009.pdf  used on input line 92.
+Package pdftex.def Info: immagini/night 2009.pdf  used on input line 93.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2012.pdf, id=207, 578.16pt x 361.35pt>
+<immagini/night 2012.pdf, id=185, 578.16pt x 361.35pt>
 File: immagini/night 2012.pdf Graphic file (type pdf)
 <use immagini/night 2012.pdf>
-Package pdftex.def Info: immagini/night 2012.pdf  used on input line 98.
+Package pdftex.def Info: immagini/night 2012.pdf  used on input line 99.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2015.pdf, id=208, 578.16pt x 361.35pt>
+<immagini/night 2015.pdf, id=186, 578.16pt x 361.35pt>
 File: immagini/night 2015.pdf Graphic file (type pdf)
 <use immagini/night 2015.pdf>
-Package pdftex.def Info: immagini/night 2015.pdf  used on input line 103.
+Package pdftex.def Info: immagini/night 2015.pdf  used on input line 104.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2019.pdf, id=209, 578.16pt x 361.35pt>
+<immagini/night 2019.pdf, id=187, 578.16pt x 361.35pt>
 File: immagini/night 2019.pdf Graphic file (type pdf)
 <use immagini/night 2019.pdf>
-Package pdftex.def Info: immagini/night 2019.pdf  used on input line 108.
+Package pdftex.def Info: immagini/night 2019.pdf  used on input line 109.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
- [7 <./immagini/night 2009.pdf> <./immagini/night 2012.pdf> <./immagini/night 2
-015.pdf> <./immagini/night 2019.pdf>]
-<immagini/mean.pdf, id=254, 364.36125pt x 270.00874pt>
+<immagini/mean.pdf, id=189, 364.36125pt x 270.00874pt>
 File: immagini/mean.pdf Graphic file (type pdf)
 <use immagini/mean.pdf>
-Package pdftex.def Info: immagini/mean.pdf  used on input line 119.
+Package pdftex.def Info: immagini/mean.pdf  used on input line 120.
 (pdftex.def)             Requested size: 237.60242pt x 176.07214pt.
-) [8 <./immagini/mean.pdf>]
+) [7 <./immagini/ports.pdf> <./immagini/distanza_porti_main_mappa.pdf>]
+[8 <./immagini/night 2009.pdf> <./immagini/night 2012.pdf> <./immagini/night 20
+15.pdf> <./immagini/night 2019.pdf> <./immagini/mean.pdf>]
 \openout2 = `Cap_3.aux'.
 
  (Cap_3.tex
 Chapter 3.
-) [9
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+
+ []
+
+[9
 
 
 
 
-]
+]) [10]
 \openout2 = `Cap_4.aux'.
 
  (Cap_4.tex
 Chapter 4.
-) [10
+) [11
 
 
 
@@ -1791,24 +1796,24 @@ Chapter 4.
 
  (Cap_5.tex
 Chapter 5.
-) [11
+) [12
 
 
 
 
-] [12
+] [13
 
 
 
 
 
-] [13]
+] [14]
 \openout2 = `appendix.aux'.
 
- (appendix.tex) [14
+ (appendix.tex) [15
 
 
-] (ringraziamenti.tex) [15
+] (ringraziamenti.tex) [16
 
 
 
@@ -1819,33 +1824,34 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Tesi.out' has not changed.
-(rerunfilecheck)             Checksum: 34F7AAC5CA6B887AC0B1EA12086C16CE;1732.
+(rerunfilecheck)             Checksum: 954ADF46983CBAF999BD669B85434D72;1134.
 Package logreq Info: Writing requests to 'Tesi.run.xml'.
 \openout1 = `Tesi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45552 strings out of 474486
- 974439 string characters out of 5743755
- 1945088 words of memory out of 5000000
- 66934 multiletter control sequences out of 15000+600000
- 637859 words of font info for 162 fonts, out of 8000000 for 9000
+ 45572 strings out of 474486
+ 975315 string characters out of 5743755
+ 1944485 words of memory out of 5000000
+ 66954 multiletter control sequences out of 15000+600000
+ 631699 words of font info for 158 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,12n,131p,1582b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,13n,131p,1582b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
-><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><
-C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><
-C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><
-C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><
-C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb
-><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb
->
-Output written on Tesi.pdf (19 pages, 1245786 bytes).
+b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
+><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
+<C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C
+:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
+Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/
+Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/
+Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/
+Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C
+:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+Output written on Tesi.pdf (20 pages, 1284800 bytes).
 PDF statistics:
- 373 PDF objects out of 1000 (max. 8388607)
- 59 named destinations out of 1000 (max. 500000)
- 47284 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 391 PDF objects out of 1000 (max. 8388607)
+ 63 named destinations out of 1000 (max. 500000)
+ 43164 words of extra memory for PDF output out of 51595 (max. 10000000)
 
