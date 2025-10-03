@@ -5,10 +5,14 @@
 \draftfalse      % <-- DURANTE LA STESURA (veloce)
 % \draftfalse   % <-- PER LA VERSIONE FINALE (lenta ma completa)
 % --------------
-\usepackage{microtype}     
+\usepackage{microtype}  
+\usepackage{booktabs}
+\usepackage{adjustbox} 
+\usepackage{amsmath} 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{csquotes}
+\usepackage{rotating}
 \usepackage{imakeidx}
 \usepackage{graphicx}
 \graphicspath{{immagini/}} 
@@ -46,6 +50,7 @@
   \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
   \addspace\&\space}
 \usepackage[linguistics]{forest} %per dare i diagrammi: https://texdoc.org/serve/forest/0
+\newcommand{\sym}[1]{\ifmmode^{#1}\else\(^{#1}\)\fi}
 
 \newcommand*{\belowrulesepcolor}[1]{% 
   \noalign{% 

@@ -1,2 +1,84 @@
-\chapter{Risultati}
-\section{Analisi statistica}
+\chapter{Results}
+\begin{table}[htbp]
+	\centering
+	\caption{Correlation between port shocks and conflict: commercial vs all ports}
+	\label{tab:ports_main}
+	\begingroup
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\begin{adjustbox}{max width=\textwidth}
+		\begin{tabular}{lcccc}
+			\toprule
+			& (1) Commercial: total & (2) Commercial: split & (3) All ports: total & (4) All ports: split \\
+			\midrule
+			\textit{Total (commercial)} \\
+			indice2\_main        & -1.01e-07    &             &             &             \\
+			& (6.30e-08)   &             &             &             \\
+			\addlinespace[0.25em]
+			\textit{Split (commercial)} \\
+			indice2\_highNL      &              & -1.12e-07   &             &             \\
+			&              & (7.80e-08)  &             &             \\
+			indice2\_lowNL       &              & -5.61e-08\sym{***} &       &             \\
+			&              & (5.43e-09)  &             &             \\
+			\addlinespace[0.25em]
+			\textit{Total (all ports)} \\
+			indice2\_total       &              &             & -6.77e-08   &             \\
+			&              &             & (4.29e-08)  &             \\
+			\addlinespace[0.25em]
+			\textit{Split (all ports)} \\
+			indice2\_highNL      &              &             &             & -9.32e-08   \\
+			&              &             &             & (6.02e-08)  \\
+			indice2\_lowNL       &              &             &             & -1.81e-08   \\
+			&              &             &             & (1.82e-08)  \\
+			\addlinespace
+			log(nightlight)      & -0.879\sym{***} & -0.878\sym{***} & -0.870\sym{***} & -0.867\sym{***} \\
+			& (0.249)     & (0.248)     & (0.249)     & (0.249)     \\
+			\midrule
+			Observations         & 1,611       & 1,611       & 1,611       & 1,611       \\
+			Adj.\ $R^2$          & 0.662       & 0.662       & 0.661       & 0.662       \\
+			Within $R^2$         & 0.028       & 0.029       & 0.024       & 0.027       \\
+			RMSE                 & 1.806       & 1.805       & 1.810       & 1.807       \\
+			\bottomrule
+			\multicolumn{5}{l}{\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level.} \\
+			\multicolumn{5}{l}{\footnotesize 358 observations dropped due to RHS NA. Signif.: \sym{***} 0.01, \sym{**} 0.05, \sym{*} 0.1.}
+		\end{tabular}
+	\end{adjustbox}
+	\endgroup
+\end{table}
+
+\begin{sidewaystable}[htbp]
+	\centering
+	\caption{Regional heterogeneity and tribal heterogeneity (combined)}
+	\label{tab:hetero_all}
+	\scriptsize
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{lcc|cc|cc}
+		\hline
+		& \multicolumn{2}{c|}{East vs West} & \multicolumn{2}{c|}{North vs South} & \multicolumn{2}{c}{Nightlights $\times$ Tribal heterogeneity} \\
+		& Est & Ovest & Nord & Sud & (1) & (2) \\
+		\hline
+		indice2\_est       & -1.6297e-07 * & -7.45e-09 &   &   &   &   \\
+		& (8.24e-08)    & (4.76e-08)&   &   &   &   \\
+		indice2\_nord      &   &   & -7.45e-09 &   &   &   \\
+		&   &   & (4.76e-08)&   &   &   \\
+		indice2\_sud       &   &   & -1.6298e-07 * &   &   &   \\
+		&   &   & (8.24e-08)    &   &   &   \\
+		indice2\_lowNL     &   &   &   &   & 0.000055858 & -5.60e-08 *** \\
+		&   &   &   &   & (0.0000416) & (5.47e-09) \\
+		indice2\_highNL    &   &   &   &   & -1.12e-07   & -1.119e-07 \\
+		&   &   &   &   & (7.81e-08)  & (7.807e-08) \\
+		indice2\_lowNL\_tribe &   &   &   &   & -0.000055914 &   \\
+		&   &   &   &   & (0.0000416)   &   \\
+		indice2\_lowNL\_frac  &   &   &   &   &   & 0.0000392348 \\
+		&   &   &   &   &   & (0.00002898) \\
+		log(nightlight)    & -0.884 *** & -0.884 *** & -0.884 *** & -0.884 *** & -0.8769 *** & -0.8769 *** \\
+		& (0.2493)   & (0.2493)   & (0.2493)   & (0.2493)   & (0.2481)    & (0.2481) \\
+		\hline
+		Observations       & \multicolumn{2}{c|}{1,611} & \multicolumn{2}{c|}{1,611} & 1,611 & 1,611 \\
+		Adj. R$^2$         & \multicolumn{2}{c|}{0.665} & \multicolumn{2}{c|}{0.665} & 0.662 & 0.662 \\
+		Within R$^2$       & \multicolumn{2}{c|}{0.0361}& \multicolumn{2}{c|}{0.0361}& 0.0289& 0.0289 \\
+		RMSE               & \multicolumn{2}{c|}{1.799} & \multicolumn{2}{c|}{1.799} & 1.805 & 1.805 \\
+		\hline
+		\multicolumn{7}{l}{\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level.} \\
+		\multicolumn{7}{l}{\footnotesize 358 obs. dropped due to RHS NA. Signif.: *** 0.01, ** 0.05, * 0.1.}
+	\end{tabular}
+\end{sidewaystable}

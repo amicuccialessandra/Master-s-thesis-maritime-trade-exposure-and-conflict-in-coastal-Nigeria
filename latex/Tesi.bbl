@@ -302,6 +302,42 @@
       \field{pages}{8589\bibrangedash 8594}
       \range{pages}{6}
     \endentry
+    \entry{dixcarneiro2023globalization}{report}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e14b3be0e610d4b9cb46222a17bf3ed4}{%
+           family={Dix-Carneiro},
+           familyi={D\bibinithyphendelim C\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95d75e9e7556b93ab8587e825f40b6ce}{%
+           family={Kovak},
+           familyi={K\bibinitperiod},
+           given={Brian\bibnamedelima K},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{53d082052d536895a1f620799fd65230}
+      \strng{fullhash}{53d082052d536895a1f620799fd65230}
+      \strng{bibnamehash}{53d082052d536895a1f620799fd65230}
+      \strng{authorbibnamehash}{53d082052d536895a1f620799fd65230}
+      \strng{authornamehash}{53d082052d536895a1f620799fd65230}
+      \strng{authorfullhash}{53d082052d536895a1f620799fd65230}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{w31459}
+      \field{title}{Globalization and inequality in Latin America}
+      \field{type}{techreport}
+      \field{year}{2023}
+    \endentry
     \entry{dube2013commodity}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=ecea97296767018eed40755280d05353}{%
@@ -1112,6 +1148,42 @@
       \field{year}{2011}
       \field{pages}{8589\bibrangedash 8594}
       \range{pages}{6}
+    \endentry
+    \entry{dixcarneiro2023globalization}{report}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e14b3be0e610d4b9cb46222a17bf3ed4}{%
+           family={Dix-Carneiro},
+           familyi={D\bibinithyphendelim C\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95d75e9e7556b93ab8587e825f40b6ce}{%
+           family={Kovak},
+           familyi={K\bibinitperiod},
+           given={Brian\bibnamedelima K},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{53d082052d536895a1f620799fd65230}
+      \strng{fullhash}{53d082052d536895a1f620799fd65230}
+      \strng{bibnamehash}{53d082052d536895a1f620799fd65230}
+      \strng{authorbibnamehash}{53d082052d536895a1f620799fd65230}
+      \strng{authornamehash}{53d082052d536895a1f620799fd65230}
+      \strng{authorfullhash}{53d082052d536895a1f620799fd65230}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{w31459}
+      \field{title}{Globalization and inequality in Latin America}
+      \field{type}{techreport}
+      \field{year}{2023}
     \endentry
     \entry{dube2013commodity}{article}{}
       \name{author}{2}{}{%
