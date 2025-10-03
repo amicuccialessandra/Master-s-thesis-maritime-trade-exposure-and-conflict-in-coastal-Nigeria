@@ -1,21 +1,21 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [1] Config.pm:310> INFO - Logfile is 'Tesi.blg'
-[297] biber-MSWIN64:340> INFO - === 
-[384] Biber.pm:419> INFO - Reading 'Tesi.bcf'
-[800] Biber.pm:979> INFO - Found 20 citekeys in bib section 0
-[853] Biber.pm:4419> INFO - Processing section 0
-[883] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[1032] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1173] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[1646] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1647] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1647] Biber.pm:4239> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1647] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[1746] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1746] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1746] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1746] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[1808] bbl.pm:660> INFO - Writing 'Tesi.bbl' with encoding 'UTF-8'
-[1881] bbl.pm:763> INFO - Output to Tesi.bbl
-[1885] Biber.pm:131> WARN - Duplicate entry key: 'berman2015external' in file 'bibliografia.bib', skipping ...
-[1885] Biber.pm:133> INFO - WARNINGS: 1
+[374] biber-MSWIN64:340> INFO - === 
+[547] Biber.pm:419> INFO - Reading 'Tesi.bcf'
+[1109] Biber.pm:979> INFO - Found 20 citekeys in bib section 0
+[1184] Biber.pm:4419> INFO - Processing section 0
+[1238] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[1453] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1679] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[2408] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2409] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2409] Biber.pm:4239> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[2409] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[2608] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2608] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2608] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[2608] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[2727] bbl.pm:660> INFO - Writing 'Tesi.bbl' with encoding 'UTF-8'
+[2843] bbl.pm:763> INFO - Output to Tesi.bbl
+[2844] Biber.pm:131> WARN - Duplicate entry key: 'berman2015external' in file 'bibliografia.bib', skipping ...
+[2844] Biber.pm:133> INFO - WARNINGS: 1
