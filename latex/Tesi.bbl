@@ -48,6 +48,49 @@
       \verb https://acleddata.com/
       \endverb
     \endentry
+    \entry{amodio2021security}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f7aebc23d8e768daea2e594c140b6695}{%
+           family={Amodio},
+           familyi={A\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0cedb72ee8d71d33d9ad162740cb747c}{%
+           family={Baccini},
+           familyi={B\bibinitperiod},
+           given={Leonardo},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=98bc9193337e8f2903ac5d77ae700d5a}{%
+           family={Di\bibnamedelima Maio},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Michele},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{23ac75459bd48a98e1cdfeedceab2af5}
+      \strng{fullhash}{5772d36de0a42737444e5054fa711590}
+      \strng{bibnamehash}{5772d36de0a42737444e5054fa711590}
+      \strng{authorbibnamehash}{5772d36de0a42737444e5054fa711590}
+      \strng{authornamehash}{23ac75459bd48a98e1cdfeedceab2af5}
+      \strng{authorfullhash}{5772d36de0a42737444e5054fa711590}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the European Economic Association}
+      \field{number}{1}
+      \field{title}{Security, trade, and political violence}
+      \field{volume}{19}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 37}
+      \range{pages}{37}
+    \endentry
     \entry{amodio2024trade}{article}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=f7aebc23d8e768daea2e594c140b6695}{%
@@ -81,6 +124,7 @@
       \strng{authorbibnamehash}{079020ca6c0d588aee119bf60327ea29}
       \strng{authornamehash}{23ac75459bd48a98e1cdfeedceab2af5}
       \strng{authorfullhash}{079020ca6c0d588aee119bf60327ea29}
+      \field{extraname}{2}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradatescope}{labelyear}
@@ -263,6 +307,96 @@
       \field{pages}{758\bibrangedash 776}
       \range{pages}{19}
     \endentry
+    \entry{berman2017mine}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=a000626c010fec5d737919e2b131a755}{%
+           family={Berman},
+           familyi={B\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b36e1263be60ed4f8946693acf036ad4}{%
+           family={Couttenier},
+           familyi={C\bibinitperiod},
+           given={Mathieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72251d240c97b0eb862cd6f9f5ae7cea}{%
+           family={Rohner},
+           familyi={R\bibinitperiod},
+           given={Dominic},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d355eeb0ecb58ba79be7d15a83350f6}{%
+           family={Thoenig},
+           familyi={T\bibinitperiod},
+           given={Mathias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203}%
+      }
+      \strng{namehash}{fd9186d06c48747083f6ea79df70981a}
+      \strng{fullhash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \strng{bibnamehash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \strng{authorbibnamehash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \strng{authornamehash}{fd9186d06c48747083f6ea79df70981a}
+      \strng{authorfullhash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{6}
+      \field{title}{This mine is mine! How minerals fuel conflicts in Africa}
+      \field{volume}{107}
+      \field{year}{2017}
+      \field{pages}{1564\bibrangedash 1610}
+      \range{pages}{47}
+    \endentry
+    \entry{bruckner2010international}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a229e1896fd80ca215dfffa1f4eb8bb3}{%
+           family={Brückner},
+           familyi={B\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ce6c1a0b3f5af2b9dc4f01383688d504}{%
+           family={Ciccone},
+           familyi={C\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press Oxford, UK}%
+      }
+      \strng{namehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{fullhash}{443d38704e04a8e40493613ce19824c0}
+      \strng{bibnamehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{authorbibnamehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{authornamehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{authorfullhash}{443d38704e04a8e40493613ce19824c0}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{544}
+      \field{title}{International commodity prices, growth and the outbreak of civil war in Sub-Saharan Africa}
+      \field{volume}{120}
+      \field{year}{2010}
+      \field{pages}{519\bibrangedash 534}
+      \range{pages}{16}
+    \endentry
     \entry{chen2011using}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=c6649d02b24225ca4c9012cee6c790de}{%
@@ -301,6 +435,45 @@
       \field{year}{2011}
       \field{pages}{8589\bibrangedash 8594}
       \range{pages}{6}
+    \endentry
+    \entry{collier2004greed}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=27c0d70e2ccc0d27aad2e650cc1a8f50}{%
+           family={Collier},
+           familyi={C\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f73a2829216f229d7f015cfb6683a09f}{%
+           family={Hoeffler},
+           familyi={H\bibinitperiod},
+           given={Anke},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{fullhash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{bibnamehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{authorbibnamehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{authornamehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{authorfullhash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Oxford economic papers}
+      \field{number}{4}
+      \field{title}{Greed and grievance in civil war}
+      \field{volume}{56}
+      \field{year}{2004}
+      \field{pages}{563\bibrangedash 595}
+      \range{pages}{33}
     \endentry
     \entry{dixcarneiro2023globalization}{report}{}
       \name{author}{2}{}{%
@@ -413,6 +586,38 @@
       \field{labeltitlesource}{title}
       \field{title}{Time efficiency at world container ports}
       \field{year}{2014}
+    \endentry
+    \entry{FAO_GAEZ_2020_dataset}{dataset}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4807e0aebe86c17f559853f35515b533}{%
+           family={{FAO}},
+           familyi={F\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=2197675a39e19b507982885a9be24aa4}{%
+           family={{IIASA}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{3}{%
+        {Food}%
+        {Agriculture Organization of the United Nations (FAO)}%
+        {International Institute for Applied Systems Analysis (IIASA)}%
+      }
+      \strng{namehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{fullhash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{bibnamehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{authorbibnamehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{authornamehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{authorfullhash}{46b466f1506621d9e4f50f76adb89e41}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://gaez.fao.org/pages/data-access-download}}
+      \field{note}{Accessed: September 2025}
+      \field{title}{Global Agro-Ecological Zones (GAEZ v4) Data Portal}
+      \field{year}{2020}
     \endentry
     \entry{fugazza2017liner}{article}{}
       \name{author}{2}{}{%
@@ -618,6 +823,48 @@
       \field{pages}{168}
       \range{pages}{1}
     \endentry
+    \entry{martin2008civil}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=49e06b153058ea7520df6d3267f7696d}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fc95c9fb4c5e99cb7da7470c88d68f5d}{%
+           family={Mayer},
+           familyi={M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d355eeb0ecb58ba79be7d15a83350f6}{%
+           family={Thoenig},
+           familyi={T\bibinitperiod},
+           given={Mathias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ce660d3f9bfb4da1e433107fb6d68fe1}
+      \strng{fullhash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \strng{bibnamehash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \strng{authorbibnamehash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \strng{authornamehash}{ce660d3f9bfb4da1e433107fb6d68fe1}
+      \strng{authorfullhash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the European Economic Association}
+      \field{number}{2-3}
+      \field{title}{Civil wars and international trade}
+      \field{volume}{6}
+      \field{year}{2008}
+      \field{pages}{541\bibrangedash 550}
+      \range{pages}{10}
+    \endentry
     \entry{mcguirk2020economic}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=3755eddb0206a8b6b3aacf81463a92f3}{%
@@ -656,6 +903,45 @@
       \field{year}{2020}
       \field{pages}{3940\bibrangedash 3997}
       \range{pages}{58}
+    \endentry
+    \entry{michalopoulos2013pre}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=47868c27dab1bfb4ca9594dcde7a64b4}{%
+           family={Michalopoulos},
+           familyi={M\bibinitperiod},
+           given={Stelios},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2ab76ca03f3d91f0157de10a34760ab0}{%
+           family={Papaioannou},
+           familyi={P\bibinitperiod},
+           given={Elias},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{fullhash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{bibnamehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{authorbibnamehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{authornamehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{authorfullhash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{1}
+      \field{title}{Pre-colonial ethnic institutions and contemporary African development}
+      \field{volume}{81}
+      \field{year}{2013}
+      \field{pages}{113\bibrangedash 152}
+      \range{pages}{40}
     \endentry
     \entry{mishra2021robust}{article}{}
       \name{author}{5}{}{%
@@ -823,7 +1109,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 30 September 2025}
+      \field{note}{Accessed: September 2025}
       \field{title}{Liner Shipping Connectivity Index (LSCI)}
       \field{year}{2025}
       \verb{urlraw}
@@ -854,7 +1140,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 30 September 2025}
+      \field{note}{Accessed: September 2025}
       \field{title}{UNCTADstat - Container Port Throughput}
       \field{year}{2025}
       \verb{urlraw}
@@ -928,6 +1214,7 @@
       \strng{authorbibnamehash}{079020ca6c0d588aee119bf60327ea29}
       \strng{authornamehash}{23ac75459bd48a98e1cdfeedceab2af5}
       \strng{authorfullhash}{079020ca6c0d588aee119bf60327ea29}
+      \field{extraname}{1}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradatescope}{labelyear}
@@ -942,6 +1229,49 @@
       \field{year}{2024}
       \field{pages}{275\bibrangedash 322}
       \range{pages}{48}
+    \endentry
+    \entry{amodio2021security}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f7aebc23d8e768daea2e594c140b6695}{%
+           family={Amodio},
+           familyi={A\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0cedb72ee8d71d33d9ad162740cb747c}{%
+           family={Baccini},
+           familyi={B\bibinitperiod},
+           given={Leonardo},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=98bc9193337e8f2903ac5d77ae700d5a}{%
+           family={Di\bibnamedelima Maio},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Michele},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{23ac75459bd48a98e1cdfeedceab2af5}
+      \strng{fullhash}{5772d36de0a42737444e5054fa711590}
+      \strng{bibnamehash}{5772d36de0a42737444e5054fa711590}
+      \strng{authorbibnamehash}{5772d36de0a42737444e5054fa711590}
+      \strng{authornamehash}{23ac75459bd48a98e1cdfeedceab2af5}
+      \strng{authorfullhash}{5772d36de0a42737444e5054fa711590}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the European Economic Association}
+      \field{number}{1}
+      \field{title}{Security, trade, and political violence}
+      \field{volume}{19}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 37}
+      \range{pages}{37}
     \endentry
     \entry{anderson2003gravity}{article}{}
       \name{author}{2}{}{%
@@ -1110,6 +1440,96 @@
       \field{pages}{758\bibrangedash 776}
       \range{pages}{19}
     \endentry
+    \entry{berman2017mine}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=a000626c010fec5d737919e2b131a755}{%
+           family={Berman},
+           familyi={B\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b36e1263be60ed4f8946693acf036ad4}{%
+           family={Couttenier},
+           familyi={C\bibinitperiod},
+           given={Mathieu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72251d240c97b0eb862cd6f9f5ae7cea}{%
+           family={Rohner},
+           familyi={R\bibinitperiod},
+           given={Dominic},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d355eeb0ecb58ba79be7d15a83350f6}{%
+           family={Thoenig},
+           familyi={T\bibinitperiod},
+           given={Mathias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203}%
+      }
+      \strng{namehash}{fd9186d06c48747083f6ea79df70981a}
+      \strng{fullhash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \strng{bibnamehash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \strng{authorbibnamehash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \strng{authornamehash}{fd9186d06c48747083f6ea79df70981a}
+      \strng{authorfullhash}{7f8711b1ed36a29c37446b7278f1f8a6}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{6}
+      \field{title}{This mine is mine! How minerals fuel conflicts in Africa}
+      \field{volume}{107}
+      \field{year}{2017}
+      \field{pages}{1564\bibrangedash 1610}
+      \range{pages}{47}
+    \endentry
+    \entry{bruckner2010international}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a229e1896fd80ca215dfffa1f4eb8bb3}{%
+           family={Brückner},
+           familyi={B\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ce6c1a0b3f5af2b9dc4f01383688d504}{%
+           family={Ciccone},
+           familyi={C\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press Oxford, UK}%
+      }
+      \strng{namehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{fullhash}{443d38704e04a8e40493613ce19824c0}
+      \strng{bibnamehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{authorbibnamehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{authornamehash}{443d38704e04a8e40493613ce19824c0}
+      \strng{authorfullhash}{443d38704e04a8e40493613ce19824c0}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{544}
+      \field{title}{International commodity prices, growth and the outbreak of civil war in Sub-Saharan Africa}
+      \field{volume}{120}
+      \field{year}{2010}
+      \field{pages}{519\bibrangedash 534}
+      \range{pages}{16}
+    \endentry
     \entry{chen2011using}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=c6649d02b24225ca4c9012cee6c790de}{%
@@ -1148,6 +1568,45 @@
       \field{year}{2011}
       \field{pages}{8589\bibrangedash 8594}
       \range{pages}{6}
+    \endentry
+    \entry{collier2004greed}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=27c0d70e2ccc0d27aad2e650cc1a8f50}{%
+           family={Collier},
+           familyi={C\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f73a2829216f229d7f015cfb6683a09f}{%
+           family={Hoeffler},
+           familyi={H\bibinitperiod},
+           given={Anke},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{fullhash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{bibnamehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{authorbibnamehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{authornamehash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \strng{authorfullhash}{6f3b4c4271d0a7c6e7a837db7f8db380}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Oxford economic papers}
+      \field{number}{4}
+      \field{title}{Greed and grievance in civil war}
+      \field{volume}{56}
+      \field{year}{2004}
+      \field{pages}{563\bibrangedash 595}
+      \range{pages}{33}
     \endentry
     \entry{dixcarneiro2023globalization}{report}{}
       \name{author}{2}{}{%
@@ -1260,6 +1719,38 @@
       \field{labeltitlesource}{title}
       \field{title}{Time efficiency at world container ports}
       \field{year}{2014}
+    \endentry
+    \entry{FAO_GAEZ_2020_dataset}{dataset}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4807e0aebe86c17f559853f35515b533}{%
+           family={{FAO}},
+           familyi={F\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=2197675a39e19b507982885a9be24aa4}{%
+           family={{IIASA}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{3}{%
+        {Food}%
+        {Agriculture Organization of the United Nations (FAO)}%
+        {International Institute for Applied Systems Analysis (IIASA)}%
+      }
+      \strng{namehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{fullhash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{bibnamehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{authorbibnamehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{authornamehash}{46b466f1506621d9e4f50f76adb89e41}
+      \strng{authorfullhash}{46b466f1506621d9e4f50f76adb89e41}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://gaez.fao.org/pages/data-access-download}}
+      \field{note}{Accessed: September 2025}
+      \field{title}{Global Agro-Ecological Zones (GAEZ v4) Data Portal}
+      \field{year}{2020}
     \endentry
     \entry{fugazza2017liner}{article}{}
       \name{author}{2}{}{%
@@ -1465,6 +1956,48 @@
       \field{pages}{168}
       \range{pages}{1}
     \endentry
+    \entry{martin2008civil}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=49e06b153058ea7520df6d3267f7696d}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fc95c9fb4c5e99cb7da7470c88d68f5d}{%
+           family={Mayer},
+           familyi={M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d355eeb0ecb58ba79be7d15a83350f6}{%
+           family={Thoenig},
+           familyi={T\bibinitperiod},
+           given={Mathias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ce660d3f9bfb4da1e433107fb6d68fe1}
+      \strng{fullhash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \strng{bibnamehash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \strng{authorbibnamehash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \strng{authornamehash}{ce660d3f9bfb4da1e433107fb6d68fe1}
+      \strng{authorfullhash}{97dd52bfbe4ec1625db082c6fce60fc1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the European Economic Association}
+      \field{number}{2-3}
+      \field{title}{Civil wars and international trade}
+      \field{volume}{6}
+      \field{year}{2008}
+      \field{pages}{541\bibrangedash 550}
+      \range{pages}{10}
+    \endentry
     \entry{mcguirk2020economic}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=3755eddb0206a8b6b3aacf81463a92f3}{%
@@ -1503,6 +2036,45 @@
       \field{year}{2020}
       \field{pages}{3940\bibrangedash 3997}
       \range{pages}{58}
+    \endentry
+    \entry{michalopoulos2013pre}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=47868c27dab1bfb4ca9594dcde7a64b4}{%
+           family={Michalopoulos},
+           familyi={M\bibinitperiod},
+           given={Stelios},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2ab76ca03f3d91f0157de10a34760ab0}{%
+           family={Papaioannou},
+           familyi={P\bibinitperiod},
+           given={Elias},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{fullhash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{bibnamehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{authorbibnamehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{authornamehash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \strng{authorfullhash}{0fd27aaa2ba21c2b42e77f0e7a72d538}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{1}
+      \field{title}{Pre-colonial ethnic institutions and contemporary African development}
+      \field{volume}{81}
+      \field{year}{2013}
+      \field{pages}{113\bibrangedash 152}
+      \range{pages}{40}
     \endentry
     \entry{mishra2021robust}{article}{}
       \name{author}{5}{}{%
@@ -1670,7 +2242,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 30 September 2025}
+      \field{note}{Accessed: September 2025}
       \field{title}{Liner Shipping Connectivity Index (LSCI)}
       \field{year}{2025}
       \verb{urlraw}
@@ -1701,7 +2273,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 30 September 2025}
+      \field{note}{Accessed: September 2025}
       \field{title}{UNCTADstat - Container Port Throughput}
       \field{year}{2025}
       \verb{urlraw}

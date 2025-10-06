@@ -1,4 +1,6 @@
 \chapter{Results}
+In what follows, we present the results. Table
+\ref{tab:ports_main} reports the estimates of the main coefficient from Equation \eqref{eq1} and \eqref{eq2}.
 \begin{table}[htbp]
 	\centering
 	\caption{Correlation between port shocks and conflict: commercial vs all ports}
@@ -45,40 +47,144 @@
 	\endgroup
 \end{table}
 
-\begin{sidewaystable}[htbp]
-	\centering
-	\caption{Regional heterogeneity and tribal heterogeneity (combined)}
+It shows the results of the baseline specification, comparing the commercial ports with the broader set of Nigerian ports. 
+Column (1) and (2) focus exclusively on the commercial ports, while Columns (3)–(4) include all ports as a falsification test. \\ Starting from Column (1), the results indicates that the aggregate coefficient on the exposure index is small and not not statistically significant. However, when the sample is split between high- and low-nightlight areas, as in Column (2), a strong heterogeneity emerges. his split distinguishes ADM2 units by local economic development, proxied by night time lights (as detailed in the Data section): where the areas with higher income are the ones with values above the 75 percentile \parencite{amodio2024trade, henderson2012measuring}. \\
+In the areas with reatevely low levels of nightlights, the effect of the commercial shock is negative and statistically significant, suggesting that a greater exposure maritme trade reduces the likelihood of consumption-based conflicts %by approximately 6\%.
+In contrast the coefficient is close to zero in the more developed area. This model is coherent with the intuition that the external trade shocks have stronger effect where the local economies are less diversified and more vulnerable to changes in global market integration \parencite{berman2015external}. Thus distance from commercial ports is particularly important in the less developed regions, amplifying the regulatory effect of the trade shocks. This finding is especially relevant given that less developed areas are also more likely to have conflict \parencite{collier2004greed, bruckner2010international} \\
+
+Columns (3)–(4) serve as a falsification test. If the relationship was determined solely by proximity with any port, not only the commercial one, we would expect similar effects when all ten Nigerian ports are included.
+Columns 3 and 4 extend the analysis, considering all nigerian ports, regardless their commercial activity. The results show weaker and not statistically significant coefficients, both for the aggregate and the splitted samples.
+The absence of an effect reinforces the interpretation that the mechanism is specificaly linked to international trade flows, rather than mere geographic proximity. \\
+
+Overall, the results suggest that the link between trade and conflict is neither mechanic nor omnipresent, it rather depends commercial relevance of ports and the level of local economic development. The coefficients support the idea that international integration can provide stabilising benefit in the peripherical regions, and so the less developed ones economically speaking,while its marginal impact in more developed areas remains limited.\\
+\section{Heterogeneity}
+
+\begin{table}[htbp]
+	\caption{Regional and sectoral heterogeneity (combined)}
 	\label{tab:hetero_all}
+	
 	\scriptsize
 	\setlength{\tabcolsep}{4pt}
-	\begin{tabular}{lcc|cc|cc}
-		\hline
-		& \multicolumn{2}{c|}{East vs West} & \multicolumn{2}{c|}{North vs South} & \multicolumn{2}{c}{Nightlights $\times$ Tribal heterogeneity} \\
-		& Est & Ovest & Nord & Sud & (1) & (2) \\
-		\hline
-		indice2\_est       & -1.6297e-07 * & -7.45e-09 &   &   &   &   \\
-		& (8.24e-08)    & (4.76e-08)&   &   &   &   \\
-		indice2\_nord      &   &   & -7.45e-09 &   &   &   \\
-		&   &   & (4.76e-08)&   &   &   \\
-		indice2\_sud       &   &   & -1.6298e-07 * &   &   &   \\
-		&   &   & (8.24e-08)    &   &   &   \\
-		indice2\_lowNL     &   &   &   &   & 0.000055858 & -5.60e-08 *** \\
-		&   &   &   &   & (0.0000416) & (5.47e-09) \\
-		indice2\_highNL    &   &   &   &   & -1.12e-07   & -1.119e-07 \\
-		&   &   &   &   & (7.81e-08)  & (7.807e-08) \\
-		indice2\_lowNL\_tribe &   &   &   &   & -0.000055914 &   \\
-		&   &   &   &   & (0.0000416)   &   \\
-		indice2\_lowNL\_frac  &   &   &   &   &   & 0.0000392348 \\
-		&   &   &   &   &   & (0.00002898) \\
-		log(nightlight)    & -0.884 *** & -0.884 *** & -0.884 *** & -0.884 *** & -0.8769 *** & -0.8769 *** \\
-		& (0.2493)   & (0.2493)   & (0.2493)   & (0.2493)   & (0.2481)    & (0.2481) \\
-		\hline
-		Observations       & \multicolumn{2}{c|}{1,611} & \multicolumn{2}{c|}{1,611} & 1,611 & 1,611 \\
-		Adj. R$^2$         & \multicolumn{2}{c|}{0.665} & \multicolumn{2}{c|}{0.665} & 0.662 & 0.662 \\
-		Within R$^2$       & \multicolumn{2}{c|}{0.0361}& \multicolumn{2}{c|}{0.0361}& 0.0289& 0.0289 \\
-		RMSE               & \multicolumn{2}{c|}{1.799} & \multicolumn{2}{c|}{1.799} & 1.805 & 1.805 \\
-		\hline
-		\multicolumn{7}{l}{\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level.} \\
-		\multicolumn{7}{l}{\footnotesize 358 obs. dropped due to RHS NA. Signif.: *** 0.01, ** 0.05, * 0.1.}
-	\end{tabular}
-\end{sidewaystable}
+	\renewcommand{\arraystretch}{1.05}
+	\textbf{Panel A. Index effects} \\
+	% --- PANEL A ---
+	\resizebox{1\textwidth}{!}{
+		\begin{tabular}{lc|c|c}
+			\hline
+			& East vs West
+			& Chemicals vs Vegetables
+			& Export vs Import \\
+			\hline
+			
+			indice2\_est & -1.63e-07 *  & &\\
+			& (8.24e-08)   &   &                    \\
+			indice2\_west &  -7.45e-09 & &\\
+			&    (4.76e-08)   & &                 \\
+			indice2\_main\_veg  &  & -1.63e-07 * &  \\
+			&  & (8.24e-08) &  \\
+			indice2\_main\_chem &  & -1.56e-07 & \\
+			& &   (1.27e-07) &  \\
+			indice2\_main\_exp   & & & 2.13e-09 \\
+			 & & & (3.29e-08) \\
+			indice2\_main\_imp  & & &  -2.55e-07 *** \\
+			 & & &  (5.84e-08) \\
+			\addlinespace[2pt]
+			\textit{Controls} \\
+			log(nightlight) & -0.884 *** & -0.884 *** & -0.884 ***  \\
+			 & (0.2493) & (0.2493) & (0.2470) \\
+			\hline
+			Observations 1,611 & 1,611 &1,611 & 1,611\\
+			Adj. R$^2$    &0.665& 0.665 &0.670\\
+			Within R$^2$  &0.0361& 0.0361 & 0.0499\\
+			RMSE          & 1.799 & 1.799 & 1.786\\
+			\hline
+		\end{tabular}
+	} % fine resize Panel A
+	
+	\vspace{4pt}
+	\textbf{Panel B. Average nightlights (mean / median / sd)}\\[2pt]
+	% --- PANEL B (stessa larghezza del Panel A) ---
+	\tiny
+	\resizebox{0.8\textwidth}{!}{%
+		\begin{tabular}{lcccccccc}
+			\toprule
+			Group && Mean NL && Median NL && SD NL && N \\
+			\midrule
+			East && 9.78 && 6.57 && 10.4 && 979 \\
+			West && 16.8 && 8.91 && 18.9 && 990 \\
+			\midrule
+			Chemicals && 16.5 && 8.41 && 19.2 && 957 \\
+			Vegetables && 10.3 && 6.76 && 10.6 && 1,012 \\
+			\midrule
+			Export && 16.4 && 9.17 && 17.9 && 1,199 \\
+			Import && 8.48 && 5.83 && 9.52 && 770 \\
+			\bottomrule
+		\end{tabular}
+	} % fine resize Panel B
+	\vspace{3pt}
+	\\[2pt]
+	\begin{minipage}{0.95\textwidth}
+		\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level. 358 obs. dropped due to RHS NA.  
+		Signif.: *** 0.01, ** 0.05, * 0.1.  
+		NL = nightlights (mean annual radiance, harmonized DMSP-OLS/VIIRS). ADM2-level averages, 2009–2019.
+	\end{minipage}
+\end{table}
+
+
+After establishing the baseline relationship, we explore whether the estimated effects vary across Nigeria’s main macro-regions and according to local social fragmentation. Table \ref{tab:hetero_all} combines these dimensions of heterogeneity: Panel A shows how the trade–conflict link differs across regions and sectors, whereas Panel B reports the corresponding nightlight averages, illustrating the underlying economic disparities between groups.\\
+
+\textit{Geography}. Columns (1) investigates geographic heterogeneity: the index is interacted with East/West dummies defined by the median longitude of coastal ADM2 centroids (details in Appendix B.1). The estimated effect is more negative and statistically stronger in the eastern belt—areas that are poorer and more connected to maritime activity—consistent with a vulnerability-to-trade mechanism.
+A detailed discussion of the spatial correlation between the macro-regional partition, together with corresponding maps, is reported in Appendix~B.1.\\
+
+These patterns mirror the spatial distribution of economic development (Panel B). Nightlight data shows that 
+western ADM2s exhibit higher and more dispersed nightlight values—largely driven by the Lagos metropolitan area—while eastern units are uniformly dimmer, reflecting a more rural and less industrialized economic structure. In this case, the gap between richer and poorer areas (as proxied by nightlights) is particularly pronounced.
+Detailed maps, descriptive statistics of night-lights by region, and additional robustness checks are reported in Appendix B.2.\\
+
+\textit{Sector.} Columns (2)-(3) reports the sector heterogeneity: the index is interacted with two different sets of dummies: (i) the predominant type of industry traded through each port — either chemical or vegetable products (the two main sectors after minerals, based on data from IMF PortWatch, available since 2019 and used here as a proxy); and (ii) the predominant trade flow orientation, that is, whether the port handles mainly imports or exports (also based on data from IMF Portwatch). The estimated effect is negative and statistically significant for vegetables and imports. For presentation purposes, we refer to the coefficients as $\text{index}\_{veg}$ and $\text{index}\_{chem}$ (or $\text{index}\_{exp}$ and $\text{index}\_{imp}$), where the former represents the baseline effect and the latter includes the interaction term.
+The stronger and statistically significant effects observed for vegetable and import-oriented ports suggest that not only proximity and structural economic conditions matter, but also the nature and direction of trade flows. The results are consistent with previous findings that trade in basic consumption goods, such as agricultural products, can mitigate conflict by stabilizing local prices and incomes (\parencite{mcguirk2020economic}). The effect for vegetable-oriented ports is also  consistent with what is shown by \textcite{amodio2024trade}: regions with lower nightlight intensity, typically linked to agricultural activity, are more vulnerable to economic shocks, suggesting that the welfare channel of trade is particularly relevant in such contexts. Similarly, import flows—particularly of essential goods—may enhance welfare and reduce consumption-related tensions \parencite{bruckner2010international, dube2013commodity}. Overall, these patterns reinforce the idea that trade integration contributes to stability primarily through welfare-improving, rather than resource-based, channels.\\
+Results are aligned with the underlying economic structure summarized in Panel B, where vegetable and import-oriented ports correspond to areas exhibiting more dispersed nightlight distributions, a pattern typically associated with more rural and less industrialized economies. Although the import/export distinction also reflects structural differences in local economies, import-oriented ports show a systematically stronger effect than all other categories. Overall, these patterns reinforce the idea that trade integration contributes to stability primarily through welfare-improving, rather than resource-based, channels. \\
+
+
+\begin{table}[htbp]\centering
+	\caption{Water Availability: Levels \& Heterogeneity}
+	\label{tab:water}
+	\begin{adjustbox}{max width=\textwidth}
+		\begin{tabular}{lrrrr}
+			\toprule
+			& (1) year FE & (2) year FE & (3) ADM2+year FE & (4) ADM2+year FE \\
+			\midrule
+			Index (overall / highNL / lowNL) & -3.59e-08 & -3.95e-08 (highNL) & -1.327e-07\sym{*} & -6.40e-08 \\
+			& (1.21e-07) & (1.30e-07) & (6.09e-08) & (8.76e-08) \\
+			& -- & -2.16e-08 (lowNL) & -- & -- \\
+			& & (1.04e-07) & & \\
+			Index $\times$ High water (median) & -- & -- & 1.076e-07 & -- \\
+			& & & (6.88e-08) & \\
+			Index $\times$ Low water (median) & -- & -- & -1.40e-08 & -- \\
+			& & & (3.17e-08) & \\
+			Index $\times$ Water tercile: Medium & -- & -- & -- & -2.597e-07\sym{**} \\
+			& & & & (8.75e-08) \\
+			Index $\times$ Water tercile: High & -- & -- & -- & 3.77e-08 \\
+			& & & & (9.38e-08) \\
+			Log Nightlights & 0.902599\sym{**} & 0.902743\sym{**} & -0.864138\sym{***} & -0.868460\sym{***} \\
+			& (0.199140) & (0.199352) & (0.245164) & (0.246453) \\
+			Water availability & -0.037963\sym{**} & -0.037975\sym{**} & -- & -- \\
+			& (0.010469) & (0.010490) & & \\
+			\midrule
+			Observations & 1620 & 1620 & 1620 & 1620 \\
+			Adj. $R^2$ & 0.102 & 0.101 & 0.664 & 0.668 \\
+			Within $R^2$ & 0.0816 & 0.0816 & 0.0331 & 0.0454 \\
+			RMSE & 3.116 & 3.116 & 1.797 & 1.785 \\
+			\bottomrule
+		\end{tabular}
+	\end{adjustbox}
+	\begin{flushleft}\footnotesize
+		Note: (1)-(2) cluster year; (3)-(4) cluster ADM2. Baseline di gruppo/tercili omesse per collinearita'. \sym{***} $p<0.01$, \sym{**} $p<0.05$, \sym{*} $p<0.10$.
+		\item \textit{Metodo.}Water availability sono degli indicatori esterni di disponibilità idrica assegnati agli ADM2 e suddivisi per mediana o tercili. Le interazioni testano se la presenza di risorse idriche modula l’impatto.
+	\end{flushleft}
+\end{table}
+
+We next investigate whether the pacifying effect of trade exposure varies with local resource endowments. Water availability, derived from the FAO–GAEZ database \parencite{FAO_GAEZ_2020_dataset}, serves as a proxy for agricultural potential and economic activity, given its close link to crop productivity and the prominence of vegetables trade in Nigerian ports.\\
+
+The intuition is that in ADM2 units with lower water availability, typically more fragile and rural, the trade index should reduce conflict by stabilizing consumption and providing alternative income channels. This mechanism is consistent with evidence that economic integration can mitigate consumption-related conflicts by improving access to markets and smoothing shocks \parencite{amodio2024trade}. \\
+
+However, the empirical results in Table \ref{tab:water} reveal a more complex pattern. Contrary to expectations, the effect of trade exposure turns positive in areas with higher water availability—where agricultural and economic activities are already developed. This suggests that, rather than amplifying stability, trade may in these contexts reinforce existing inequalities or intensify competition over profitable markets \parencite{berman2017mine, michalopoulos2013pre}. Overall, the findings indicate that trade openness exerts a stabilizing influence mainly in less developed and resource-constrained local economies, a result in line with broader evidence on the heterogeneous development impacts of market integration \parencite{dixcarneiro2023globalization, amodio2024trade}.

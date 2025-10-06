@@ -1,0 +1,19 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation and Index Construction}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Data}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Methodoloy}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Conceptual framework}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Identification Strategy}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Empirical Strategy}{13}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Results}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Heterogeneity}{16}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Conclusione}{20}{chapter.5}%
+\contentsline {chapter}{Index}{21}{section*.15}%
+\contentsline {chapter}{Bibliography}{21}{section*.16}%
+\contentsline {chapter}{Appendix}{23}{appendix*.18}%
+\contentsline {section}{\numberline {.1}conflict}{23}{section.Alph0.1}%
+\contentsline {section}{\numberline {.2}Nightlights}{23}{section.Alph0.2}%
+\contentsline {section}{\numberline {.3}Spatial heterogeneity}{23}{section.Alph0.3}%
+\contentsline {section}{Figure}{27}{section*.27}%
+\contentsline {chapter}{Ringraziamenti}{27}{appendix*.28}%
