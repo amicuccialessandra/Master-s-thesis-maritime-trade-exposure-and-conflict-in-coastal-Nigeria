@@ -10,28 +10,18 @@ In what follows, we present the results. Table
 	\begin{adjustbox}{max width=\textwidth}
 		\begin{tabular}{lcccc}
 			\toprule
-			& (1) Commercial: total & (2) Commercial: split & (3) All ports: total & (4) All ports: split \\
+			& (1) Commercial ports & (2) Commercial ports & (3) All ports & (4) All ports \\
 			\midrule
-			\textit{Total (commercial)} \\
-			indice2\_main        & -1.01e-07    &             &             &             \\
-			& (6.30e-08)   &             &             &             \\
+			indice2\_main        & -1.01e-07    &             &        -6.77e-08     &             \\
+			& (6.30e-08)   &             &   (4.29e-08)       &             \\
 			\addlinespace[0.25em]
-			\textit{Split (commercial)} \\
-			indice2\_highNL      &              & -1.12e-07   &             &             \\
-			&              & (7.80e-08)  &             &             \\
-			indice2\_lowNL       &              & -5.61e-08\sym{***} &       &             \\
-			&              & (5.43e-09)  &             &             \\
+			indice2\_highNL      &              & -1.12e-07   &             &   -9.32e-08             \\
+			&              & (7.80e-08)  &             &           (6.02e-08)  \\
+			indice2\_lowNL       &              & -5.61e-08\sym{***} &       & -1.81e-08            \\
+			&              & (5.43e-09)  &             &    (1.82e-08)         \\
 			\addlinespace[0.25em]
-			\textit{Total (all ports)} \\
-			indice2\_total       &              &             & -6.77e-08   &             \\
-			&              &             & (4.29e-08)  &             \\
+			
 			\addlinespace[0.25em]
-			\textit{Split (all ports)} \\
-			indice2\_highNL      &              &             &             & -9.32e-08   \\
-			&              &             &             & (6.02e-08)  \\
-			indice2\_lowNL       &              &             &             & -1.81e-08   \\
-			&              &             &             & (1.82e-08)  \\
-			\addlinespace
 			log(nightlight)      & -0.879\sym{***} & -0.878\sym{***} & -0.870\sym{***} & -0.867\sym{***} \\
 			& (0.249)     & (0.248)     & (0.249)     & (0.249)     \\
 			\midrule
@@ -48,7 +38,8 @@ In what follows, we present the results. Table
 \end{table}
 
 It shows the results of the baseline specification, comparing the commercial ports with the broader set of Nigerian ports. 
-Column (1) and (2) focus exclusively on the commercial ports, while Columns (3)–(4) include all ports as a falsification test. \\ Starting from Column (1), the results indicates that the aggregate coefficient on the exposure index is small and not not statistically significant. However, when the sample is split between high- and low-nightlight areas, as in Column (2), a strong heterogeneity emerges. his split distinguishes ADM2 units by local economic development, proxied by night time lights (as detailed in the Data section): where the areas with higher income are the ones with values above the 75 percentile \parencite{amodio2024trade, henderson2012measuring}. \\
+Column (1) and (2) focus exclusively on the commercial ports, while Columns (3)–(4) include all ports as a falsification test. \\ 
+Starting from Column (1), results indicates that the aggregate coefficient on the exposure index is small and not not statistically significant. However, when the sample is split to study the heterogeneity between high- and low-nightlight areas, as in Column (2), a strong heterogeneity emerges. his split distinguishes ADM2 units by local economic development, proxied by night time lights (as detailed in the Data section): where the areas with higher income are the ones with values above the 75 percentile \parencite{amodio2024trade, henderson2012measuring}. \\
 In the areas with reatevely low levels of nightlights, the effect of the commercial shock is negative and statistically significant, suggesting that a greater exposure maritme trade reduces the likelihood of consumption-based conflicts %by approximately 6\%.
 In contrast the coefficient is close to zero in the more developed area. This model is coherent with the intuition that the external trade shocks have stronger effect where the local economies are less diversified and more vulnerable to changes in global market integration \parencite{berman2015external}. Thus distance from commercial ports is particularly important in the less developed regions, amplifying the regulatory effect of the trade shocks. This finding is especially relevant given that less developed areas are also more likely to have conflict \parencite{collier2004greed, bruckner2010international} \\
 
@@ -69,34 +60,44 @@ Overall, the results suggest that the link between trade and conflict is neither
 	\textbf{Panel A. Index effects} \\
 	% --- PANEL A ---
 	\resizebox{1\textwidth}{!}{
-		\begin{tabular}{lc|c|c}
+		\begin{tabular}{lc|c|c|cc}
 			\hline
 			& East vs West
 			& Chemicals vs Vegetables
-			& Export vs Import \\
+			& Export vs Import
+			& \multicolumn{2}{c}{Tribal} \\
 			\hline
 			
-			indice2\_est & -1.63e-07 *  & &\\
-			& (8.24e-08)   &   &                    \\
-			indice2\_west &  -7.45e-09 & &\\
-			&    (4.76e-08)   & &                 \\
-			indice2\_main\_veg  &  & -1.63e-07 * &  \\
-			&  & (8.24e-08) &  \\
-			indice2\_main\_chem &  & -1.56e-07 & \\
-			& &   (1.27e-07) &  \\
-			indice2\_main\_exp   & & & 2.13e-09 \\
-			 & & & (3.29e-08) \\
-			indice2\_main\_imp  & & &  -2.55e-07 *** \\
-			 & & &  (5.84e-08) \\
+			indice2\_est & -1.63e-07 *  & & &&\\
+			& (8.24e-08)   &   &                  &&  \\
+			indice2\_west &  -7.45e-09 & &&&\\
+			&    (4.76e-08)   & &          &     &  \\
+			indice2\_main\_veg  &  & -1.63e-07 * & && \\
+			&  & (8.24e-08) & && \\
+			indice2\_main\_chem &  & -1.56e-07 && &\\
+			& &   (1.27e-07) & && \\
+			indice2\_main\_exp   & & & 2.13e-09 &&\\
+			 & & & (3.29e-08)& &\\
+			indice2\_main\_imp  & & &  -2.55e-07 *** &&\\
+			 & & &  (5.84e-08) && \\
+			 indice2\_lowNL         &&& & 5.58e-05           & -5.6e-08*** \\
+			 &&&&(4.42e-05)      & (5.47e-9) \\
+			 indice2\_highNL      &&&   & -1.12e-07    &-1.119e-07 \\
+			 &&&& (7.81e-08)   & (7.81e-08) \\
+			 indice2\_lowNL\_tribe   &&& & 5-59 e-05        & \\
+			 &&&&(4.16e-05 )       & \\
+			 indice2\_lowNL\_frac    &                 &&&        & 3.92e-05 \\
+			 &                 &&&        & 2.90e-05 \\
+			
 			\addlinespace[2pt]
 			\textit{Controls} \\
-			log(nightlight) & -0.884 *** & -0.884 *** & -0.884 ***  \\
-			 & (0.2493) & (0.2493) & (0.2470) \\
+			log(nightlight) & -0.884 *** & -0.884 *** & -0.884 *** & -0.877*** & -0.877*** \\
+			 & (0.2493) & (0.2493) & (0.2470) &(0.248) & (0.248) \\
 			\hline
-			Observations 1,611 & 1,611 &1,611 & 1,611\\
-			Adj. R$^2$    &0.665& 0.665 &0.670\\
-			Within R$^2$  &0.0361& 0.0361 & 0.0499\\
-			RMSE          & 1.799 & 1.799 & 1.786\\
+			Observations 1,611 & 1,611 &1,611 & 1,611 & 1,611 & 1,611 \\
+			Adj. R$^2$    &0.665& 0.665 &0.670 & 0.662 & 0.662\\
+			Within R$^2$  &0.0361& 0.0361 & 0.0499 & 0.0288 & 0.0288\\
+			RMSE          & 1.799 & 1.799 & 1.786 & 1.805 & 1.805\\
 			\hline
 		\end{tabular}
 	} % fine resize Panel A
