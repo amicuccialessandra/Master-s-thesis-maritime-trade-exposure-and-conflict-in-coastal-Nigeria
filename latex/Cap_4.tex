@@ -1,6 +1,8 @@
 \chapter{Results}
-In what follows, we present the results. Table
-\ref{tab:ports_main} reports the estimates of the main coefficient from Equation \eqref{eq1} and \eqref{eq2}.
+In what follows, we present three sets of results. First we studied the baseline model estimating the effect of the trade exposure index in conflict taking into account the economic heterogeneity. Second we show the model taking into account the geographical, sectorial and tribal heterogeneity. Third, we investigate the effect of the index across region with different water availability. \\
+
+\section{Baseline model}
+Table\ref{tab:ports_main} reports the estimates of the main coefficient from Equation \eqref{eq1} and \eqref{eq2}.
 \begin{table}[htbp]
 	\centering
 	\caption{Correlation between port shocks and conflict: commercial vs all ports}
@@ -40,7 +42,7 @@ In what follows, we present the results. Table
 It shows the results of the baseline specification, comparing the commercial ports with the broader set of Nigerian ports. 
 Column (1) and (2) focus exclusively on the commercial ports, while Columns (3)–(4) include all ports as a falsification test. \\ 
 Starting from Column (1), results indicates that the aggregate coefficient on the exposure index is small and not not statistically significant. However, when the sample is split to study the heterogeneity between high- and low-nightlight areas, as in Column (2), a strong heterogeneity emerges. his split distinguishes ADM2 units by local economic development, proxied by night time lights (as detailed in the Data section): where the areas with higher income are the ones with values above the 75 percentile \parencite{amodio2024trade, henderson2012measuring}. \\
-In the areas with reatevely low levels of nightlights, the effect of the commercial shock is negative and statistically significant, suggesting that a greater exposure maritme trade reduces the likelihood of consumption-based conflicts %by approximately 6\%.
+In the areas with reatevely low levels of nightlights, the effect of the commercial shock is negative and statistically significant, suggesting that a greater exposure maritme trade reduces the likelihood of consumption-based conflicts. Quantitatively, the coefficient implies that the trade index reduce conflict by 6 percent. \\ 
 In contrast the coefficient is close to zero in the more developed area. This model is coherent with the intuition that the external trade shocks have stronger effect where the local economies are less diversified and more vulnerable to changes in global market integration \parencite{berman2015external}. Thus distance from commercial ports is particularly important in the less developed regions, amplifying the regulatory effect of the trade shocks. This finding is especially relevant given that less developed areas are also more likely to have conflict \parencite{collier2004greed, bruckner2010international} \\
 
 Columns (3)–(4) serve as a falsification test. If the relationship was determined solely by proximity with any port, not only the commercial one, we would expect similar effects when all ten Nigerian ports are included.
@@ -132,20 +134,30 @@ Overall, the results suggest that the link between trade and conflict is neither
 \end{table}
 
 
-After establishing the baseline relationship, we explore whether the estimated effects vary across Nigeria’s main macro-regions and according to local social fragmentation. Table \ref{tab:hetero_all} combines these dimensions of heterogeneity: Panel A shows how the trade–conflict link differs across regions and sectors, whereas Panel B reports the corresponding nightlight averages, illustrating the underlying economic disparities between groups.\\
+After establishing the baseline relationship, we explore whether the estimated effects vary across Nigeria’s main macro-regions and according to local social fragmentation. Table \ref{tab:hetero_all} combines these dimensions of heterogeneity: Panel A shows how the trade conflict relationship differs across regions, sectors and tribal fominance and fractorization, whereas Panel B reports the corresponding nightlight averages, illustrating the underlying economic disparities between groups.\\
 
-\textit{Geography}. Columns (1) investigates geographic heterogeneity: the index is interacted with East/West dummies defined by the median longitude of coastal ADM2 centroids (details in Appendix B.1). The estimated effect is more negative and statistically stronger in the eastern belt—areas that are poorer and more connected to maritime activity—consistent with a vulnerability-to-trade mechanism.
+\subsection{\textit{Geography}} 
+Columns (1) investigates geographic heterogeneity: the index is interacted with East/West dummies defined by the median longitude of coastal ADM2 centroids (details in Appendix~\ref{app:descriptives}). The estimated effect is more negative and statistically stronger in the eastern belt—areas that are poorer and more connected to maritime activity—consistent with a vulnerability-to-trade mechanism.
 A detailed discussion of the spatial correlation between the macro-regional partition, together with corresponding maps, is reported in Appendix~B.1.\\
 
 These patterns mirror the spatial distribution of economic development (Panel B). Nightlight data shows that 
 western ADM2s exhibit higher and more dispersed nightlight values—largely driven by the Lagos metropolitan area—while eastern units are uniformly dimmer, reflecting a more rural and less industrialized economic structure. In this case, the gap between richer and poorer areas (as proxied by nightlights) is particularly pronounced.
-Detailed maps, descriptive statistics of night-lights by region, and additional robustness checks are reported in Appendix B.2.\\
+Detailed maps, descriptive statistics of night-lights by region, and additional robustness checks are reported in Appendix~\ref{app:descriptives}\\
 
-\textit{Sector.} Columns (2)-(3) reports the sector heterogeneity: the index is interacted with two different sets of dummies: (i) the predominant type of industry traded through each port — either chemical or vegetable products (the two main sectors after minerals, based on data from IMF PortWatch, available since 2019 and used here as a proxy); and (ii) the predominant trade flow orientation, that is, whether the port handles mainly imports or exports (also based on data from IMF Portwatch). The estimated effect is negative and statistically significant for vegetables and imports. For presentation purposes, we refer to the coefficients as $\text{index}\_{veg}$ and $\text{index}\_{chem}$ (or $\text{index}\_{exp}$ and $\text{index}\_{imp}$), where the former represents the baseline effect and the latter includes the interaction term.
+\subsection{\textit{Sector}}
+Columns (2)-(3) reports the sector heterogeneity: the index is interacted with two different sets of dummies: (i) the predominant type of industry traded through each port — either chemical or vegetable products (the two main sectors after minerals, based on data from IMF PortWatch, available since 2019 and used here as a proxy); and (ii) the predominant trade flow orientation, that is, whether the port handles mainly imports or exports (also based on data from IMF Portwatch). The estimated effect is negative and statistically significant for vegetables and imports. For presentation purposes, we refer to the coefficients as $\text{index}\_{veg}$ and $\text{index}\_{chem}$ (or $\text{index}\_{exp}$ and $\text{index}\_{imp}$), where the former represents the baseline effect and the latter includes the interaction term.
 The stronger and statistically significant effects observed for vegetable and import-oriented ports suggest that not only proximity and structural economic conditions matter, but also the nature and direction of trade flows. The results are consistent with previous findings that trade in basic consumption goods, such as agricultural products, can mitigate conflict by stabilizing local prices and incomes (\parencite{mcguirk2020economic}). The effect for vegetable-oriented ports is also  consistent with what is shown by \textcite{amodio2024trade}: regions with lower nightlight intensity, typically linked to agricultural activity, are more vulnerable to economic shocks, suggesting that the welfare channel of trade is particularly relevant in such contexts. Similarly, import flows—particularly of essential goods—may enhance welfare and reduce consumption-related tensions \parencite{bruckner2010international, dube2013commodity}. Overall, these patterns reinforce the idea that trade integration contributes to stability primarily through welfare-improving, rather than resource-based, channels.\\
 Results are aligned with the underlying economic structure summarized in Panel B, where vegetable and import-oriented ports correspond to areas exhibiting more dispersed nightlight distributions, a pattern typically associated with more rural and less industrialized economies. Although the import/export distinction also reflects structural differences in local economies, import-oriented ports show a systematically stronger effect than all other categories. Overall, these patterns reinforce the idea that trade integration contributes to stability primarily through welfare-improving, rather than resource-based, channels. \\
 
-
+\subsection{\textit{Tribes}} 
+Columns (5)–(6) report the results for the heterogeneity by ethnic composition.\\
+Information on tribal distribution is used to proxy local ethnic diversity.
+Two indicators were constructed: tribal dominance and tribal fractionalization.\\
+Tribal dominance identifies areas where a single ethnic group constitutes more than 50 percent of the local population \parencite{esteban2012ethnicity}, while tribal fractionalization measures the probability that two randomly selected individuals belong to different ethnic groups \parencite{collier2004greed, collier1998economic}.\\
+Empirical studies suggest that these two dimensions have opposite effects on conflict: \textcite{esteban2012ethnicity} find that higher fractionalization tends to reduce conflict, whereas \textcite{collier2004greed} show that dominance may fuel conflict through capture of local rents and exclusion of minorities.\\
+In our estimations, both coefficients are positive but not statistically significant, indicating no robust relationship between trade exposure and conflict across different levels of ethnic composition.\\
+However, when accounting for ethnic fractionalization, the coefficient on the trade index in low nightlight areas remains negative and stastically significant, consistent with the baseline results in Table~\ref{tab:ports_main}.
+\subsection{\textit{Water avaibility}}
 \begin{table}[htbp]\centering
 	\caption{Water Availability: Levels \& Heterogeneity}
 	\label{tab:water}
@@ -183,6 +195,7 @@ Results are aligned with the underlying economic structure summarized in Panel B
 		\item \textit{Metodo.}Water availability sono degli indicatori esterni di disponibilità idrica assegnati agli ADM2 e suddivisi per mediana o tercili. Le interazioni testano se la presenza di risorse idriche modula l’impatto.
 	\end{flushleft}
 \end{table}
+
 
 We next investigate whether the pacifying effect of trade exposure varies with local resource endowments. Water availability, derived from the FAO–GAEZ database \parencite{FAO_GAEZ_2020_dataset}, serves as a proxy for agricultural potential and economic activity, given its close link to crop productivity and the prominence of vegetables trade in Nigerian ports.\\
 

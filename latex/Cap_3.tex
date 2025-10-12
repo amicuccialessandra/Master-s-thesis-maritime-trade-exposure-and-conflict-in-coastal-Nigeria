@@ -22,9 +22,10 @@ The empirical model also includes both spatial (ADM2) and temporal (year) fixed 
 To account for spatial heterogeneity the distances from ports where normalised. Since the relationship between trade exposure and conflict is expected to decrease with distance, the raw distances (measured in kilometers) were first inverted to capture proximity rather than remoteness. To ensure comparability across regions, the proximity measure was then rescaled between 0 and 1, so that values closer to 1 represent areas with higher accessibility to maritime trade. This transformation preserves relative spatial differences while avoiding scale distortions that could bias the exposure index.
 
 \section{Empirical Strategy}
-All models are estimated using OLS with two-way fixed effects (ADM2 and year). Standard errors are clustered at the ADM2 level to account for serial correlation within units over time. 
-The empirical strategy consists of three steps.
-\textit{First}, we estimate the basic model in two specifications: an aggregate version, in which the exposure index is considered in its overall form (Equation\eqref{eq1}), and a “split” version, which distinguishes administrative units based on the intensity of economic development measured by night-time lights (Equation \eqref{eq2}). This allows us to analyse both the average effect of the trade shock and the differences between more and less developed areas.\\
+All models are estimated using OLS with two-way fixed effects (ADM2 and year). Standard errors are clustered at the ADM2 level to account for serial correlation within units over time. \\
+The empirical strategy consists of three steps.\\
+
+\textit{First}, we estimate the basic model in two specifications: an aggregate version, in which the exposure index is considered in its overall form Equation\eqref{eq1}, and a second forma that take into account the heterogeneity, which distinguishes administrative units based on the intensity of economic development measured by nightlights Equation \eqref{eq2}. This allows us to analyse both the average effect of the trade shock and the differences between more and less developed areas.\\
 \begin{equation}
 	Conflict_{it} = \beta Index_{it} + \gamma log(Nightlights_{it}) + \mu_i + \lambda_t + \varepsilon_{it}
 	\label{eq1}
@@ -33,17 +34,38 @@ The empirical strategy consists of three steps.
 	Conflict_{it} = \beta_1 Index_{it}^{HigNL}+ \beta_2 Index_{it}^{LowNL}+ \gamma log(Nightlights_{it}) + \mu_i + \lambda_t + \varepsilon_{it}
 	\label{eq2}
 \end{equation}
+
+The equations \ref{eq1} and \ref{eq2} estimate the effect of trade exposure on local conflict incidence. In the baseline form, equation \ref{eq1} we regressed conflict events in administrative units $i$ and years $t$ on the trade exposure index. We also controlled for local economic activities, proxied by nightlights as described in the Chapter Data, and both unit and fixed effect (respectively $\mu_i$ and $\lambda_t$). In this way, we are are to capture the variation overtinme whitin unit eliminating the effect of unobserved variables that remain constant overtime, as geographical characteristic, and common temporal shocks affecting all region in a given year. \\
+
+We estimated equation \ref{eq2} to study the effect taking into account the heterogeneity across ADM2  with different level of local development, proxied by the concentration of nightlights. By doing so, the model test whether the pacifying effect, or the destabilizing one, of trade is stronger in more or less developed. \\
+
+Both models are estimated using Ordinary Least Squares (OLS) with two-way fixed effects and clustered standard errors at the ADM2 level, following standard practice in subnational conflict analyses (e.g., \textcite{berman2015external, dube2013commodity}). This approach ensures consistent estimates by exploiting temporal variation within regions while accounting for spatial correlation and unobserved heterogeneity. \\
+
 \textit{Second}, we perform a falsification test to verify that the results do not simply reflect a spurious correlation between conflict and geographical proximity to port infrastructure. To this end, we reconstruct the index to include all ports in Nigeria, not just commercial ones. The idea is that if the effect were linked exclusively to physical proximity to a port, it should also emerge with this broader measure. Conversely, if the association is really driven by trade shocks, the results should only appear when considering ports that are actually relevant to international trade.\\
-\textit{Third}, beyond the baseline model, we explore whether the trade–conflict relationship varies across key structural dimensions. Following the idea that the effects of economic integration depend on pre-existing territorial and social characteristics (\parencite{berman2015external}), we analyse the heterogeneity of the effects across region, sector and environment. 
-In particular, we distinguish between (i) eastern and western regions, (ii) the predominant type of industry traded, (iii) the predominant trade flow and (iv) water availability. These specifications allow us to investigate the differentiated transmission of trade shocks depending on the structural conditions of the territories. Equation \ref{eq:heterogeneity} extends the baseline model to account for heterogeneity across structural or environmental dimensions.
-The interaction term captures whether the effect of trade exposure differs depending on regional location or sectoral specialization. A negative and statistically significant coefficient on $\beta_2$  would indicate that the pacifying effect of trade is stronger in the corresponding subgroup.
+
+\textit{Third}, beyond the baseline model, we explore whether the trade–conflict relationship varies across key structural dimensions. Following the idea that the effects of economic integration depend on pre-existing territorial and social characteristics
+\parencite{berman2015external}, we analyse the heterogeneity of the effects across region, sector and environment. \\
+In particular, we distinguish between (i) eastern and western regions, (ii) the predominant type of industry traded, (iii) the predominant trade flow, (iv) tribal dominance and fractorization and (v) water availability. These specifications allow us to investigate the differentiated transmission of trade shocks depending on the structural conditions of the territories. 
+Equation \ref{eq:heterogeneity} extends the baseline model to account for heterogeneity across structural or environmental dimensions (the first three categories).\\
 \begin{equation}
 	Conflict_{it} = \beta_1 Index_{it} + \beta_2 (Index_{it} \times H_i) + \gamma \log(Nightlights_{it}) + \mu_i + \lambda_t + \varepsilon_{it}
 	\label{eq:heterogeneity}
 \end{equation}
+The interaction term captures whether the effect of trade exposure differs depending on regional location or sectoral specialization. In this model $H_i$ is an indicator for the subgroup representing the heteroeneous variable, e.g. Export, Vegetables, etc.). The coefficient $\beta_1$ capture the effect of the trade exposure index when $H_i=0$, while $\beta_2$ measure the effect when $H_i=1$. A negative and statistically significant coefficient on $\beta_2$  would indicate that the pacifying effect of trade is stronger in the corresponding subgroup.\\
 
-Equation \ref{eq:heterogeneity} account for water availability heterogeneity. $HighWater$ and $LowWater$ are dummies equal to one for ADM2 units above or below the median of the FAO–GAEZ water-availability distribution.
-In this analysis the coefficients $\beta2$ and $\beta3$ capture how the trade–conflict relationship differs across regions with different quantity of water resources
+
+\begin{equation}
+	\begin{aligned}
+		Conflict_{it} &=\beta_1 (Index_{it}\times LowNL_i) + 
+		\beta_2 (Index_{it}\times HighNL_i) \\
+		&\quad +\beta_3 (Index_{it}\times LowNL_i \times T_i) + \gamma \log(Nightlights_{it}) + \mu_i + \lambda_t + \varepsilon_{it}
+	\end{aligned}
+	\label{eq:tribal}
+\end{equation}
+
+Equation \ref{eq:tribal} extend the baseline model taking into account heterogeneity from both tribal dominance and fractorization considering the economic differences across ADM2. The interaction term $\beta_3$ captures whether the effect of trade exposure on conflict in less developed regions depends on the degree of ethnic homogeneity or diversity. In particular, the variable $T_i$ alternately represent the dominant tribal share, measuring the extent to which a single ethnic group constitutes the majority of the local population, and the ethnic fractionalization index, which captures the probability that two randomly chosen individuals belong to different groups. A positive and significant coefficient would indicate that the stabilizing effect of trade weakens as tribal dominance increases, suggesting that trade may exacerbate tensions where one group is predominant.\\
+Conversely, a negative value would imply that trade is more stabilizing in more homogeneous territories.\\
+
 \begin{equation}
 	\begin{aligned}
 		Conflict_{it} &= \beta_1 Index_{it} 
@@ -55,5 +77,13 @@ In this analysis the coefficients $\beta2$ and $\beta3$ capture how the trade–
 	\label{eq:water_hetero}
 \end{equation}
 
+Equation \ref{eq:water_hetero} account for water availability heterogeneity. $HighWater$ and $LowWater$ are dummies equal to one for ADM2 units above or below the median of the FAO–GAEZ water-availability distribution.
+In this analysis the coefficients $\beta2$ and $\beta3$ capture how the relationship between trade and conflict differs across regions with different quantity of water resources, suggesting that environmental can influence how economic shock are trasmitted locally. 
 
+\section{Endogeneity concerns}
+A key methodological concern in estimating the basiline model and its variants is the potential endogeneity between trade exposure and conflict incidence. \\
+In principle, trade shocks can influence local stability, but at the same time conflict itself may disrupt trade flows, transport infrastructure, leading to biased estimates if not properly addressed,m suggesting that causality may run in both directions. \\
+Moreover, omitted variables correlated with both trade and conflict, such as local political stability, could further bias the estimates. \\
 
+To mitigate these risks, the analysis uses exogenous variation in maritime trade exposure, constructed from global shipping indicators, that are largely determined outside the local context and includes ADM2 and year fixed effects.\\
+More specifically, the trade index combines CPT and LSCI at the port level and is then weighted by the inverse distance to each ADM2 unit to aim to ensures that most of the observed variation arise from global shocks rather than local conflict dynamics. \\
