@@ -1,27 +1,26 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [1] Config.pm:310> INFO - Logfile is 'Tesi.blg'
-[265] biber-MSWIN64:340> INFO - === 
-[354] Biber.pm:419> INFO - Reading 'Tesi.bcf'
-[698] Biber.pm:979> INFO - Found 40 citekeys in bib section 0
-[747] Biber.pm:4419> INFO - Processing section 0
-[775] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[907] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1042] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[1603] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1603] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1603] Biber.pm:4239> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1603] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[288] biber-MSWIN64:340> INFO - === 
+[380] Biber.pm:419> INFO - Reading 'Tesi.bcf'
+[750] Biber.pm:979> INFO - Found 39 citekeys in bib section 0
+[809] Biber.pm:4419> INFO - Processing section 0
+[842] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[981] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1147] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
 [1771] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
 [1772] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1772] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1772] Biber.pm:4239> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
 [1772] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[1871] bbl.pm:660> INFO - Writing 'Tesi.bbl' with encoding 'UTF-8'
-[1967] bbl.pm:763> INFO - Output to Tesi.bbl
-[1968] Biber.pm:131> WARN - Duplicate entry key: 'berman2015external' in file 'bibliografia.bib', skipping ...
-[1968] Biber.pm:131> WARN - Duplicate entry key: 'amodio2021security' in file 'bibliografia.bib', skipping ...
-[1968] Biber.pm:131> WARN - Duplicate entry key: 'martin2008civil' in file 'bibliografia.bib', skipping ...
-[1968] Biber.pm:131> WARN - Duplicate entry key: 'rauschendorfer2022trade' in file 'bibliografia.bib', skipping ...
-[1968] Biber.pm:131> WARN - Duplicate entry key: 'collier2004greed' in file 'bibliografia.bib', skipping ...
-[1968] Biber.pm:131> WARN - I didn't find a database entry for 'leggi quelle di amodio' (section 0)
-[1968] Biber.pm:131> WARN - I didn't find a database entry for 'posner2004political' (section 0)
-[1968] Biber.pm:133> INFO - WARNINGS: 7
+[1948] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1948] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1948] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1949] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[2059] bbl.pm:660> INFO - Writing 'Tesi.bbl' with encoding 'UTF-8'
+[2169] bbl.pm:763> INFO - Output to Tesi.bbl
+[2170] Biber.pm:131> WARN - Duplicate entry key: 'berman2015external' in file 'bibliografia.bib', skipping ...
+[2170] Biber.pm:131> WARN - Duplicate entry key: 'amodio2021security' in file 'bibliografia.bib', skipping ...
+[2170] Biber.pm:131> WARN - Duplicate entry key: 'martin2008civil' in file 'bibliografia.bib', skipping ...
+[2170] Biber.pm:131> WARN - Duplicate entry key: 'rauschendorfer2022trade' in file 'bibliografia.bib', skipping ...
+[2170] Biber.pm:131> WARN - Duplicate entry key: 'collier2004greed' in file 'bibliografia.bib', skipping ...
+[2170] Biber.pm:131> WARN - Duplicate entry key: 'goldberg2007distributional' in file 'bibliografia.bib', skipping ...
+[2171] Biber.pm:133> INFO - WARNINGS: 6

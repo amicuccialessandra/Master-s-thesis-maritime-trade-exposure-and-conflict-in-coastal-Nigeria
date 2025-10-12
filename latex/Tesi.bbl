@@ -872,6 +872,42 @@
       \field{pages}{1}
       \range{pages}{1}
     \endentry
+    \entry{goldberg2007distributional}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=8a63498e656bddc4515f7bcb2864b249}{%
+           family={Goldberg},
+           familyi={G\bibinitperiod},
+           given={Pinelopi\bibnamedelima Koujianou},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=166f940f04565f3e492cf1f11b547864}{%
+           family={Pavcnik},
+           familyi={P\bibinitperiod},
+           given={Nina},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{fullhash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{bibnamehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{authorbibnamehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{authornamehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{authorfullhash}{df7dd5c14e71136528f793b72ef55c81}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Literature}
+      \field{number}{1}
+      \field{title}{Distributional effects of globalization in developing countries}
+      \field{volume}{45}
+      \field{year}{2007}
+      \field{pages}{39\bibrangedash 82}
+      \range{pages}{44}
+    \endentry
     \entry{goldsmith2020bartik}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=f3ca973d5895ae6e5e148903f7218eca}{%
@@ -2401,6 +2437,42 @@
       \field{pages}{1}
       \range{pages}{1}
     \endentry
+    \entry{goldberg2007distributional}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=8a63498e656bddc4515f7bcb2864b249}{%
+           family={Goldberg},
+           familyi={G\bibinitperiod},
+           given={Pinelopi\bibnamedelima Koujianou},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=166f940f04565f3e492cf1f11b547864}{%
+           family={Pavcnik},
+           familyi={P\bibinitperiod},
+           given={Nina},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{fullhash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{bibnamehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{authorbibnamehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{authornamehash}{df7dd5c14e71136528f793b72ef55c81}
+      \strng{authorfullhash}{df7dd5c14e71136528f793b72ef55c81}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Literature}
+      \field{number}{1}
+      \field{title}{Distributional effects of globalization in developing countries}
+      \field{volume}{45}
+      \field{year}{2007}
+      \field{pages}{39\bibrangedash 82}
+      \range{pages}{44}
+    \endentry
     \entry{goldsmith2020bartik}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=f3ca973d5895ae6e5e148903f7218eca}{%
@@ -3076,8 +3148,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{leggi quelle di amodio}
-  \missing{posner2004political}
 \endrefsection
 \endinput
 

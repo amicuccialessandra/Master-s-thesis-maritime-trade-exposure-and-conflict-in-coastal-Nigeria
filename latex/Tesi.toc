@@ -31,5 +31,5 @@
 \contentsline {section}{\numberline {5.5}External validity and future research}{30}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Contribution}{30}{section.5.6}%
 \contentsline {chapter}{\numberline {A}Conflict}{31}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Nightlights}{32}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Spatial heterogeneity}{34}{appendix.C}%
+\contentsline {chapter}{\numberline {B}Nightlights}{33}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Heterogeneity}{35}{appendix.C}%
