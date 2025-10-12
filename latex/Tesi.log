@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  12 OCT 2025 17:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  12 OCT 2025 17:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1820,12 +1820,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--38
  []
 
 [6]
-<immagini/conf_coast.pdf, id=341, 364.36125pt x 270.00874pt>
+<immagini/conf_coast.pdf, id=339, 364.36125pt x 270.00874pt>
 File: immagini/conf_coast.pdf Graphic file (type pdf)
 <use immagini/conf_coast.pdf>
 Package pdftex.def Info: immagini/conf_coast.pdf  used on input line 43.
 (pdftex.def)             Requested size: 396.0pt x 293.46732pt.
-<immagini/total_conflict.pdf, id=343, 364.36125pt x 270.00874pt>
+<immagini/total_conflict.pdf, id=341, 364.36125pt x 270.00874pt>
 File: immagini/total_conflict.pdf Graphic file (type pdf)
 <use immagini/total_conflict.pdf>
 Package pdftex.def Info: immagini/total_conflict.pdf  used on input line 51.
@@ -1852,7 +1852,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
-<immagini/LSCI_shock.pdf, id=388, 364.36125pt x 270.00874pt>
+<immagini/LSCI_shock.pdf, id=386, 364.36125pt x 270.00874pt>
 File: immagini/LSCI_shock.pdf Graphic file (type pdf)
 <use immagini/LSCI_shock.pdf>
 Package pdftex.def Info: immagini/LSCI_shock.pdf  used on input line 80.
@@ -1868,12 +1868,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--91
  []
 
 [9] [10 <./immagini/LSCI_shock.pdf>]
-<immagini/ports.pdf, id=412, 364.36125pt x 270.00874pt>
+<immagini/ports.pdf, id=410, 364.36125pt x 270.00874pt>
 File: immagini/ports.pdf Graphic file (type pdf)
 <use immagini/ports.pdf>
 Package pdftex.def Info: immagini/ports.pdf  used on input line 100.
 (pdftex.def)             Requested size: 190.07831pt x 140.85442pt.
-<immagini/distanza_porti_main_mappa.pdf, id=413, 722.7pt x 578.16pt>
+<immagini/distanza_porti_main_mappa.pdf, id=411, 722.7pt x 578.16pt>
 File: immagini/distanza_porti_main_mappa.pdf Graphic file (type pdf)
 <use immagini/distanza_porti_main_mappa.pdf>
 Package pdftex.def Info: immagini/distanza_porti_main_mappa.pdf  used on input 
@@ -1892,22 +1892,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--138
 [11
 
  <./immagini/ports.pdf> <./immagini/distanza_porti_main_mappa.pdf>]
-<immagini/night 2009.pdf, id=436, 578.16pt x 361.35pt>
+<immagini/night 2009.pdf, id=434, 578.16pt x 361.35pt>
 File: immagini/night 2009.pdf Graphic file (type pdf)
 <use immagini/night 2009.pdf>
 Package pdftex.def Info: immagini/night 2009.pdf  used on input line 149.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2012.pdf, id=437, 578.16pt x 361.35pt>
+<immagini/night 2012.pdf, id=435, 578.16pt x 361.35pt>
 File: immagini/night 2012.pdf Graphic file (type pdf)
 <use immagini/night 2012.pdf>
 Package pdftex.def Info: immagini/night 2012.pdf  used on input line 155.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2015.pdf, id=438, 578.16pt x 361.35pt>
+<immagini/night 2015.pdf, id=436, 578.16pt x 361.35pt>
 File: immagini/night 2015.pdf Graphic file (type pdf)
 <use immagini/night 2015.pdf>
 Package pdftex.def Info: immagini/night 2015.pdf  used on input line 160.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2019.pdf, id=439, 578.16pt x 361.35pt>
+<immagini/night 2019.pdf, id=437, 578.16pt x 361.35pt>
 File: immagini/night 2019.pdf Graphic file (type pdf)
 <use immagini/night 2019.pdf>
 Package pdftex.def Info: immagini/night 2019.pdf  used on input line 165.
@@ -1919,12 +1919,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
 [12 <./immagini/night 2009.pdf> <./immagini/night 2012.pdf> <./immagini/night 2
 015.pdf> <./immagini/night 2019.pdf>]
-<immagini/ntl_facets.pdf, id=486, 722.7pt x 578.16pt>
+<immagini/ntl_facets.pdf, id=484, 722.7pt x 578.16pt>
 File: immagini/ntl_facets.pdf Graphic file (type pdf)
 <use immagini/ntl_facets.pdf>
 Package pdftex.def Info: immagini/ntl_facets.pdf  used on input line 179.
 (pdftex.def)             Requested size: 396.0pt x 316.798pt.
-<immagini/mean.pdf, id=487, 364.36125pt x 270.00874pt>
+<immagini/mean.pdf, id=485, 364.36125pt x 270.00874pt>
 File: immagini/mean.pdf Graphic file (type pdf)
 <use immagini/mean.pdf>
 Package pdftex.def Info: immagini/mean.pdf  used on input line 193.
@@ -2127,58 +2127,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--31
 
  (appendix.tex
 Appendix A.
-<immagini/con.pdf, id=672, 364.36125pt x 270.00874pt>
-File: immagini/con.pdf Graphic file (type pdf)
-<use immagini/con.pdf>
-Package pdftex.def Info: immagini/con.pdf  used on input line 6.
-(pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
 [31
 
 
 
 
 
- <./immagini/con.pdf>]
+]
 Appendix B.
-<immagini/nightlight.pdf, id=682, 364.36125pt x 270.00874pt>
+<immagini/nightlight.pdf, id=672, 364.36125pt x 270.00874pt>
 File: immagini/nightlight.pdf Graphic file (type pdf)
 <use immagini/nightlight.pdf>
-Package pdftex.def Info: immagini/nightlight.pdf  used on input line 21.
+Package pdftex.def Info: immagini/nightlight.pdf  used on input line 12.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/confl_all.pdf, id=683, 364.36125pt x 270.00874pt>
+<immagini/confl_all.pdf, id=673, 364.36125pt x 270.00874pt>
 File: immagini/confl_all.pdf Graphic file (type pdf)
 <use immagini/confl_all.pdf>
-Package pdftex.def Info: immagini/confl_all.pdf  used on input line 27.
+Package pdftex.def Info: immagini/confl_all.pdf  used on input line 18.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/aiut.pdf, id=684, 364.36125pt x 270.00874pt>
+<immagini/aiut.pdf, id=674, 364.36125pt x 270.00874pt>
 File: immagini/aiut.pdf Graphic file (type pdf)
 <use immagini/aiut.pdf>
-Package pdftex.def Info: immagini/aiut.pdf  used on input line 33.
+Package pdftex.def Info: immagini/aiut.pdf  used on input line 24.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
 [32
 
  <./immagini/nightlight.pdf>] [33 <./immagini/confl_all.pdf> <./immagini/aiut.p
 df>]
 Appendix C.
-<immagini/est_ovest.pdf, id=708, 364.36125pt x 270.00874pt>
+<immagini/est_ovest.pdf, id=698, 364.36125pt x 270.00874pt>
 File: immagini/est_ovest.pdf Graphic file (type pdf)
 <use immagini/est_ovest.pdf>
-Package pdftex.def Info: immagini/est_ovest.pdf  used on input line 44.
+Package pdftex.def Info: immagini/est_ovest.pdf  used on input line 35.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/log est_ovest.pdf, id=709, 364.36125pt x 270.00874pt>
+<immagini/log est_ovest.pdf, id=699, 364.36125pt x 270.00874pt>
 File: immagini/log est_ovest.pdf Graphic file (type pdf)
 <use immagini/log est_ovest.pdf>
-Package pdftex.def Info: immagini/log est_ovest.pdf  used on input line 51.
+Package pdftex.def Info: immagini/log est_ovest.pdf  used on input line 42.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/flow.pdf, id=710, 364.36125pt x 270.00874pt>
+<immagini/flow.pdf, id=700, 364.36125pt x 270.00874pt>
 File: immagini/flow.pdf Graphic file (type pdf)
 <use immagini/flow.pdf>
-Package pdftex.def Info: immagini/flow.pdf  used on input line 58.
+Package pdftex.def Info: immagini/flow.pdf  used on input line 49.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/sector.pdf, id=711, 364.36125pt x 270.00874pt>
+<immagini/sector.pdf, id=701, 364.36125pt x 270.00874pt>
 File: immagini/sector.pdf Graphic file (type pdf)
 <use immagini/sector.pdf>
-Package pdftex.def Info: immagini/sector.pdf  used on input line 65.
+Package pdftex.def Info: immagini/sector.pdf  used on input line 56.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
 ) [34
 
@@ -2202,10 +2197,10 @@ Package logreq Info: Writing requests to 'Tesi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47045 strings out of 474486
- 1004035 string characters out of 5743755
- 1983001 words of memory out of 5000000
- 68206 multiletter control sequences out of 15000+600000
+ 47033 strings out of 474486
+ 1003785 string characters out of 5743755
+ 1982940 words of memory out of 5000000
+ 68195 multiletter control sequences out of 15000+600000
  673957 words of font info for 216 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,14n,131p,1809b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2231,9 +2226,9 @@ le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users
 /ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users
 /ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/
 ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Tesi.pdf (46 pages, 2611963 bytes).
+Output written on Tesi.pdf (46 pages, 2602826 bytes).
 PDF statistics:
- 914 PDF objects out of 1000 (max. 8388607)
- 152 named destinations out of 1000 (max. 500000)
- 67969 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 904 PDF objects out of 1000 (max. 8388607)
+ 151 named destinations out of 1000 (max. 500000)
+ 67964 words of extra memory for PDF output out of 74296 (max. 10000000)
 
