@@ -28,6 +28,17 @@
 \usepackage{placeins}
 \usepackage{caption} 
 \usepackage{subcaption}
+\usepackage{listings}
+\lstset{
+	language=R,
+	basicstyle=\footnotesize\ttfamily,
+	numbers=left,
+	numbersep=6pt,
+	frame=lines,
+	breaklines=true,
+	tabsize=2,
+	showstringspaces=false
+}
 \usepackage{float}
 \renewcommand{\topfraction}{0.9}
 \renewcommand{\textfraction}{0.05}
@@ -96,10 +107,9 @@
 %\addtolength{\topmargin}{-10.59052pt}
 
 \makeindex
-\includeonly{Cap_1,Cap_2,Cap_3,Cap_4,Cap_5,appendix}
+%\includeonly{Cap_1,Cap_2,Cap_3,Cap_4,Cap_5,appendix}
 \newcommand{\Fig}[1]{[{\footnotesize \texttt{Fig.#1}}]}
 \newcommand{\citfig}[1]{\ap{\scriptsize\textrm{(\textit{F#1})}}}
-
 \begin{document}
 \frontmatter
 \maketitle

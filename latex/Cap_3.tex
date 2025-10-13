@@ -1,21 +1,21 @@
 \chapter{Methodoloy}
 
-We expect the economic impact of trade shocks to vary across different ADM2 units, with areas most exposed to international trade experiencing fewer consumption-related conflict events. Following this intuition, the index presented in the chapter Data was constructed, combining two national components that vary over time with a fixed spatial component. This approach is consistent with consolidated practices in the literature that combine aggregate shocks with sub-national heterogeneity \parencite{autor2013china}.\\
+We expect the economic impact of trade shocks to vary across different ADM2 units, with areas most exposed to international trade experiencing fewer consumption related conflict events. Following this intuition, the index presented in the chapter Data was constructed, combining two national components that vary over time with a fixed spatial component. This approach is consistent with consolidated practices in the literature that combine aggregate shocks with subnational heterogeneity \parencite{autor2013china}.\\
 
-The mechanism linking trade exposure and conflict is consistent with the opportunity-cost and grievance framework discussed by \textcite{amodio2021security}. Their evidence suggests that economic integration and access to trade can shape local conflict dynamics by altering individuals’ economic incentives and perceptions of welfare.
+The mechanism linking trade exposure and conflict is consistent with the opportunity cost and grievance framework discussed by \textcite{amodio2021security}. Their evidence suggests that economic integration and access to trade can shape local conflict dynamics by altering individuals’ economic incentives and perceptions of welfare.
 In this thesis, the focus is on the opposite mechanism: instead of trade restrictions, we study whether higher trade openness and proximity to maritime ports, which expand local economic opportunities, can mitigate the incidence of violence. The same channels highlighted by \textcite{amodio2021security} are therefore expected to operate in reverse, with improved trade connectivity reducing both grievance and the opportunity to engage in conflict.
 
 \section{Conceptual framework}
-To better capture the mechanisms through which trade exposure affects social stability, we construct a specific subset of conflict events reflecting consumption- or income-related tensions rather than resource-seeking or political violence. Starting from the ACLED dataset \parencite{acled2025}, we select events classified as protests or demostrations, the types less likely to have a link with resource predation. In particular, we identify income-related events through a keyword-based text filter, selecting those that mention terms associated with basic-needs or livelihood shocks, such as food, fuel, price, subsidy, market, ration, maize, rice, bread, or tax.
-Conflict incidence can be represented as \eqref{conflict} where $Y_{it}$ captures opportunity-income effects (the effect of trade in income, reducing conflict) and $R_{it}$ captures rent-seeking incentives (the opposite effect of trade that incentivises conflict).
+To better capture the mechanisms through which trade exposure affects social stability, we construct a specific subset of conflict events reflecting consumption or income related tensions rather than resource seeking or political violence. Starting from the ACLED dataset \parencite{acled2025}, we select events classified as protests or demostrations, the types less likely to have a link with resource predation. In particular, we identify income related events through a keyword based text filter, selecting those that mention terms associated with basic needs or livelihood shocks, such as food, fuel, price, subsidy, market, ration, maize, rice, bread, or tax.
+Conflict incidence can be represented as \eqref{conflict} where $Y_{it}$ captures opportunity income effects (the effect of trade in income, reducing conflict) and $R_{it}$ captures rent seeking incentives (the opposite effect of trade that incentivises conflict).
 \begin{equation}
 	Conflict_{it} = f(Y_{it}, R_{it})
 	\label{conflict}
 \end{equation}
-Our index captures exogenous variation in the income effect transmitted through trade shocks, holding the incentives largely constant by excluding rapacity-related events.
+Our index captures exogenous variation in the income effect transmitted through trade shocks, holding the incentives largely constant by excluding rapacity related events.
 
 \section{Identification Strategy}
-Identification relies on within district (ADM2) variation in exposure to national trade shocks over time. Because the trade shock (CPT × LSCI) is common across units while the distance is time-invariant, only the interaction between these components generates differential effects once ADM2 and year fixed effects are included. 
+Identification relies on within district (ADM2) variation in exposure to national trade shocks over time. Because the trade shock (CPT × LSCI) is common across units while the distance is time invariant, only the interaction between these components generates differential effects once ADM2 and year fixed effects are included. 
 In our case, the CPT was delayed by one year to mitigate possible simultaneity issues, while the LSCI represents the degree of integration of the Nigerian port system into global maritime networks. Spatial heterogeneity is introduced through the minimum distance from ports, which serves as a proxy for accessibility to international markets. Following the intuition of \parencite{berman2015external}, regions located closer to ports are more directly integrated into international trade networks and therefore more strongly affected by external shocks. In our context, this motivates the use of minimum distance from ports as a measure of local exposure, assuming that trade shocks are transmitted more intensely to areas with better access to maritime infrastructure.
 In this sense, the empirical design is consistent with the validity conditions discussed by \parencite{goldsmith2020bartik}\\
 The empirical model also includes both spatial (ADM2) and temporal (year) fixed effects. In this way, given the same national shock, only differences in proximity to ports generate variation between units, allowing the heterogeneous effect of trade shocks on conflict to be isolated. 
@@ -77,7 +77,7 @@ Conversely, a negative value would imply that trade is more stabilizing in more 
 	\label{eq:water_hetero}
 \end{equation}
 
-Equation \ref{eq:water_hetero} account for water availability heterogeneity. $HighWater$ and $LowWater$ are dummies equal to one for ADM2 units above or below the median of the FAO–GAEZ water-availability distribution.
+Equation \ref{eq:water_hetero} account for water availability heterogeneity. $HighWater$ and $LowWater$ are dummies equal to one for ADM2 units above or below the median of the FAO–GAEZ water availability distribution.
 In this analysis the coefficients $\beta2$ and $\beta3$ capture how the relationship between trade and conflict differs across regions with different quantity of water resources, suggesting that environmental can influence how economic shock are trasmitted locally. 
 
 \section{Endogeneity concerns}

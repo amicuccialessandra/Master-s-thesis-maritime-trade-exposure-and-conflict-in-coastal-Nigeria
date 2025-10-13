@@ -38,7 +38,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Data downloaded on 14 April 2024}
       \field{title}{Armed Conflict Location \& Event Data Project (ACLED) Dataset}
       \field{year}{2025}
       \verb{urlraw}
@@ -492,6 +491,39 @@
       \field{pages}{577\bibrangedash 617}
       \range{pages}{41}
     \endentry
+    \entry{campbell2010revisiting}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f5ab60c12b2d5d78f9d233d3bd33d791}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={Bonnie},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{fullhash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{bibnamehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{authorbibnamehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{authornamehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{authorfullhash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Canadian Journal of Development Studies/Revue canadienne d'études du développement}
+      \field{number}{1-2}
+      \field{title}{Revisiting the reform process of African mining regimes}
+      \field{volume}{30}
+      \field{year}{2010}
+      \field{pages}{197\bibrangedash 217}
+      \range{pages}{21}
+    \endentry
     \entry{chen2011using}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=c6649d02b24225ca4c9012cee6c790de}{%
@@ -683,7 +715,7 @@
       \field{pages}{1384\bibrangedash 1421}
       \range{pages}{38}
     \endentry
-    \entry{ducruet2014time}{article}{}
+    \entry{ducruet2014time}{report}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=bae7d169a4a16a476544f11145ae8817}{%
            family={Ducruet},
@@ -704,8 +736,8 @@
            giveni={O\bibinitperiod},
            givenun=0}}%
       }
-      \list{organization}{1}{%
-        {International Transport Forum Discussion Paper}%
+      \list{institution}{1}{%
+        {International Transport Forum, OECD}%
       }
       \strng{namehash}{b46b11314f13af5cd489ee9a078d0bf7}
       \strng{fullhash}{ceefeccaefa8acf1fba5297ed748c77e}
@@ -720,7 +752,8 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Time efficiency at world container ports}
+      \field{title}{Time Efficiency at World Container Ports}
+      \field{type}{Discussion Paper}
       \field{year}{2014}
     \endentry
     \entry{esteban2012ethnicity}{article}{}
@@ -796,7 +829,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://gaez.fao.org/pages/data-access-download}}
-      \field{note}{Accessed: September 2025}
       \field{title}{Global Agro-Ecological Zones (GAEZ v4) Data Portal}
       \field{year}{2020}
     \endentry
@@ -832,6 +864,45 @@
       \field{year}{2003}
       \field{pages}{195\bibrangedash 222}
       \range{pages}{28}
+    \endentry
+    \entry{fearon2003ins}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=5b5e21b9cf9e61f692a41505a4f51855}{%
+           family={Fearon},
+           familyi={F\bibinitperiod},
+           given={James\bibnamedelima D},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0405420307b78914e1756f8704fd857d}{%
+           family={Laitin},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima D},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{fullhash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{bibnamehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{authorbibnamehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{authornamehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{authorfullhash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American political science review}
+      \field{number}{1}
+      \field{title}{Ethnicity, insurgency, and civil war}
+      \field{volume}{97}
+      \field{year}{2003}
+      \field{pages}{75\bibrangedash 90}
+      \range{pages}{16}
     \endentry
     \entry{fugazza2017liner}{article}{}
       \name{author}{2}{}{%
@@ -887,6 +958,9 @@
            giveni={N\bibinitperiod},
            givenun=0}}%
       }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
       \strng{namehash}{df7dd5c14e71136528f793b72ef55c81}
       \strng{fullhash}{df7dd5c14e71136528f793b72ef55c81}
       \strng{bibnamehash}{df7dd5c14e71136528f793b72ef55c81}
@@ -900,7 +974,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Economic Literature}
+      \field{journaltitle}{Journal of economic Literature}
       \field{number}{1}
       \field{title}{Distributional effects of globalization in developing countries}
       \field{volume}{45}
@@ -998,6 +1072,40 @@
       \field{pages}{994\bibrangedash 1028}
       \range{pages}{35}
     \endentry
+    \entry{imfportwatch2025}{online}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ebb24d27be637c70ebf0c297ab842b7f}{%
+           family={{International Monetary Fund}},
+           familyi={I\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fac7b1f834980af1f3ec8711894f35ad}{%
+           family={{University of Maryland}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{666863759705f413d66ffc926c94cccc}
+      \strng{fullhash}{666863759705f413d66ffc926c94cccc}
+      \strng{bibnamehash}{666863759705f413d66ffc926c94cccc}
+      \strng{authorbibnamehash}{666863759705f413d66ffc926c94cccc}
+      \strng{authornamehash}{666863759705f413d66ffc926c94cccc}
+      \strng{authorfullhash}{666863759705f413d66ffc926c94cccc}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{13}
+      \field{month}{10}
+      \field{title}{PortWatch}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://portwatch.imf.org/pages/port-monitor
+      \endverb
+      \verb{url}
+      \verb https://portwatch.imf.org/pages/port-monitor
+      \endverb
+    \endentry
     \entry{islam2024measuring}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=67871d843e59aa0e8a1be44eb1218f24}{%
@@ -1066,7 +1174,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Figshare. Scientific Data}
+      \field{journaltitle}{Scientific Data}
       \field{title}{Harmonization of DMSP and VIIRS nighttime light data from 1992--2021 at the global scale}
       \field{volume}{7}
       \field{year}{2020}
@@ -1093,6 +1201,9 @@
            given={Mathias},
            giveni={M\bibinitperiod},
            givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
       }
       \strng{namehash}{ce660d3f9bfb4da1e433107fb6d68fe1}
       \strng{fullhash}{97dd52bfbe4ec1625db082c6fce60fc1}
@@ -1330,6 +1441,35 @@
       \field{pages}{796\bibrangedash 816}
       \range{pages}{21}
     \endentry
+    \entry{npaports2025}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=994c5c41f5ce6527230099c5a8a3c2e1}{%
+           family={{Nigerian Ports Authority}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{fullhash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{bibnamehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{authorbibnamehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{authornamehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{authorfullhash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ports and Terminals}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://nigerianports.gov.ng/ports/
+      \endverb
+      \verb{url}
+      \verb https://nigerianports.gov.ng/ports/
+      \endverb
+    \endentry
     \entry{obi2010oil}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=2c9023c1f190e9b29480dd736d417ab7}{%
@@ -1371,11 +1511,11 @@
            given={Clionadh},
            giveni={C\bibinitperiod},
            givenun=0}}%
-        {{un=0,uniquepart=base,hash=bf49a74e312ea15675d1384a3d646e4d}{%
+        {{un=0,uniquepart=base,hash=6c113d18f22c2a2738c069f880fcec24}{%
            family={Linke},
            familyi={L\bibinitperiod},
-           given={Rew},
-           giveni={R\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
            givenun=0}}%
         {{un=0,uniquepart=base,hash=69d723440c01990377be3a5dc9bbc35c}{%
            family={Hegre},
@@ -1390,15 +1530,12 @@
            giveni={J\bibinitperiod},
            givenun=0}}%
       }
-      \list{publisher}{1}{%
-        {Sage Publications Sage UK: London, England}%
-      }
       \strng{namehash}{3aa951541c352435f31b4c0d7e42d09c}
-      \strng{fullhash}{adf4ea80e53e19e54efe312c2f72a1a6}
-      \strng{bibnamehash}{adf4ea80e53e19e54efe312c2f72a1a6}
-      \strng{authorbibnamehash}{adf4ea80e53e19e54efe312c2f72a1a6}
+      \strng{fullhash}{f3f99d4c376ff0b3a1a2494048b08f7c}
+      \strng{bibnamehash}{f3f99d4c376ff0b3a1a2494048b08f7c}
+      \strng{authorbibnamehash}{f3f99d4c376ff0b3a1a2494048b08f7c}
       \strng{authornamehash}{3aa951541c352435f31b4c0d7e42d09c}
-      \strng{authorfullhash}{adf4ea80e53e19e54efe312c2f72a1a6}
+      \strng{authorfullhash}{f3f99d4c376ff0b3a1a2494048b08f7c}
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
@@ -1406,9 +1543,9 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of peace research}
+      \field{journaltitle}{Journal of Peace Research}
       \field{number}{5}
-      \field{title}{Introducing ACLED: An armed conflict location and event dataset}
+      \field{title}{Introducing {ACLED}: An Armed Conflict Location and Event Dataset}
       \field{volume}{47}
       \field{year}{2010}
       \field{pages}{651\bibrangedash 660}
@@ -1510,7 +1647,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 2025-10-02}
       \field{title}{The UNCTAD and WORKPORT Models of Port Development: Evolution or Revolution}
       \field{year}{2012}
       \verb{urlraw}
@@ -1541,7 +1677,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: September 2025}
       \field{title}{Liner Shipping Connectivity Index (LSCI)}
       \field{year}{2025}
       \verb{urlraw}
@@ -1572,7 +1707,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: September 2025}
       \field{title}{UNCTADstat - Container Port Throughput}
       \field{year}{2025}
       \verb{urlraw}
@@ -1603,7 +1737,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Data downloaded on 14 April 2024}
       \field{title}{Armed Conflict Location \& Event Data Project (ACLED) Dataset}
       \field{year}{2025}
       \verb{urlraw}
@@ -2057,6 +2190,39 @@
       \field{pages}{577\bibrangedash 617}
       \range{pages}{41}
     \endentry
+    \entry{campbell2010revisiting}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f5ab60c12b2d5d78f9d233d3bd33d791}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={Bonnie},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{fullhash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{bibnamehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{authorbibnamehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{authornamehash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \strng{authorfullhash}{f5ab60c12b2d5d78f9d233d3bd33d791}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Canadian Journal of Development Studies/Revue canadienne d'études du développement}
+      \field{number}{1-2}
+      \field{title}{Revisiting the reform process of African mining regimes}
+      \field{volume}{30}
+      \field{year}{2010}
+      \field{pages}{197\bibrangedash 217}
+      \range{pages}{21}
+    \endentry
     \entry{chen2011using}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=c6649d02b24225ca4c9012cee6c790de}{%
@@ -2248,7 +2414,7 @@
       \field{pages}{1384\bibrangedash 1421}
       \range{pages}{38}
     \endentry
-    \entry{ducruet2014time}{article}{}
+    \entry{ducruet2014time}{report}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=bae7d169a4a16a476544f11145ae8817}{%
            family={Ducruet},
@@ -2269,8 +2435,8 @@
            giveni={O\bibinitperiod},
            givenun=0}}%
       }
-      \list{organization}{1}{%
-        {International Transport Forum Discussion Paper}%
+      \list{institution}{1}{%
+        {International Transport Forum, OECD}%
       }
       \strng{namehash}{b46b11314f13af5cd489ee9a078d0bf7}
       \strng{fullhash}{ceefeccaefa8acf1fba5297ed748c77e}
@@ -2285,7 +2451,8 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Time efficiency at world container ports}
+      \field{title}{Time Efficiency at World Container Ports}
+      \field{type}{Discussion Paper}
       \field{year}{2014}
     \endentry
     \entry{esteban2012ethnicity}{article}{}
@@ -2361,7 +2528,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://gaez.fao.org/pages/data-access-download}}
-      \field{note}{Accessed: September 2025}
       \field{title}{Global Agro-Ecological Zones (GAEZ v4) Data Portal}
       \field{year}{2020}
     \endentry
@@ -2397,6 +2563,45 @@
       \field{year}{2003}
       \field{pages}{195\bibrangedash 222}
       \range{pages}{28}
+    \endentry
+    \entry{fearon2003ins}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=5b5e21b9cf9e61f692a41505a4f51855}{%
+           family={Fearon},
+           familyi={F\bibinitperiod},
+           given={James\bibnamedelima D},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0405420307b78914e1756f8704fd857d}{%
+           family={Laitin},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima D},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{fullhash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{bibnamehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{authorbibnamehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{authornamehash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \strng{authorfullhash}{2be0e0aef68b06a31ee581f1cc489ea8}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American political science review}
+      \field{number}{1}
+      \field{title}{Ethnicity, insurgency, and civil war}
+      \field{volume}{97}
+      \field{year}{2003}
+      \field{pages}{75\bibrangedash 90}
+      \range{pages}{16}
     \endentry
     \entry{fugazza2017liner}{article}{}
       \name{author}{2}{}{%
@@ -2452,6 +2657,9 @@
            giveni={N\bibinitperiod},
            givenun=0}}%
       }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
       \strng{namehash}{df7dd5c14e71136528f793b72ef55c81}
       \strng{fullhash}{df7dd5c14e71136528f793b72ef55c81}
       \strng{bibnamehash}{df7dd5c14e71136528f793b72ef55c81}
@@ -2465,7 +2673,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Economic Literature}
+      \field{journaltitle}{Journal of economic Literature}
       \field{number}{1}
       \field{title}{Distributional effects of globalization in developing countries}
       \field{volume}{45}
@@ -2563,6 +2771,40 @@
       \field{pages}{994\bibrangedash 1028}
       \range{pages}{35}
     \endentry
+    \entry{imfportwatch2025}{online}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ebb24d27be637c70ebf0c297ab842b7f}{%
+           family={{International Monetary Fund}},
+           familyi={I\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fac7b1f834980af1f3ec8711894f35ad}{%
+           family={{University of Maryland}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{666863759705f413d66ffc926c94cccc}
+      \strng{fullhash}{666863759705f413d66ffc926c94cccc}
+      \strng{bibnamehash}{666863759705f413d66ffc926c94cccc}
+      \strng{authorbibnamehash}{666863759705f413d66ffc926c94cccc}
+      \strng{authornamehash}{666863759705f413d66ffc926c94cccc}
+      \strng{authorfullhash}{666863759705f413d66ffc926c94cccc}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{13}
+      \field{month}{10}
+      \field{title}{PortWatch}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://portwatch.imf.org/pages/port-monitor
+      \endverb
+      \verb{url}
+      \verb https://portwatch.imf.org/pages/port-monitor
+      \endverb
+    \endentry
     \entry{islam2024measuring}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=67871d843e59aa0e8a1be44eb1218f24}{%
@@ -2631,7 +2873,7 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Figshare. Scientific Data}
+      \field{journaltitle}{Scientific Data}
       \field{title}{Harmonization of DMSP and VIIRS nighttime light data from 1992--2021 at the global scale}
       \field{volume}{7}
       \field{year}{2020}
@@ -2658,6 +2900,9 @@
            given={Mathias},
            giveni={M\bibinitperiod},
            givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
       }
       \strng{namehash}{ce660d3f9bfb4da1e433107fb6d68fe1}
       \strng{fullhash}{97dd52bfbe4ec1625db082c6fce60fc1}
@@ -2895,6 +3140,35 @@
       \field{pages}{796\bibrangedash 816}
       \range{pages}{21}
     \endentry
+    \entry{npaports2025}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=994c5c41f5ce6527230099c5a8a3c2e1}{%
+           family={{Nigerian Ports Authority}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{fullhash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{bibnamehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{authorbibnamehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{authornamehash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \strng{authorfullhash}{994c5c41f5ce6527230099c5a8a3c2e1}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ports and Terminals}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://nigerianports.gov.ng/ports/
+      \endverb
+      \verb{url}
+      \verb https://nigerianports.gov.ng/ports/
+      \endverb
+    \endentry
     \entry{obi2010oil}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=2c9023c1f190e9b29480dd736d417ab7}{%
@@ -2936,11 +3210,11 @@
            given={Clionadh},
            giveni={C\bibinitperiod},
            givenun=0}}%
-        {{un=0,uniquepart=base,hash=bf49a74e312ea15675d1384a3d646e4d}{%
+        {{un=0,uniquepart=base,hash=6c113d18f22c2a2738c069f880fcec24}{%
            family={Linke},
            familyi={L\bibinitperiod},
-           given={Rew},
-           giveni={R\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
            givenun=0}}%
         {{un=0,uniquepart=base,hash=69d723440c01990377be3a5dc9bbc35c}{%
            family={Hegre},
@@ -2955,15 +3229,12 @@
            giveni={J\bibinitperiod},
            givenun=0}}%
       }
-      \list{publisher}{1}{%
-        {Sage Publications Sage UK: London, England}%
-      }
       \strng{namehash}{3aa951541c352435f31b4c0d7e42d09c}
-      \strng{fullhash}{adf4ea80e53e19e54efe312c2f72a1a6}
-      \strng{bibnamehash}{adf4ea80e53e19e54efe312c2f72a1a6}
-      \strng{authorbibnamehash}{adf4ea80e53e19e54efe312c2f72a1a6}
+      \strng{fullhash}{f3f99d4c376ff0b3a1a2494048b08f7c}
+      \strng{bibnamehash}{f3f99d4c376ff0b3a1a2494048b08f7c}
+      \strng{authorbibnamehash}{f3f99d4c376ff0b3a1a2494048b08f7c}
       \strng{authornamehash}{3aa951541c352435f31b4c0d7e42d09c}
-      \strng{authorfullhash}{adf4ea80e53e19e54efe312c2f72a1a6}
+      \strng{authorfullhash}{f3f99d4c376ff0b3a1a2494048b08f7c}
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
@@ -2971,9 +3242,9 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of peace research}
+      \field{journaltitle}{Journal of Peace Research}
       \field{number}{5}
-      \field{title}{Introducing ACLED: An armed conflict location and event dataset}
+      \field{title}{Introducing {ACLED}: An Armed Conflict Location and Event Dataset}
       \field{volume}{47}
       \field{year}{2010}
       \field{pages}{651\bibrangedash 660}
@@ -3075,7 +3346,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 2025-10-02}
       \field{title}{The UNCTAD and WORKPORT Models of Port Development: Evolution or Revolution}
       \field{year}{2012}
       \verb{urlraw}
@@ -3106,7 +3376,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: September 2025}
       \field{title}{Liner Shipping Connectivity Index (LSCI)}
       \field{year}{2025}
       \verb{urlraw}
@@ -3137,7 +3406,6 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: September 2025}
       \field{title}{UNCTADstat - Container Port Throughput}
       \field{year}{2025}
       \verb{urlraw}
@@ -3148,6 +3416,7 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{IMF_PortWatch}
 \endrefsection
 \endinput
 

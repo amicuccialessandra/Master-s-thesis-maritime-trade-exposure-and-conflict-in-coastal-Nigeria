@@ -34,26 +34,29 @@ This sparsity and imbalance justify the inclusion of ADM2 fixed effects in the e
 
 \chapter{Nightlights}
 \label{app:nightlights}
+This appendix provides additional context on the control variable, nightlights. \\
+
+In the Data chapter we noted visible discontinuities in the series, which \textcite{li2020harmonization} attribute to satellite technology changes and sensor fluctuations. \\
+To rule out other drivers, we compared national trends in nightlights with two plausibly related aggregates: conflict intensity (combining rapacity and consumption-related events) and oil–gas rents, given the prominence of minerals and oil in Nigeria’s trade \parencite{imfportwatch2025}.\\
+
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{nightlight.pdf}
+	\includegraphics[width=0.8\textwidth]{aa.pdf}
 	\caption{Conflict and nightlight}
 	\label{nightl}
 \end{figure}
+
+\autoref{nightl} shows the patterns are consistent with dual influences. In 2013 and especially 2016, declines in nightlights coincide with marked increases in conflict, suggesting real economic disruption alongside potential measurement noise. \\
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{confl_all.pdf}
-	\caption{Confroning conflight, nightlight and different type of rent}
+	\includegraphics[width=0.8\textwidth]{sec.pdf}
+	\caption{Confroning conflict, nightlight and different type of rent}
 	\label{con}
 \end{figure}
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{aiut.pdf}
-	\caption{Confroning different type of conflight, nightlight and different type of rent}
-	\label{total}
-\end{figure}
 
-
+\autoref{con} shows a similar pattern and, in particolar, that the 2016 episode also aligns with a sharp fall in traded-goods rents
+Those observations linked with the sensor moviment could explain the drop 
+Of course, part of the discontinuity in nightlights reflects known sensor and constellation changes \textcite{li2020harmonization}. Yet the comovement we observe, nightlights falling in 2013 and especially 2016 while conflict rises and traded goods rents contract, suggests a substantive pattern beyond pure measurement noise. This alignment points to plausible real-economy disruption coinciding with the technical break. While we do not claim causality here, the repeated timing and direction of these series indicate a relationship that merits deeper investigation rather than being dismissed as a data artifact alone.
 \chapter{Heterogeneity}
 \label{app:descriptives}
 This appendix provides additional information about the measurement used as heterogeneity employed used in the empirical strategy. \\
@@ -117,3 +120,13 @@ This symmetries are shown in Figure \ref{est}, \ref{flow} and \ref{sector}
 	\caption{Vegetable and chemicals}
 	\label{sector}
 \end{figure}
+
+\chapter{Replication Code}
+% Short intro text (optional)
+This appendix provides the R code used to construct the analysis
+\lstinputlisting[
+language=R,
+caption={Full pipeline},
+label={lst:pipeline-r}
+]{code/main.R}
+
