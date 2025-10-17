@@ -70,15 +70,16 @@ Conversely, a negative value would imply that trade is more stabilizing in more 
 	\begin{aligned}
 		Conflict_{it} &= \beta_1 Index_{it} 
 		+ \beta_2 (Index_{it} \times HighWater_i)
-		+ \beta_3 (Index_{it} \times LowWater_i) \\
-		&\quad + \gamma \log(Nightlights_{it})
+		+ \beta_3 (Index_{it} \times MediumWater_i) 
+		\\
+		&\quad +\beta_4 (Index_{it} \times LowWater_i) + \gamma \log(Nightlights_{it})
 		+ \mu_i + \lambda_t + \varepsilon_{it}
 	\end{aligned}
 	\label{eq:water_hetero}
 \end{equation}
 
-Equation \ref{eq:water_hetero} account for water availability heterogeneity. $HighWater$ and $LowWater$ are dummies equal to one for ADM2 units above or below the median of the FAO–GAEZ water availability distribution.
-In this analysis the coefficients $\beta2$ and $\beta3$ capture how the relationship between trade and conflict differs across regions with different quantity of water resources, suggesting that environmental can influence how economic shock are trasmitted locally. 
+Equation \ref{eq:water_hetero} account for water availability heterogeneity using tercile indicators.
+In this analysis the coefficients $\beta_1$ is the trade–conflict slope in low water areas, $\beta2$ and $\beta3$ capture how the relationship between trade and conflict differs in medium and high water regions, suggesting that environmental can influence how economic shock are trasmitted locally. 
 
 \section{Endogeneity concerns}
 A key methodological concern in estimating the basiline model and its variants is the potential endogeneity between trade exposure and conflict incidence. \\

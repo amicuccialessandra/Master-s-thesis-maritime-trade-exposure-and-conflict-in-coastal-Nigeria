@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  13 OCT 2025 18:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  17 OCT 2025 08:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1818,7 +1818,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
 [3{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
 c}{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
-c}]) [4]
+c}]
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+) [4]
 \openout2 = `Cap_2.aux'.
 
  (Cap_2.tex
@@ -1872,119 +1877,114 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
  []
 
 [8{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
-<immagini/LSCI_shock.pdf, id=401, 364.36125pt x 270.00874pt>
+[9]
+<immagini/LSCI_shock.pdf, id=410, 364.36125pt x 270.00874pt>
 File: immagini/LSCI_shock.pdf Graphic file (type pdf)
 <use immagini/LSCI_shock.pdf>
 Package pdftex.def Info: immagini/LSCI_shock.pdf  used on input line 80.
 (pdftex.def)             Requested size: 237.60242pt x 176.07214pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 87--90
 
  []
 
+[10
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--92
-
- []
-
-[9] [10 <./immagini/LSCI_shock.pdf>] [11]
-<immagini/ports.pdf, id=434, 364.36125pt x 270.00874pt>
+ <./immagini/LSCI_shock.pdf>]
+<immagini/ports.pdf, id=430, 364.36125pt x 270.00874pt>
 File: immagini/ports.pdf Graphic file (type pdf)
 <use immagini/ports.pdf>
-Package pdftex.def Info: immagini/ports.pdf  used on input line 101.
+Package pdftex.def Info: immagini/ports.pdf  used on input line 99.
 (pdftex.def)             Requested size: 190.07831pt x 140.85442pt.
-<immagini/distanza_porti_main_mappa.pdf, id=435, 722.7pt x 578.16pt>
+<immagini/distanza_porti_main_mappa.pdf, id=431, 722.7pt x 578.16pt>
 File: immagini/distanza_porti_main_mappa.pdf Graphic file (type pdf)
 <use immagini/distanza_porti_main_mappa.pdf>
 Package pdftex.def Info: immagini/distanza_porti_main_mappa.pdf  used on input 
-line 108.
+line 106.
 (pdftex.def)             Requested size: 190.07831pt x 152.0648pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
-[12
-
- <./immagini/ports.pdf> <./immagini/distanza_porti_main_mappa.pdf>]
-<immagini/night 2009.pdf, id=459, 578.16pt x 361.35pt>
+[11 <./immagini/ports.pdf> <./immagini/distanza_porti_main_mappa.pdf>]
+<immagini/night 2009.pdf, id=454, 578.16pt x 361.35pt>
 File: immagini/night 2009.pdf Graphic file (type pdf)
 <use immagini/night 2009.pdf>
-Package pdftex.def Info: immagini/night 2009.pdf  used on input line 150.
+Package pdftex.def Info: immagini/night 2009.pdf  used on input line 148.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2012.pdf, id=460, 578.16pt x 361.35pt>
+<immagini/night 2012.pdf, id=455, 578.16pt x 361.35pt>
 File: immagini/night 2012.pdf Graphic file (type pdf)
 <use immagini/night 2012.pdf>
-Package pdftex.def Info: immagini/night 2012.pdf  used on input line 156.
+Package pdftex.def Info: immagini/night 2012.pdf  used on input line 154.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2015.pdf, id=461, 578.16pt x 361.35pt>
+<immagini/night 2015.pdf, id=456, 578.16pt x 361.35pt>
 File: immagini/night 2015.pdf Graphic file (type pdf)
 <use immagini/night 2015.pdf>
-Package pdftex.def Info: immagini/night 2015.pdf  used on input line 161.
+Package pdftex.def Info: immagini/night 2015.pdf  used on input line 159.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2019.pdf, id=462, 578.16pt x 361.35pt>
+<immagini/night 2019.pdf, id=457, 578.16pt x 361.35pt>
 File: immagini/night 2019.pdf Graphic file (type pdf)
 <use immagini/night 2019.pdf>
-Package pdftex.def Info: immagini/night 2019.pdf  used on input line 166.
+Package pdftex.def Info: immagini/night 2019.pdf  used on input line 164.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+<immagini/ntl_facets.pdf, id=460, 722.7pt x 578.16pt>
+File: immagini/ntl_facets.pdf Graphic file (type pdf)
+<use immagini/ntl_facets.pdf>
+Package pdftex.def Info: immagini/ntl_facets.pdf  used on input line 178.
+(pdftex.def)             Requested size: 396.0pt x 316.798pt.
+<immagini/mean.pdf, id=461, 364.36125pt x 270.00874pt>
+File: immagini/mean.pdf Graphic file (type pdf)
+<use immagini/mean.pdf>
+Package pdftex.def Info: immagini/mean.pdf  used on input line 192.
+(pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
 [13 <./immagini/night 2009.pdf> <./immagini/night 2012.pdf> <./immagini/night 2
 015.pdf> <./immagini/night 2019.pdf>]
-<immagini/ntl_facets.pdf, id=508, 722.7pt x 578.16pt>
-File: immagini/ntl_facets.pdf Graphic file (type pdf)
-<use immagini/ntl_facets.pdf>
-Package pdftex.def Info: immagini/ntl_facets.pdf  used on input line 180.
-(pdftex.def)             Requested size: 396.0pt x 316.798pt.
-<immagini/mean.pdf, id=509, 364.36125pt x 270.00874pt>
-File: immagini/mean.pdf Graphic file (type pdf)
-<use immagini/mean.pdf>
-Package pdftex.def Info: immagini/mean.pdf  used on input line 194.
-(pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--200
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
 [14 <./immagini/ntl_facets.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 203--206
-
- []
-
-[15 <./immagini/mean.pdf>]
-
-LaTeX Warning: Citation 'IMF_PortWatch' on page 16 undefined on input line 207.
-
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--212
+Underfull \hbox (badness 10000) in paragraph at lines 212--214
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--216
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
 
  []
 
-) [16{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex
-.enc}] [17]
+[15{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
+nc} <./immagini/mean.pdf>]) [16]
 \openout2 = `Cap_3.aux'.
 
  (Cap_3.tex
@@ -1994,7 +1994,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-[18
+[17
 
 
 
@@ -2009,7 +2009,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
-[19]
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
@@ -2034,7 +2034,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--50
 
  []
 
-[20]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 53--55
 
  []
@@ -2045,16 +2045,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--68
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--87
+Overfull \hbox (16.76723pt too wide) detected at line 79
+[][][][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
-[21])
-Underfull \hbox (badness 10000) in paragraph at lines 88--129
+[20])
+Underfull \hbox (badness 10000) in paragraph at lines 89--129
 
  []
 
-[22]
+[21]
 \openout2 = `Cap_4.aux'.
 
  (Cap_4.tex
@@ -2064,59 +2069,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 36.
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--47
+Underfull \hbox (badness 10000) in paragraph at lines 46--51
 
  []
 
-[23
+[22
 
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 48--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--55
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 137--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--142
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 143--146
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--148
+
+ []
+
+[23] [24]
+Underfull \hbox (badness 10000) in paragraph at lines 149--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--157
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 193.
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
 
-[26]
+
 Underfull \hbox (badness 10000) in paragraph at lines 200--201
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-
- []
-
-[27]) [28]
+) [26] [27]
 \openout2 = `Cap_5.aux'.
 
  (Cap_5.tex
@@ -2146,7 +2157,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-[29
+[28
 
 
 
@@ -2166,7 +2177,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--35
 
  []
 
-[30]) [31]
+[29]) [30]
 \openout2 = `appendix.aux'.
 
  (appendix.tex
@@ -2181,7 +2192,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--7
 
  []
 
-<immagini/con.pdf, id=696, 364.36125pt x 270.00874pt>
+<immagini/con.pdf, id=694, 364.36125pt x 270.00874pt>
 File: immagini/con.pdf Graphic file (type pdf)
 <use immagini/con.pdf>
 Package pdftex.def Info: immagini/con.pdf  used on input line 10.
@@ -2191,13 +2202,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--17
 
  []
 
-[32
+[31
 
 
 
 
 
- <./immagini/con.pdf>] [33]
+ <./immagini/con.pdf>] [32]
 Appendix B.
 
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
@@ -2209,19 +2220,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
-<immagini/aa.pdf, id=714, 364.36125pt x 270.00874pt>
+<immagini/aa.pdf, id=712, 364.36125pt x 270.00874pt>
 File: immagini/aa.pdf Graphic file (type pdf)
 <use immagini/aa.pdf>
 Package pdftex.def Info: immagini/aa.pdf  used on input line 44.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/sec.pdf, id=716, 364.36125pt x 270.00874pt>
+<immagini/sec.pdf, id=714, 364.36125pt x 270.00874pt>
 File: immagini/sec.pdf Graphic file (type pdf)
 <use immagini/sec.pdf>
 Package pdftex.def Info: immagini/sec.pdf  used on input line 52.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-[34
+[33
 
- <./immagini/aa.pdf>] [35 <./immagini/sec.pdf>]
+ <./immagini/aa.pdf>] [34 <./immagini/sec.pdf>]
 Appendix C.
 
 Underfull \hbox (badness 10000) in paragraph at lines 62--64
@@ -2238,10 +2249,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
-[36
+[35
 
 ]
-<immagini/est_ovest.pdf, id=743, 364.36125pt x 270.00874pt>
+<immagini/est_ovest.pdf, id=740, 364.36125pt x 270.00874pt>
 File: immagini/est_ovest.pdf Graphic file (type pdf)
 <use immagini/est_ovest.pdf>
 Package pdftex.def Info: immagini/est_ovest.pdf  used on input line 91.
@@ -2251,7 +2262,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
-<immagini/log est_ovest.pdf, id=747, 364.36125pt x 270.00874pt>
+<immagini/log est_ovest.pdf, id=744, 364.36125pt x 270.00874pt>
 File: immagini/log est_ovest.pdf Graphic file (type pdf)
 <use immagini/log est_ovest.pdf>
 Package pdftex.def Info: immagini/log est_ovest.pdf  used on input line 100.
@@ -2261,20 +2272,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-[37
+[36
 
  <./immagini/est_ovest.pdf> <./immagini/log est_ovest.pdf>]
-<immagini/flow.pdf, id=769, 722.7pt x 578.16pt>
+<immagini/flow.pdf, id=767, 722.7pt x 578.16pt>
 File: immagini/flow.pdf Graphic file (type pdf)
 <use immagini/flow.pdf>
 Package pdftex.def Info: immagini/flow.pdf  used on input line 112.
 (pdftex.def)             Requested size: 277.19879pt x 221.7586pt.
-<immagini/sector.pdf, id=770, 722.7pt x 578.16pt>
+<immagini/sector.pdf, id=768, 722.7pt x 578.16pt>
 File: immagini/sector.pdf Graphic file (type pdf)
 <use immagini/sector.pdf>
 Package pdftex.def Info: immagini/sector.pdf  used on input line 119.
 (pdftex.def)             Requested size: 277.19879pt x 221.7586pt.
- [38 <./immagini/flow.pdf> <./immagini/sector.pdf>]
+ [37 <./immagini/flow.pdf> <./immagini/sector.pdf>]
 Appendix D.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 131.
@@ -2291,71 +2302,95 @@ Package microtype Info: Loading generic protrusion settings for font family
 (code/main.R
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1.
- [39
+ [38
 
-] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
-[51] [52] [53] [54] [55] [56] [57])) [58] [59
+] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49]
+[50] [51] [52] [53] [54] [55]
+
+! LaTeX Error: Invalid UTF-8 byte sequence (�\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.862     # quota della tribù 
+                               dominante
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+! LaTeX Error: Invalid UTF-8 byte "B9.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.862     # quota della tribù 
+                               dominante
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[56])) [57] [58
 
 
 
 
 
-] [60] [61] (Tesi.aux (Cap_1.aux)
-(Cap_2.aux) (Cap_3.aux) (Cap_4.aux) (Cap_5.aux) (appendix.aux))
+] [59] [60] (Tesi.aux (Cap_1.aux) (Cap_2.aux) (Cap_3.aux)
+(Cap_4.aux) (Cap_5.aux) (appendix.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `Tesi.out' has not changed.
 (rerunfilecheck)             Checksum: 3B56F3A0A5493774BF82027B9411DACF;4561.
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'Tesi.run.xml'.
 \openout1 = `Tesi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50736 strings out of 474486
- 1055078 string characters out of 5743755
- 2434562 words of memory out of 5000000
- 70889 multiletter control sequences out of 15000+600000
- 677212 words of font info for 216 fonts, out of 8000000 for 9000
+ 50751 strings out of 474486
+ 1055198 string characters out of 5743755
+ 2434577 words of memory out of 5000000
+ 70896 multiletter control sequences out of 15000+600000
+ 680796 words of font info for 224 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,14n,131p,1809b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,13n,131p,1802b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb
-><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pf
-b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
-b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
-><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb>
-<C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><
-C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:
-/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/U
-sers/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Use
-rs/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users
-/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users
-/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Users/
-ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users/a
-le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/a
-le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/a
-le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users
-/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users
-/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/
-ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/a
-le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/a
-le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/al
-e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Tesi.pdf (68 pages, 2950799 bytes).
+><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb>
+<C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb
+><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb
+><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb
+><C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb>
+<C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><
+C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C
+:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/
+Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Us
+ers/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/User
+s/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/
+ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/
+ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Users/a
+le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users/al
+e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/al
+e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/al
+e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/
+ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/
+ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/a
+le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/al
+e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/al
+e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/ale
+_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
+Output written on Tesi.pdf (67 pages, 2974419 bytes).
 PDF statistics:
- 2207 PDF objects out of 2487 (max. 8388607)
- 1137 named destinations out of 1200 (max. 500000)
- 71556 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 2202 PDF objects out of 2487 (max. 8388607)
+ 1130 named destinations out of 1200 (max. 500000)
+ 73604 words of extra memory for PDF output out of 74296 (max. 10000000)
 

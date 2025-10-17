@@ -709,16 +709,16 @@ model_interaction2_nonmain
 #geographical 
 adm <- coastal_admin2_master_main %>%
   st_make_valid() %>%
-  st_transform(32631) %>%                           # WGS84 / UTM 31N (metrico)
-  mutate(centroid_m = st_point_on_surface(geometry))%>% # nessun warning qui
-  st_transform(4326) %>%                             # torna a lon/lat
+  st_transform(32631) %>%                          
+  mutate(centroid_m = st_point_on_surface(geometry))%>% 
+  st_transform(4326) %>%                            
   mutate(
     lon = st_coordinates(centroid_m)[,1],
     lat = st_coordinates(centroid_m)[,2]
   )
 
 # 2) Nord/Sud "coast-aware"
-fit_coast <- lm(lat ~ poly(lon, 2, raw = TRUE), data = adm)   # curva lat~lon
+fit_coast <- lm(lat ~ poly(lon, 2, raw = TRUE), data = adm)   
 adm <- adm %>% mutate(
   lat_pred = predict(fit_coast, newdata = data.frame(lon = lon)),
   macro_NS = if_else(lat > lat_pred, "Nord", "Sud")
@@ -789,10 +789,10 @@ df_sector <- final_regression_data_main %>%
   )
 
 m_sector <- feols(
-  n_conflicts ~ indice2_main * i(port_sector, ref = "Vegetables-first") + log_nightlight |
+  n_conflicts ~ i(port_sector, indice2_main) + log_nightlight |
     ADM2_NAME + year,
   data = df_sector,
-  cluster = ~ ADM2_NAME   # resta coerente con ADM2 come vuoi tu
+  cluster = ~ ADM2_NAME  
 )
 summary(m_sector)
 
@@ -817,7 +817,7 @@ df_flow <- final_regression_data_main %>%
   left_join(adm2_flow[, c("ADM2_NAME","flow_group")], by = "ADM2_NAME")
 
 m_flow <- feols(
-  n_conflicts ~ indice2_main * i(flow_group, ref = "Export-oriented") + log_nightlight |
+  n_conflicts ~ i(flow_group, indice2_main) + log_nightlight |
     ADM2_NAME + year,
   data = df_flow, cluster = ~ ADM2_NAME
 )
@@ -859,6 +859,7 @@ tribal_shares <- nt %>%
 tribal_index_admin2 <- tribal_shares %>%
   group_by(ADM2_NAME) %>%
   summarise(
+    # quota della tribù dominante
     tribal_share_dom = max(share, na.rm = TRUE),
     # fractionalization = 1 - sum(s_i^2)
     tribal_frac      = 1 - sum(share^2, na.rm = TRUE),
@@ -867,26 +868,31 @@ tribal_index_admin2 <- tribal_shares %>%
 
 #regression
 df <- final_regression_data_main %>%
+  left_join(tribal_index_admin2, by = "ADM2_NAME") %>%
   mutate(
-    indice2_lowNL_tribe = indice2_lowNL * tribal_share_dom,
-    indice2_lowNL_frac = indice2_lowNL * tribal_frac 
+    
+    idxL_dom = indice2_lowNL  * tribal_share_dom,
+    idxH_dom = indice2_highNL * tribal_share_dom,
+    idxL_frac = indice2_lowNL  * tribal_frac,
+    idxH_frac = indice2_highNL * tribal_frac
   )
 
-m_lowHighTribe <- feols(
-  n_conflicts ~ indice2_lowNL + indice2_highNL + indice2_lowNL_tribe + log_nightlight |
+#dominance
+m_tr_dom <- feols(
+  n_conflicts ~ indice2_lowNL + indice2_highNL + idxL_dom + idxH_dom + log_nightlight |
     ADM2_NAME + year,
   data = df, cluster = ~ ADM2_NAME
 )
-summary(m_lowHighTribe)
 
-
-m_lowHighTribe2 <- feols(
-  n_conflicts ~ indice2_lowNL + indice2_highNL + indice2_lowNL_frac + log_nightlight |
+#fractionalization
+m_tr_frac <- feols(
+  n_conflicts ~ indice2_lowNL + indice2_highNL + idxL_frac + idxH_frac + log_nightlight |
     ADM2_NAME + year,
   data = df, cluster = ~ ADM2_NAME
 )
-summary(m_lowHighTribe2)
 
+summary(m_tr_dom)
+summary(m_tr_frac)
 #water 
 r <- rast(paste0(getwd(), "/wat/faowat00.tif"))
 
@@ -912,20 +918,8 @@ final_regression_data_main <- merge(
 )
 
 #regression
-m_water <- feols(
-  n_conflicts ~ indice2_main + log_nightlight + water_avail |  year,
-  data=final_regression_data_main
-)
-summary(m_water)
-
-m_water2 <- feols(
-  n_conflicts ~ indice2_highNL + indice2_lowNL + log_nightlight + water_avail | year,
-  data = final_regression_data_main
-)
-
-summary(m_water2)
 df_water <- final_regression_data_main %>%
-  mutate(high_water = ifelse(water_avail > median(water_avail, na.rm=TRUE), 1, 0))
+  mutate(high_water = ifelse(water_avail.x > median(water_avail.x, na.rm=TRUE), 1, 0))
 
 
 df_water <- final_regression_data_main %>%

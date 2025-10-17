@@ -14,28 +14,32 @@ Table\ref{tab:ports_main} reports the estimates of the main coefficient from Equ
 			\toprule
 			& (1) Commercial ports & (2) Commercial ports & (3) All ports & (4) All ports \\
 			\midrule
-			indice2\_main        & -1.01e-07    &             &        -9.22e-09     &             \\
+			Trade Exposure Index        & -1.01e-07    &             &        -9.22e-09     &             \\
 			& (6.30e-08)   &             &   (2.1129e-08)       &             \\
 			\addlinespace[0.25em]
-			indice2\_highNL      &              & -1.12e-07   &             &   -3.12e-08             \\
-			&              & (7.80e-08)  &             &           (2.85e-08)  \\
-			indice2\_lowNL       &              & -5.61e-08\sym{***} &       & 7.30e-09           \\
-			&              & (5.43e-09)  &             &    (7.51e-09)         \\
+			*High Nightlight Intensity       &              & -1.12e-07   &             &   -3.12e-08             \\
+			(1 = Above the median)&              & (7.80e-08)  &             &           (2.85e-08)  \\
+			*Low Nightlight Intensity        &              & -5.61e-08\sym{***} &       & 7.30e-09           \\
+			(1 = Below the median)			&              & (5.43e-09)  &             &    (7.51e-09)         \\
 			\addlinespace[0.25em]
 			
 			\addlinespace[0.25em]
-			log(nightlight)      & -0.879\sym{***} & -0.878\sym{***} & -0.902\sym{***} & -0.901\sym{***} \\
+			Nightlight intensity     & -0.879\sym{***} & -0.878\sym{***} & -0.902\sym{***} & -0.901\sym{***} \\
 			& (0.249)     & (0.248)     & (0.259)     & (0.260)     \\
 			\midrule
 			Observations         & 1,611       & 1,611       & 1,611       & 1,611       \\
-			Adj.\ $R^2$          & 0.662       & 0.662       & 0.661       & 0.662       \\
-			Within $R^2$         & 0.028       & 0.029       & 0.024       & 0.027       \\
-			RMSE                 & 1.806       & 1.805       & 1.810       & 1.807       \\
-			\bottomrule
-			\multicolumn{5}{l}{\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level.} \\
-			\multicolumn{5}{l}{\footnotesize 358 observations dropped due to RHS NA. Signif.: \sym{***} 0.01, \sym{**} 0.05, \sym{*} 0.1.}
+			Time fixed effect     & YES       & YES       & YES       & YES      \\
+			District fixed effect           & YES       & YES       & YES       & YES       \\
+			R² (Adj.)          & 0.662       & 0.662       & 0.661       & 0.662       \\
+			\hline
 		\end{tabular}
-	\end{adjustbox}
+		\end{adjustbox}
+		\vspace{3pt}
+		\\[2pt]
+		\begin{minipage}{1\textwidth}
+			\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level. \\
+			High/Low Nightlight Intensity are ADM2 groups defined by the sample median of nightlights (harmonized DMSP-OLS/VIIRS). Entries in group rows report the simple slope of the Trade Exposure Index within the indicated group; group dummies themselves are absorbed by ADM2 FE. 358 observations dropped due to missing RHS variables. Signif.: *** p < 0.01, ** p < 0.05, * p < 0.10.
+		\end{minipage}
 	\endgroup
 \end{table}
 
@@ -70,36 +74,39 @@ Overall, the results suggest that the link between trade and conflict is neither
 			& \multicolumn{2}{c}{Tribal} \\
 			\hline
 			
-			indice2\_est & -1.63e-07 *  & & &&\\
+			East (slope) & -1.63e-07 *  & & &&\\
 			& (8.24e-08)   &   &                  &&  \\
-			indice2\_west &  -7.45e-09 & &&&\\
+			West (slope) &  -7.45e-09 & &&&\\
 			&    (4.76e-08)   & &          &     &  \\
-			indice2\_main\_veg  &  & -1.63e-07 * & && \\
+			Vegetables (slope)  &  & -1.63e-07 * & && \\
 			&  & (8.24e-08) & && \\
-			indice2\_main\_chem &  & -1.56e-07 && &\\
-			& &   (1.27e-07) & && \\
-			indice2\_main\_exp   & & & 2.13e-09 &&\\
+			Chemicals (slope) &  & -7.45 e-09 && &\\
+			& &   (4.76e-07) & && \\
+			Export (slope)   & & & 2.13e-09 &&\\
 			 & & & (3.29e-08)& &\\
-			indice2\_main\_imp  & & &  -2.55e-07 *** &&\\
-			 & & &  (5.84e-08) && \\
-			 indice2\_lowNL         &&& & 5.58e-05           & -5.6e-08*** \\
-			 &&&&(4.42e-05)      & (5.47e-9) \\
-			 indice2\_highNL      &&&   & -1.12e-07    &-1.119e-07 \\
-			 &&&& (7.81e-08)   & (7.81e-08) \\
-			 indice2\_lowNL\_tribe   &&& & 5-59 e-05        & \\
-			 &&&&(4.16e-05 )       & \\
-			 indice2\_lowNL\_frac    &                 &&&        & 3.92e-05 \\
-			 &                 &&&        & 2.90e-05 \\
-			
+			Import (slope)  & & &  -2.55e-07 *** &&\\
+			 & & &  (4.87e-08) && \\
+			Low Nightlight Intensity         &&& & 5.55e-05           & -5.7e-08*** \\
+			(1 = Below the median)  &&&&(4.41e-05)      & (5.43e-9) \\
+			High Nightlight Intensity       &&&   & -3.48e-07    &-1.63e-08 \\
+			(1 = Above the median) &&&& (2.05e-07)   & (-9.34e-09) \\
+			Dominance x Low NTL   &&& & 5-53 e-05        & \\
+			 &&&&(4.13e-05 )       & \\
+			Dominance x High NTL    &                 &&& 5.16e-07 &\\
+			 &                 &&&    (2.77e-09) &\\
+			Fractionalization x Low NTL &&&&& 3.88e-05\\
+			&&&&&(2.87e-05)\\
+			Fractionalization x High NTL &&&&& 3.42e-07\\
+			&&&&&(2.45e-07)\\
 			\addlinespace[2pt]
 			\textit{Controls} \\
-			log(nightlight) & -0.884 *** & -0.884 *** & -0.884 *** & -0.877*** & -0.877*** \\
+			Nightights intensity & -0.884 *** & -0.884 *** & -0.884 *** & -0.877*** & -0.877*** \\
 			 & (0.2493) & (0.2493) & (0.2470) &(0.248) & (0.248) \\
 			\hline
 			Observations 1,611 & 1,611 &1,611 & 1,611 & 1,611 & 1,611 \\
+			Time fixed effect &YES& YES & YES & YES & YES\\
+			District fixed effect&YES& YES & YES & YES & YES\\
 			Adj. R$^2$    &0.665& 0.665 &0.670 & 0.662 & 0.662\\
-			Within R$^2$  &0.0361& 0.0361 & 0.0499 & 0.0288 & 0.0288\\
-			RMSE          & 1.799 & 1.799 & 1.786 & 1.805 & 1.805\\
 			\hline
 		\end{tabular}
 	} % fine resize Panel A
@@ -113,23 +120,22 @@ Overall, the results suggest that the link between trade and conflict is neither
 			\toprule
 			Group && Mean NL && Median NL && SD NL && N \\
 			\midrule
-			East && 9.78 && 6.57 && 10.4 && 979 \\
+			East  && 9.78 && 6.57 && 10.4 && 979 \\
 			West && 16.8 && 8.91 && 18.9 && 990 \\
 			\midrule
 			Chemicals && 16.5 && 8.41 && 19.2 && 957 \\
 			Vegetables && 10.3 && 6.76 && 10.6 && 1,012 \\
 			\midrule
-			Export && 16.4 && 9.17 && 17.9 && 1,199 \\
-			Import && 8.48 && 5.83 && 9.52 && 770 \\
+			Export  && 16.4 && 9.17 && 17.9 && 1,199 \\
+			Import  && 8.48 && 5.83 && 9.52 && 770 \\
 			\bottomrule
 		\end{tabular}
 	} % fine resize Panel B
 	\vspace{3pt}
 	\\[2pt]
 	\begin{minipage}{0.95\textwidth}
-		\footnotesize Fixed effects: ADM2 and year. SE clustered at ADM2 level. 358 obs. dropped due to RHS NA.  
-		Signif.: *** 0.01, ** 0.05, * 0.1.  
-		NL = nightlights (mean annual radiance, harmonized DMSP-OLS/VIIRS). ADM2 level averages, 2009–2019.
+		\footnotesize \textbf{Panel A} Fixed effects: ADM2 and year. SE: clustered at ADM2 level. Rows labeled “(slope)” report the slope of the Trade Exposure Index within the stated group, estimated via specifications that allow group-specific slopes. High/Low Nightlight Intensity are ADM2 groups defined by the sample median of nightlights (harmonized DMSP-OLS/VIIRS). Tribal indices are time-invariant; their levels are absorbed by ADM2 FE, so only interaction driven slopes are identified. Signif.: *** p < 0.01, ** p < 0.05, * p < 0.10. \\
+		\textbf{Panel B} Nightlights (NTL) are mean annual radiance from harmonized DMSP-OLS/VIIRS. Statistics are computed at the ADM2 level over 2009–2019 (Mean/Median/SD across years within ADM2; N = number of ADM2 in each group).\\
 	\end{minipage}
 \end{table}
 
@@ -162,37 +168,29 @@ However, when accounting for ethnic fractionalization, the coefficient on the tr
 	\caption{Water Availability: Levels \& Heterogeneity}
 	\label{tab:water}
 	\begin{adjustbox}{max width=\textwidth}
-		\begin{tabular}{lrrrr}
+		\begin{tabular}{lr}
 			\toprule
-			& (1) year FE & (2) year FE & (3) ADM2+year FE & (4) ADM2+year FE \\
+			& Terciles \\
 			\midrule
-			Index (overall / highNL / lowNL) & -3.59e-08 & -3.95e-08 (highNL) & -1.327e-07\sym{*} & -6.40e-08 \\
-			& (1.21e-07) & (1.30e-07) & (6.09e-08) & (8.76e-08) \\
-			& -- & -2.16e-08 (lowNL) & -- & -- \\
-			& & (1.04e-07) & & \\
-			Index $\times$ High water (median) & -- & -- & 1.076e-07 & -- \\
-			& & & (6.88e-08) & \\
-			Index $\times$ Low water (median) & -- & -- & -1.40e-08 & -- \\
-			& & & (3.17e-08) & \\
-			Index $\times$ Water tercile: Medium & -- & -- & -- & -2.597e-07\sym{**} \\
-			& & & & (8.75e-08) \\
-			Index $\times$ Water tercile: High & -- & -- & -- & 3.77e-08 \\
-			& & & & (9.38e-08) \\
-			Log Nightlights & 0.902599\sym{**} & 0.902743\sym{**} & -0.864138\sym{***} & -0.868460\sym{***} \\
-			& (0.199140) & (0.199352) & (0.245164) & (0.246453) \\
-			Water availability & -0.037963\sym{**} & -0.037975\sym{**} & -- & -- \\
-			& (0.010469) & (0.010490) & & \\
+			Index × Water tercile: Low & 6.48e-08 \\
+			(1 = below 33\%) & (8.76e-08)  \\
+			Index × Water tercile: Medium & -2.597e-07\sym{**} \\
+			(1 = between 33\% - 66\%)&  (8.75e-08) \\
+			Index × Water tercile: High & 3.78e-08 \\
+			(1 = above 66\%) &  (9.38e-08) \\
+			Nightights intensity & -0.834\sym{***} \\
+			& (0.239) \\
 			\midrule
-			Observations & 1620 & 1620 & 1620 & 1620 \\
-			Adj. $R^2$ & 0.102 & 0.101 & 0.664 & 0.668 \\
-			Within $R^2$ & 0.0816 & 0.0816 & 0.0331 & 0.0454 \\
-			RMSE & 3.116 & 3.116 & 1.797 & 1.785 \\
+			Observations  & 1620 \\
+			Time Fixed effect & YES\\
+			District Fixed Effect & YES\\
+			Adj. $R^2$  & 0.669 \\
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}
 	\begin{flushleft}\footnotesize
-		Note: (1)-(2) cluster year; (3)-(4) cluster ADM2. Baseline di gruppo/tercili omesse per collinearita'. \sym{***} $p<0.01$, \sym{**} $p<0.05$, \sym{*} $p<0.10$.
-		\item \textit{Metodo.}Water availability sono degli indicatori esterni di disponibilità idrica assegnati agli ADM2 e suddivisi per mediana o tercili. Le interazioni testano se la presenza di risorse idriche modula l’impatto.
+		Water availability is the ADM2 area‐weighted mean of a FAO raster, then split into terciles (cut at the 33rd/66th percentiles: Low/Medium/High). Because levels are absorbed by ADM2 fixed effects, we report Index slopes by water group (interactions). All models include year \& ADM2 FE with SE clustered at ADM2. 
+		\sym{***} $p<0.01$, \sym{**} $p<0.05$, \sym{*} $p<0.10$.
 	\end{flushleft}
 \end{table}
 
@@ -201,4 +199,4 @@ We next investigate whether the pacifying effect of trade exposure varies with l
 
 The intuition is that in ADM2 units with lower water availability, typically more fragile and rural, the trade index should reduce conflict by stabilizing consumption and providing alternative income channels. This mechanism is consistent with evidence that economic integration can mitigate consumption related conflicts by improving access to markets and smoothing shocks \parencite{amodio2024trade}. \\
 
-However, the empirical results in Table \ref{tab:water} reveal a more complex pattern. Contrary to expectations, the effect of trade exposure turns positive in areas with higher water availability—where agricultural and economic activities are already developed. This suggests that, rather than amplifying stability, trade may in these contexts reinforce existing inequalities or intensify competition over profitable markets \parencite{berman2017mine, michalopoulos2013pre}. Overall, the findings indicate that trade openness exerts a stabilizing influence mainly in less developed and resource constrained local economies, a result in line with broader evidence on the heterogeneous development impacts of market integration \parencite{dixcarneiro2023globalization, amodio2024trade}.
+However, the empirical results in Table \ref{tab:water} reveal a more complex pattern. Contrary to expectations, the effect of trade exposure turns positive in areas with higher and low water availability, where agricultural and economic activities are already developed. This suggests that, rather than amplifying stability, trade may in resourch rich area vould reinforce existing inequalities or intensify competition over profitable markets \parencite{berman2017mine, michalopoulos2013pre}. Overall, the findings indicate that trade openness exerts a stabilizing influence mainly in less developed and resource constrained local economies, a result in line with broader evidence on the heterogeneous development impacts of market integration \parencite{dixcarneiro2023globalization, amodio2024trade}.
