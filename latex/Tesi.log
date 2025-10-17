@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  17 OCT 2025 08:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  18 OCT 2025 01:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1674,7 +1674,7 @@ Package biblatex Info: Reference segment=0 on input line 113.
 \SAP@parboxindent=\skip113
 \SAP@parboxwidth=\skip114
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
-17.
+16.
  (C:\Users\ale_a\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1682,10 +1682,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<sapienzalogo.pdf, id=146, 288.07625pt x 89.33376pt>
+<sapienzalogo.pdf, id=150, 288.07625pt x 89.33376pt>
 File: sapienzalogo.pdf Graphic file (type pdf)
 <use sapienzalogo.pdf>
-Package pdftex.def Info: sapienzalogo.pdf  used on input line 117.
+Package pdftex.def Info: sapienzalogo.pdf  used on input line 116.
 (pdftex.def)             Requested size: 142.26378pt x 44.11742pt.
 
 [1
@@ -1696,46 +1696,46 @@ Package pdftex.def Info: sapienzalogo.pdf  used on input line 117.
 a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:/Users/ale_a/A
 ppData/Local/Programs/MiKTeX/tex/latex/sapthesis/sapienzalogo.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-17.
+16.
 
 (C:\Users\ale_a\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-17.
+16.
 (C:\Users\ale_a\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-17.
+16.
 
 (C:\Users\ale_a\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-117.
+116.
 
 (C:\Users\ale_a\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-117.
+116.
 
 (C:\Users\ale_a\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 117.
+(Font)              <10> on input line 116.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 117.
+(Font)              <7> on input line 116.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 117.
+(Font)              <5> on input line 116.
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
 
  []
 
@@ -1744,12 +1744,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.117 
-       [1
+l.116 \dedication
+                 {Ho sceso, dandoti il braccio, almeno un milione di scale\\
+[1
 
 {C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] (
-abstract.tex) [2
+abstract.tex [2
 
+
+]) [3
 
 ] (Tesi.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1758,29 +1761,29 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 4.
- [3
+ [4
 
 ])
 \tf@toc=\write8
 \openout8 = `Tesi.toc'.
 
- [4] (Tesi.lof)
+ [5] (Tesi.lof)
 \tf@lof=\write9
 \openout9 = `Tesi.lof'.
 
- [5
+ [6
 
 ] (Tesi.lot)
 \tf@lot=\write10
 \openout10 = `Tesi.lot'.
 
-
-[6
+ [7
 
 ]
 \openout2 = `Cap_1.aux'.
 
- (Cap_1.tex
+
+(Cap_1.tex
 Chapter 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--6
@@ -1849,12 +1852,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--38
  []
 
 [6]
-<immagini/conf_coast.pdf, id=354, 364.36125pt x 270.00874pt>
+<immagini/conf_coast.pdf, id=363, 364.36125pt x 270.00874pt>
 File: immagini/conf_coast.pdf Graphic file (type pdf)
 <use immagini/conf_coast.pdf>
 Package pdftex.def Info: immagini/conf_coast.pdf  used on input line 43.
 (pdftex.def)             Requested size: 396.0pt x 293.46732pt.
-<immagini/total_conflict.pdf, id=356, 364.36125pt x 270.00874pt>
+<immagini/total_conflict.pdf, id=365, 364.36125pt x 270.00874pt>
 File: immagini/total_conflict.pdf Graphic file (type pdf)
 <use immagini/total_conflict.pdf>
 Package pdftex.def Info: immagini/total_conflict.pdf  used on input line 51.
@@ -1882,7 +1885,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--77
  []
 
 [9]
-<immagini/LSCI_shock.pdf, id=410, 364.36125pt x 270.00874pt>
+<immagini/LSCI_shock.pdf, id=419, 364.36125pt x 270.00874pt>
 File: immagini/LSCI_shock.pdf Graphic file (type pdf)
 <use immagini/LSCI_shock.pdf>
 Package pdftex.def Info: immagini/LSCI_shock.pdf  used on input line 80.
@@ -1895,12 +1898,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--90
 [10
 
  <./immagini/LSCI_shock.pdf>]
-<immagini/ports.pdf, id=430, 364.36125pt x 270.00874pt>
+<immagini/ports.pdf, id=439, 364.36125pt x 270.00874pt>
 File: immagini/ports.pdf Graphic file (type pdf)
 <use immagini/ports.pdf>
 Package pdftex.def Info: immagini/ports.pdf  used on input line 99.
 (pdftex.def)             Requested size: 190.07831pt x 140.85442pt.
-<immagini/distanza_porti_main_mappa.pdf, id=431, 722.7pt x 578.16pt>
+<immagini/distanza_porti_main_mappa.pdf, id=440, 722.7pt x 578.16pt>
 File: immagini/distanza_porti_main_mappa.pdf Graphic file (type pdf)
 <use immagini/distanza_porti_main_mappa.pdf>
 Package pdftex.def Info: immagini/distanza_porti_main_mappa.pdf  used on input 
@@ -1917,22 +1920,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 136--137
  []
 
 [11 <./immagini/ports.pdf> <./immagini/distanza_porti_main_mappa.pdf>]
-<immagini/night 2009.pdf, id=454, 578.16pt x 361.35pt>
+<immagini/night 2009.pdf, id=464, 578.16pt x 361.35pt>
 File: immagini/night 2009.pdf Graphic file (type pdf)
 <use immagini/night 2009.pdf>
 Package pdftex.def Info: immagini/night 2009.pdf  used on input line 148.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2012.pdf, id=455, 578.16pt x 361.35pt>
+<immagini/night 2012.pdf, id=465, 578.16pt x 361.35pt>
 File: immagini/night 2012.pdf Graphic file (type pdf)
 <use immagini/night 2012.pdf>
 Package pdftex.def Info: immagini/night 2012.pdf  used on input line 154.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2015.pdf, id=456, 578.16pt x 361.35pt>
+<immagini/night 2015.pdf, id=466, 578.16pt x 361.35pt>
 File: immagini/night 2015.pdf Graphic file (type pdf)
 <use immagini/night 2015.pdf>
 Package pdftex.def Info: immagini/night 2015.pdf  used on input line 159.
 (pdftex.def)             Requested size: 190.07831pt x 118.79926pt.
-<immagini/night 2019.pdf, id=457, 578.16pt x 361.35pt>
+<immagini/night 2019.pdf, id=467, 578.16pt x 361.35pt>
 File: immagini/night 2019.pdf Graphic file (type pdf)
 <use immagini/night 2019.pdf>
 Package pdftex.def Info: immagini/night 2019.pdf  used on input line 164.
@@ -1942,12 +1945,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
-<immagini/ntl_facets.pdf, id=460, 722.7pt x 578.16pt>
+<immagini/ntl_facets.pdf, id=470, 722.7pt x 578.16pt>
 File: immagini/ntl_facets.pdf Graphic file (type pdf)
 <use immagini/ntl_facets.pdf>
 Package pdftex.def Info: immagini/ntl_facets.pdf  used on input line 178.
 (pdftex.def)             Requested size: 396.0pt x 316.798pt.
-<immagini/mean.pdf, id=461, 364.36125pt x 270.00874pt>
+<immagini/mean.pdf, id=471, 364.36125pt x 270.00874pt>
 File: immagini/mean.pdf Graphic file (type pdf)
 <use immagini/mean.pdf>
 Package pdftex.def Info: immagini/mean.pdf  used on input line 192.
@@ -2055,7 +2058,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--88
  []
 
 [20])
-Underfull \hbox (badness 10000) in paragraph at lines 89--129
+Underfull \hbox (badness 10000) in paragraph at lines 89--130
 
  []
 
@@ -2192,7 +2195,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--7
 
  []
 
-<immagini/con.pdf, id=694, 364.36125pt x 270.00874pt>
+<immagini/con.pdf, id=703, 364.36125pt x 270.00874pt>
 File: immagini/con.pdf Graphic file (type pdf)
 <use immagini/con.pdf>
 Package pdftex.def Info: immagini/con.pdf  used on input line 10.
@@ -2220,12 +2223,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
-<immagini/aa.pdf, id=712, 364.36125pt x 270.00874pt>
+<immagini/aa.pdf, id=721, 364.36125pt x 270.00874pt>
 File: immagini/aa.pdf Graphic file (type pdf)
 <use immagini/aa.pdf>
 Package pdftex.def Info: immagini/aa.pdf  used on input line 44.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/sec.pdf, id=714, 364.36125pt x 270.00874pt>
+<immagini/sec.pdf, id=723, 364.36125pt x 270.00874pt>
 File: immagini/sec.pdf Graphic file (type pdf)
 <use immagini/sec.pdf>
 Package pdftex.def Info: immagini/sec.pdf  used on input line 52.
@@ -2252,7 +2255,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--88
 [35
 
 ]
-<immagini/est_ovest.pdf, id=740, 364.36125pt x 270.00874pt>
+<immagini/est_ovest.pdf, id=750, 364.36125pt x 270.00874pt>
 File: immagini/est_ovest.pdf Graphic file (type pdf)
 <use immagini/est_ovest.pdf>
 Package pdftex.def Info: immagini/est_ovest.pdf  used on input line 91.
@@ -2262,7 +2265,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
-<immagini/log est_ovest.pdf, id=744, 364.36125pt x 270.00874pt>
+<immagini/log est_ovest.pdf, id=754, 364.36125pt x 270.00874pt>
 File: immagini/log est_ovest.pdf Graphic file (type pdf)
 <use immagini/log est_ovest.pdf>
 Package pdftex.def Info: immagini/log est_ovest.pdf  used on input line 100.
@@ -2275,12 +2278,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 [36
 
  <./immagini/est_ovest.pdf> <./immagini/log est_ovest.pdf>]
-<immagini/flow.pdf, id=767, 722.7pt x 578.16pt>
+<immagini/flow.pdf, id=776, 722.7pt x 578.16pt>
 File: immagini/flow.pdf Graphic file (type pdf)
 <use immagini/flow.pdf>
 Package pdftex.def Info: immagini/flow.pdf  used on input line 112.
 (pdftex.def)             Requested size: 277.19879pt x 221.7586pt.
-<immagini/sector.pdf, id=768, 722.7pt x 578.16pt>
+<immagini/sector.pdf, id=777, 722.7pt x 578.16pt>
 File: immagini/sector.pdf Graphic file (type pdf)
 <use immagini/sector.pdf>
 Package pdftex.def Info: immagini/sector.pdf  used on input line 119.
@@ -2342,24 +2345,78 @@ Alternatively, save the file in UTF-8 using your editor or another tool
 
 
 
-] [59] [60] (Tesi.aux (Cap_1.aux) (Cap_2.aux) (Cap_3.aux)
-(Cap_4.aux) (Cap_5.aux) (appendix.aux))
+] [59] (ringraziamenti.tex [60] [61
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+[62
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
+
+ []
+
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--34
+
+ []
+
+[64]) [65] (Tesi.aux (Cap_1.aux) (Cap_2.aux) (Cap_3.aux) (Cap_4.aux) (Cap_5.aux
+) (appendix.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Tesi.out' has not changed.
-(rerunfilecheck)             Checksum: 3B56F3A0A5493774BF82027B9411DACF;4561.
+(rerunfilecheck)             Checksum: 95A019C090D4F3108FC1D479844E857D;4678.
 Package logreq Info: Writing requests to 'Tesi.run.xml'.
 \openout1 = `Tesi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50751 strings out of 474486
- 1055198 string characters out of 5743755
+ 50817 strings out of 474486
+ 1056171 string characters out of 5743755
  2434577 words of memory out of 5000000
- 70896 multiletter control sequences out of 15000+600000
- 680796 words of font info for 224 fonts, out of 8000000 for 9000
+ 70908 multiletter control sequences out of 15000+600000
+ 683656 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,13n,131p,1802b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -2388,9 +2445,9 @@ le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/al
 e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/al
 e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/ale
 _a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Tesi.pdf (67 pages, 2974419 bytes).
+Output written on Tesi.pdf (73 pages, 2994264 bytes).
 PDF statistics:
- 2202 PDF objects out of 2487 (max. 8388607)
- 1130 named destinations out of 1200 (max. 500000)
- 73604 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 2234 PDF objects out of 2487 (max. 8388607)
+ 1137 named destinations out of 1200 (max. 500000)
+ 73612 words of extra memory for PDF output out of 74296 (max. 10000000)
 

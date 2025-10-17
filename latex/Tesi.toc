@@ -34,3 +34,4 @@
 \contentsline {chapter}{\numberline {B}Nightlights}{33}{appendix.B}%
 \contentsline {chapter}{\numberline {C}Heterogeneity}{35}{appendix.C}%
 \contentsline {chapter}{\numberline {D}Replication Code}{38}{appendix.D}%
+\contentsline {chapter}{Ringraziamenti}{62}{appendix*.28}%
