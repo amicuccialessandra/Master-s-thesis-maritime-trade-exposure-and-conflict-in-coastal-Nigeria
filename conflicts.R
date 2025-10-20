@@ -27,10 +27,7 @@ non_rapacity_sub_events <- c(
 
 conflict_non_rapacity <- conflict %>%
   filter(
-    sub_event_type %in% non_rapacity_sub_events |
-      grepl("loot|steal|raid|resource|gold|oil|land|plunder|livestock|pasture|farm|grazing", 
-            tolower(notes))
-  )
+    sub_event_type %in% non_rapacity_sub_events)
 
 
 conflict_non_rapacity_clean <- conflict_non_rapacity[complete.cases(conflict_non_rapacity$longitude, conflict_non_rapacity$latitude), ]
@@ -179,3 +176,25 @@ conflict_sf_transformed <- st_transform(conflict_sf_transformed, 26393)
 # Using st_intersects for points within polygons, or st_within for stricter containment
 
 conflict_coastal <- st_join(conflict_sf_transformed, coastal_admin2_master_proj, join = st_intersects, left = FALSE)
+
+# 2) Porto i poligoni ADM2 in un CRS coerente.
+#    Se il tuo shapefile è in EPSG:26393 (Minna / Nigeria East Belt) lo riconosco così:
+st_crs(coastal_admin2_master)  # deve dare EPSG:26393
+#    Per semplicità, lavoro tutto in 4326:
+coastal_admin2_wgs <- st_transform(coastal_admin2_master, 4326)
+
+# (Opzionale ma consigliato) Rendo le geometrie valide
+conflict_sf <- st_make_valid(conflict_sf)
+coastal_admin2_wgs <- st_make_valid(coastal_admin2_wgs)
+
+# 3) Controlli veloci: stessi CRS e bbox sensato
+st_crs(conflict_sf); st_crs(coastal_admin2_wgs)
+st_bbox(conflict_sf); st_bbox(coastal_admin2_wgs)
+
+# 4) Join spaziale: prendo SOLO i conflitti dentro gli ADM2 costieri
+#    Meglio 'st_within' (punti dentro poligoni) che 'st_intersects'
+conflict_coastal <- st_join(conflict_sf, coastal_admin2_wgs, join = st_within, left = FALSE)
+
+# 5) Verifica
+nrow(conflict_coastal)
+head(conflict_coastal)

@@ -315,15 +315,15 @@ coastal_buffer_admin2 <- admin2_proj %>%
 
 # Calcola la distanza minima da ogni admin2 ai porti
 dist_ports <- st_distance(coastal_buffer_admin2, ports_proj)
-coastal_buffer_admin2$dist_min_port <- apply(as.matrix(dist_ports), 1, min)
+coastal_buffer_admin2$dist_min_port <- apply(as.matrix(dist_ports), 1, min)/1000
 
 dist_port_p <- ggplot() +
   geom_sf(data = coastal_buffer_admin2, aes(fill = dist_min_port), color = "black", size = 0.2) +
-  scale_fill_viridis_c(option = "plasma", name = "Distance (m)") +
+  scale_fill_viridis_c(option = "plasma", name = "Distance (km)") +   # cambia etichetta
   labs(title = "Distance between coastal administrative areas and ports",
-       subtitle = "10,000 km buffer around ports") +
+       subtitle = "1,000 km buffer around ports") +
   theme_minimal()
-ggsave("distanza_porti_mappa.pdf", # Save as PDF
+ggsave("distanza_porti_m.pdf", # Save as PDF
        plot = dist_port_p,
        width = 10,                 # Width in inches
        height = 8,                 # Height in inches
