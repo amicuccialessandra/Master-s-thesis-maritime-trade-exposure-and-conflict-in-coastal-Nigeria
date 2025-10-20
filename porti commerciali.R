@@ -24,7 +24,7 @@ coastal_buffer_admin2_main <- admin2_proj_main %>%
 
 # Calcolo distanza minima dagli admin2 ai porti principali
 dist_ports_main <- st_distance(coastal_buffer_admin2_main, ports_main_proj)
-coastal_buffer_admin2_main$dist_min_port_main <- apply(as.matrix(dist_ports_main), 1, min)
+coastal_buffer_admin2_main$dist_min_port_main <- apply(as.matrix(dist_ports_main), 1, min)/1000
 
 # Creo un nuovo coastal_admin2_master_main con distanza "main"
 coastal_admin2_master_main <- merge(
@@ -46,10 +46,11 @@ coastal_admin2_master_main <- coastal_admin2_master_main %>%
 # -----------------------
 dist_port_main_plot <- ggplot() +
   geom_sf(data = coastal_buffer_admin2_main, aes(fill = dist_min_port_main), color = "black", size = 0.2) +
-  scale_fill_viridis_c(option = "plasma", name = "Distance (m)") +
+  scale_fill_viridis_c(option = "plasma", name = "Distance (km)") +
   labs(title = "Distance between coastal administrative areas and main ports",
        subtitle = "1,000 km buffer around main ports") +
   theme_minimal()
+
 
 ggsave("distanza_porti_main_mappa.pdf", 
        plot = dist_port_main_plot,
@@ -58,11 +59,64 @@ ggsave("distanza_porti_main_mappa.pdf",
 dist_port_main_plot
 port2 <- ggplot() +
   geom_sf(data = coastal_buffer_admin2_main, fill = "gray90", color = "grey") +  # Admin2 map
-  geom_sf(data = ports_main_proj, color = "red", size = 2) +  # Ports as red dots
+  geom_sf(data = ports_main_proj, color = "red", size = 2) +
+  geom_sf_text(data = ports_main_proj,
+               aes(label = MAIN_PORT_),
+               fontface = "bold", size = 3,
+               nudge_y = 20000,  # ~20 km verso nord (UTM -> metri)
+               heck_overlap = FALSE) +
+  coord_sf(expand = TRUE) +   # <-- assicura che tutto entri# Ports as red dots
   theme_minimal() +
   ggtitle("Nigerian Ports with Admin2 Boundaries and Grid")
 
 port2
+
+library(dplyr)
+library(sf)
+library(ggrepel)
+
+# Tabella con coordinate
+ports_lab <- cbind(st_drop_geometry(ports_main_proj),
+                   st_coordinates(st_geometry(ports_main_proj))) %>%
+  as.data.frame()
+
+# Gruppo "vicinanza" (10 km = 10000 m; regola se serve)
+ports_lab <- ports_lab %>%
+  mutate(
+    grpX = round(X / 10000),
+    grpY = round(Y / 10000),
+    prox_group = paste(grpX, grpY, sep = "_")
+  ) %>%
+  group_by(prox_group) %>%
+  mutate(
+    # assegna offset alternati su/giù per le etichette del gruppo
+    rank_in_group = row_number(),
+    offset_y = case_when(
+      n() == 1                     ~ 0,
+      TRUE                         ~ ( (rank_in_group %% 2)*2 - 1 ) * 25000
+      # => ... -25km, +25km, -25km, +25km ...
+    )
+  ) %>%
+  ungroup()
+
+ggplot() +
+  geom_sf(data = coastal_buffer_admin2_main, fill = "gray90", color = "grey") +
+  geom_sf(data = ports_main_proj, color = "red", size = 2) +
+  # etichette sopra/sotto con freccia
+  geom_text_repel(
+    data = ports_lab,
+    aes(x = X, y = Y + offset_y, label = MAIN_PORT_),
+    size = 3, fontface = "bold",
+    direction = "y",              # spingi solo in verticale
+    min.segment.length = 0,
+    segment.size = 0.8, segment.alpha = 0.8,
+    box.padding = 0.2, point.padding = 0.2,
+    force = 2, max.overlaps = Inf
+  ) +
+  coord_sf(expand = TRUE) +
+  theme_void() +
+  ggtitle("Nigerian Ports with Admin2 Boundaries")
+
 coastal_buffer_admin2_main <- merge(
   nightlight_dt, 
   coastal_buffer_admin2_main,   # <-- la versione filtrata sui porti principali
@@ -427,7 +481,7 @@ table(admin2_costieri$macro_region)
 ggplot(admin2_costieri) +
   geom_sf(aes(fill = macro_region), color = "black", size = 0.2) +
   scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
-  labs(title = "Macro-regioni ADM2 costiere (Nord e Sud)",
+  labs(title = "Macro-regions ADM2 (Nord & South)",
        fill = "Macro-regione") +
   theme_minimal()
 
@@ -486,9 +540,9 @@ ggplot(final_regression_data_main,
   scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
   scale_color_manual(values = c("Nord" = "red", "Sud" = "blue")) +
   labs(
-    title = "Distribuzione (log) dei nightlights: Nord vs Sud",
+    title = "Logarithmic distribuition of nightlights: Nord vs Sud",
     x = "log(1 + Nightlight mean)",
-    y = "Densità"
+    y = "Density"
   ) +
   theme_minimal()
 
@@ -497,8 +551,8 @@ ggplot(final_regression_data_main,
   geom_boxplot(alpha = 0.7, outlier.shape = 16, outlier.size = 1.5) +
   scale_fill_manual(values = c("Nord" = "red", "Sud" = "blue")) +
   labs(
-    title = "Distribuzione (log) dei nightlights per macro-regione",
-    x = "Macro-regione",
+    title = "Logarithmic distribuition of nightlights for macro-region",
+    x = "Macro-regions",
     y = "log(1 + Nightlight mean)"
   ) +
   theme_minimal()
@@ -568,7 +622,7 @@ table(admin2_costieri$macro_region_EW)
 ggplot(admin2_costieri) +
   geom_sf(aes(fill = macro_region_EW), color = "black", size = 0.2) +
   scale_fill_manual(values = c("Ovest" = "darkgreen", "Est" = "orange")) +
-  labs(title = "Macro-regioni ADM2 costiere (Est/Ovest)",
+  labs(title = "Macro-regions ADM2: Est/Ovest)",
        fill = "Macro-regione") +
   theme_minimal()
 final_regression_data_main <- final_regression_data_main %>%
@@ -629,8 +683,8 @@ ggplot(final_regression_data_main,
   geom_density(alpha = 0.3) +
   scale_fill_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
   scale_color_manual(values = c("Est" = "orange", "Ovest" = "darkgreen")) +
-  labs(title = "Densità (log) dei nightlights: Est vs Ovest",
-       x = "log(1 + Nightlight mean)", y = "Densità") +
+  labs(title = "Log density of nightlights: Est vs Ovest",
+       x = "log(1 + Nightlight mean)", y = "Density") +
   theme_minimal()
 
 # opzionale se manca nightlight_mean nello shapefile
@@ -940,6 +994,14 @@ m_sector <- feols(
 )
 summary(m_sector)
 
+df_sector %>%
+  group_by(port_sector) %>%
+  summarise(
+  mean_nl   = mean(nightlight_mean, na.rm = TRUE),
+  median_nl = median(nightlight_mean, na.rm = TRUE),
+  sd_nl     = sd(nightlight_mean, na.rm = TRUE),
+  n         = n()
+ )
 ##import/exp
 # Esempio: aggiorna i nomi con i tuoi
 import_ports <- c("ONNE", "CALABAR")
@@ -967,7 +1029,14 @@ m_flow <- feols(
   data = df_flow, cluster = ~ ADM2_NAME
 )
 summary(m_flow)
-
+df_flow  %>%
+  group_by(flow_group) %>%
+  summarise(
+    mean_nl   = mean(nightlight_mean, na.rm = TRUE),
+    median_nl = median(nightlight_mean, na.rm = TRUE),
+    sd_nl     = sd(nightlight_mean, na.rm = TRUE),
+    n         = n()
+  )
 port_flow_map <- tibble::tibble(
   MAIN_PORT_ = c(import_ports, export_ports),
   flow_group = c(rep("Import", length(import_ports)),
@@ -1001,7 +1070,14 @@ df_flow <- final_regression_data_main %>%
   )
 
 
-
+df_flow %>%
+  group_by(flow_group) %>%
+  summarise(
+    mean_nl   = mean(nightlight_mean, na.rm = TRUE),
+    median_nl = median(nightlight_mean, na.rm = TRUE),
+    sd_nl     = sd(nightlight_mean, na.rm = TRUE),
+    n         = n()
+  )
 # 5) Stime
 
 ## 5a) Interazione semplice: effetto dell'indice che cambia tra Export vs Import
@@ -1038,9 +1114,26 @@ adm2_groups <- coastal_admin2_master_main %>%
   left_join(adm2_port[,c("ADM2_NAME","port_sector")], by="ADM2_NAME") %>%
   left_join(adm2_flow[,c("ADM2_NAME","flow_group")], by="ADM2_NAME")
 
-plot(adm2_groups["flow_group"])        # Export vs Import
-plot(adm2_groups["port_sector"])       # Veg-first vs Chem-first
 
+adm2_groups$port_sector <- factor(adm2_groups$port_sector,
+                                  levels = c("Vegetables-first","Chemicals-first"))
+
+s <- ggplot(adm2_groups) +
+  geom_sf(aes(fill = port_sector), color = "grey30", size = 0.2) +
+  labs(fill = "Port sector", title = "Port-sector specialization") +
+  theme_minimal()
+ggsave("sector.pdf", s, width = 10, height = 8, dpi = 300)
+adm2_groups <- st_make_valid(adm2_groups)
+
+# Order levels if you care about legend/baseline
+adm2_groups$flow_group <- factor(adm2_groups$flow_group,
+                                 levels = c("Export","Import"))
+
+p <- ggplot(adm2_groups) +
+  geom_sf(aes(fill = flow_group), color = "grey30", size = 0.2) +
+  labs(title = "Trade-flow orientation", fill = "Flow group") +
+  theme_minimal()
+ggsave("flow.pdf", p, width = 10, height = 8, dpi = 300)
 ##tribes 
 tribes <- read_sf("tribalmap.shp"); tribes
 st_crs(tribes)
@@ -1141,3 +1234,14 @@ m_lowHighTribe2 <- feols(
   data = df, cluster = ~ ADM2_NAME
 )
 summary(m_lowHighTribe2)
+
+
+admin2_costieri <- admin2_costieri %>%
+  mutate(macro_NS = case_when(lat <= lat_terzili[1] ~ "Sud",
+                              lat >  lat_terzili[1] ~ "Nord"),
+         macro_EW = case_when(lon <= lon_mediana ~ "Ovest",
+                              lon >  lon_mediana  ~ "Est"))
+
+final_regression_data_main <- final_regression_data_main %>%
+  left_join(st_drop_geometry(admin2_costieri[, c("ADM2_NAME", "macro_NS", "macro_EW")]), by = "ADM2_NAME")
+
