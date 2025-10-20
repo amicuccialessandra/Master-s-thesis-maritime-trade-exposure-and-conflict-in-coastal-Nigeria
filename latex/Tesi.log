@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  18 OCT 2025 01:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.28)  18 OCT 2025 01:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1682,7 +1682,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<sapienzalogo.pdf, id=150, 288.07625pt x 89.33376pt>
+<sapienzalogo.pdf, id=146, 288.07625pt x 89.33376pt>
 File: sapienzalogo.pdf Graphic file (type pdf)
 <use sapienzalogo.pdf>
 Package pdftex.def Info: sapienzalogo.pdf  used on input line 116.
@@ -1748,20 +1748,21 @@ l.116 \dedication
                  {Ho sceso, dandoti il braccio, almeno un milione di scale\\
 [1
 
-{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] (
-abstract.tex [2
+{C:/Users/ale_a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 118.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 118.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 118.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 118.
+(abstract.tex [2
 
 
 ]) [3
 
-] (Tesi.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 4.
- [4
+] (Tesi.toc [4
 
 ])
 \tf@toc=\write8
@@ -2118,9 +2119,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 154--157
  []
 
 [25]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 193.
-
 Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
@@ -2195,7 +2193,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--7
 
  []
 
-<immagini/con.pdf, id=703, 364.36125pt x 270.00874pt>
+<immagini/con.pdf, id=700, 364.36125pt x 270.00874pt>
 File: immagini/con.pdf Graphic file (type pdf)
 <use immagini/con.pdf>
 Package pdftex.def Info: immagini/con.pdf  used on input line 10.
@@ -2223,12 +2221,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
-<immagini/aa.pdf, id=721, 364.36125pt x 270.00874pt>
+<immagini/aa.pdf, id=718, 364.36125pt x 270.00874pt>
 File: immagini/aa.pdf Graphic file (type pdf)
 <use immagini/aa.pdf>
 Package pdftex.def Info: immagini/aa.pdf  used on input line 44.
 (pdftex.def)             Requested size: 316.80121pt x 234.77385pt.
-<immagini/sec.pdf, id=723, 364.36125pt x 270.00874pt>
+<immagini/sec.pdf, id=720, 364.36125pt x 270.00874pt>
 File: immagini/sec.pdf Graphic file (type pdf)
 <use immagini/sec.pdf>
 Package pdftex.def Info: immagini/sec.pdf  used on input line 52.
@@ -2255,7 +2253,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--88
 [35
 
 ]
-<immagini/est_ovest.pdf, id=750, 364.36125pt x 270.00874pt>
+<immagini/est_ovest.pdf, id=747, 364.36125pt x 270.00874pt>
 File: immagini/est_ovest.pdf Graphic file (type pdf)
 <use immagini/est_ovest.pdf>
 Package pdftex.def Info: immagini/est_ovest.pdf  used on input line 91.
@@ -2265,7 +2263,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
-<immagini/log est_ovest.pdf, id=754, 364.36125pt x 270.00874pt>
+<immagini/log est_ovest.pdf, id=751, 364.36125pt x 270.00874pt>
 File: immagini/log est_ovest.pdf Graphic file (type pdf)
 <use immagini/log est_ovest.pdf>
 Package pdftex.def Info: immagini/log est_ovest.pdf  used on input line 100.
@@ -2278,12 +2276,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 [36
 
  <./immagini/est_ovest.pdf> <./immagini/log est_ovest.pdf>]
-<immagini/flow.pdf, id=776, 722.7pt x 578.16pt>
+<immagini/flow.pdf, id=773, 722.7pt x 578.16pt>
 File: immagini/flow.pdf Graphic file (type pdf)
 <use immagini/flow.pdf>
 Package pdftex.def Info: immagini/flow.pdf  used on input line 112.
 (pdftex.def)             Requested size: 277.19879pt x 221.7586pt.
-<immagini/sector.pdf, id=777, 722.7pt x 578.16pt>
+<immagini/sector.pdf, id=774, 722.7pt x 578.16pt>
 File: immagini/sector.pdf Graphic file (type pdf)
 <use immagini/sector.pdf>
 Package pdftex.def Info: immagini/sector.pdf  used on input line 119.
@@ -2345,77 +2343,75 @@ Alternatively, save the file in UTF-8 using your editor or another tool
 
 
 
-] [59] (ringraziamenti.tex [60] [61
+] [59] (ringraziamenti.tex [60]
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+[61
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
+Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--9
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-[62
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--16
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
+Underfull \hbox (badness 10000) in paragraph at lines 26--33
 
  []
 
-[63]
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--34
-
- []
-
-[64]) [65] (Tesi.aux (Cap_1.aux) (Cap_2.aux) (Cap_3.aux) (Cap_4.aux) (Cap_5.aux
+[63]) [64] (Tesi.aux (Cap_1.aux) (Cap_2.aux) (Cap_3.aux) (Cap_4.aux) (Cap_5.aux
 ) (appendix.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Tesi.out' has not changed.
-(rerunfilecheck)             Checksum: 95A019C090D4F3108FC1D479844E857D;4678.
+(rerunfilecheck)             Checksum: 3B56F3A0A5493774BF82027B9411DACF;4561.
 Package logreq Info: Writing requests to 'Tesi.run.xml'.
 \openout1 = `Tesi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50817 strings out of 474486
- 1056171 string characters out of 5743755
- 2434577 words of memory out of 5000000
- 70908 multiletter control sequences out of 15000+600000
+ 50815 strings out of 474486
+ 1056149 string characters out of 5743755
+ 2434576 words of memory out of 5000000
+ 70907 multiletter control sequences out of 15000+600000
  683656 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,13n,131p,1802b,5182s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2445,9 +2441,9 @@ le_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/al
 e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/al
 e_a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/ale
 _a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Tesi.pdf (73 pages, 2994264 bytes).
+Output written on Tesi.pdf (72 pages, 2995006 bytes).
 PDF statistics:
- 2234 PDF objects out of 2487 (max. 8388607)
- 1137 named destinations out of 1200 (max. 500000)
- 73612 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 2225 PDF objects out of 2487 (max. 8388607)
+ 1136 named destinations out of 1200 (max. 500000)
+ 73604 words of extra memory for PDF output out of 74296 (max. 10000000)
 
