@@ -85,7 +85,6 @@ ggplot(data = combined_trends_long, aes(x = year, y = value)) +
   geom_point(aes(color = variable), size = 2) +
   facet_wrap(~ variable_label, scales = "free_y", ncol = 1) + # scales="free_y" permette assi Y diversi
   labs(
-    title = "Trends in Conflict and Night Lights in Nigeria's Coastal Areas",
     x = "Year",
     y = "Value"
   ) +
@@ -93,6 +92,11 @@ ggplot(data = combined_trends_long, aes(x = year, y = value)) +
   theme(
     plot.title = element_text(hjust = 0.5),
     legend.position = "none" # La legenda non è necessaria con facet_wrap
+  ) +
+  scale_x_continuous(
+    breaks = seq(floor(min(combined_trends_long$year, na.rm = TRUE)),
+                 ceiling(max(combined_trends_long$year, na.rm = TRUE)), by = 1),
+    labels = label_number(accuracy = 1)  # -> 2009, 2010, 2011, …
   ) +
   scale_color_manual(values = c("avg_nightlight_mean" = "steelblue", "total_n_conflicts" = "firebrick")) # Colori personalizzati
 
@@ -332,7 +336,18 @@ combined_long <- combined_trends_df %>%
     names_to = "variable",
     values_to = "value"
   )
-
+ggplot(combined_long, aes(x = year, y = value)) +
+  geom_line(aes(color = variable), linewidth = 1) +
+  geom_point(aes(color = variable), size = 2) +
+  facet_wrap(~ variable, scales = "free_y", ncol = 1) +
+  labs(x = "Anno", y = "Valore") +
+  scale_x_continuous(
+    breaks = seq(floor(min(combined_long$year, na.rm=TRUE)),
+                 ceiling(max(combined_long$year, na.rm=TRUE)), by = 1),
+    labels = label_number(accuracy = 1)  # stampa 2009, 2010, 2011, …
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
 
 # Crea un grafico a pannelli per confrontare le variabili
 ggplot(data = combined_long, aes(x = year, y = value)) +
@@ -340,9 +355,8 @@ ggplot(data = combined_long, aes(x = year, y = value)) +
   geom_point(aes(color = variable), size = 2) +
   facet_wrap(~ variable, scales = "free_y", ncol = 1) +
   labs(
-    title = "Confronto tra Trend di Conflitti, Luci Notturne e Rendite Petrolifere",
-    x = "Anno",
-    y = "Valore"
+    x = "year",
+    y = "value"
   ) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5), legend.position = "none")
@@ -670,3 +684,78 @@ ggplot(data = combined_long, aes(x = year, y = value)) +
     "urban_growth_pct" = "#FF33B5"
   ))
 
+library(ggplot2)
+
+# Plot LSCI annuale
+ggplot(LSCI_annual, aes(x = year, y = lsci_value)) +
+  geom_line(color = "steelblue", size = 1) +
+  geom_point(color = "steelblue") +
+  labs(
+    title = "Liner Shipping Connectivity Index (LSCI) – Nigeria",
+    x = "Year", y = "Annual LSCI"
+  ) +
+  theme_minimal()
+
+# Plot Container Port Throughput
+ggplot(ContPortThroughput_long, aes(x = year, y = teu)) +
+  geom_line(color = "darkred", size = 1) +
+  geom_point(color = "darkred") +
+  labs(
+    title = "Container Port Throughput – Nigeria",
+    x = "Year", y = "TEU (Twenty-foot Equivalent Units)"
+  ) +
+  theme_minimal()
+
+
+compare_df <- merge(LSCI_annual, ContPortThroughput_long[, .(year, teu)], by = "year")
+
+library(scales)
+
+ggplot(compare_df, aes(x = year)) +
+  geom_line(aes(y = lsci_value, color = "LSCI"), size = 1) +
+  geom_point(aes(y = lsci_value, color = "LSCI"), size = 2) +
+  geom_line(aes(y = teu/10000, color = "Throughput"), size = 1) +
+  geom_point(aes(y = teu/10000, color = "Throughput"), size = 2) +
+  scale_y_continuous(
+    name = "LSCI",
+    sec.axis = sec_axis(~.*10000, name = "TEU (Throughput)", labels = comma)
+  ) +
+  labs(
+    title = "LSCI vs Container Port Throughput – Nigeria (2009–2019)",
+    x = "Year"
+  ) +
+  scale_color_manual(values = c("LSCI" = "steelblue4", "Throughput" = "firebrick")) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+
+
+library(ggplot2)
+library(dplyr)
+
+# Calcola la media delle nightlights per ogni anno
+nightlight_trend <- nightlight_dt %>%
+  group_by(year) %>%
+  summarise(mean_nl = mean(nightlight_mean, na.rm = TRUE), .groups = "drop")
+nightlight_trend$year <- as.integer(nightlight_trend$year)
+# Grafico semplice
+p_nl <- ggplot(nightlight_trend, aes(x = year, y = mean_nl)) +
+  geom_line(linewidth = 1.2, color = "darkblue") +
+  geom_point(size = 2, color = "darkblue") +
+  scale_x_continuous(breaks = 2009:2019) +  # tick annuali puliti
+  labs(
+    title = "Average coastal nightlights (ADM2)",
+    x = "year",
+    y = "Average intensity"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title   = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+
+
+p_nl
